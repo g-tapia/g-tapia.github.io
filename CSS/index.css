@@ -1,13 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap'); /* Fonts */
+
 /* References:
 Works: Thomas Trinca, Gambhir Sharma, Gustavo Perez, klevron
 
 Note: I went to study these works and modified some of the content. I have copyrights permission to modify it. However, the webpage design is completely designed by me.
 */
-
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
-
 /* type writer css */
   .typing-container {
     position: absolute;
