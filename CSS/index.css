@@ -1,0 +1,580 @@
+/* References:
+Works: Thomas Trinca, Gambhir Sharma, Gustavo Perez, klevron
+
+Note: I went to study these works and modified some of the content. I have copyrights permission to modify it. However, the webpage design is completely designed by me.
+*/
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+
+/* type writer css */
+  .typing-container {
+    position: absolute;
+    bottom: 5%; 
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.typewriter h1 {
+    color: white;
+    font-size: 18px;
+    overflow: hidden; 
+    border-right: .15em solid rgb(255, 255, 255);
+    white-space: nowrap; 
+    margin: 0 auto;
+    width: 0;
+    letter-spacing: .15em; 
+    animation: 
+      typing 3.5s steps(40, end) forwards 1s,
+      blink-caret .75s step-end infinite 1s;
+  }
+  
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(255, 255, 255); }
+  }
+
+  @keyframes fadeOutAnimation {
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+
+  /* pedal css */
+  .pedal {
+    background: black;
+    position: fixed; 
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    animation: fadeOutAnimation 3s ease 6s forwards;
+    z-index: 2; 
+  }
+
+  .container {
+    width: 40vw;
+    height: 40vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+  }
+  
+  .common {
+    height: 5vw;
+    max-height: 100%;
+    overflow: auto;
+    width: 2vw;
+    margin: auto;
+    max-width: 100%;
+    position: absolute;
+    border-radius: 0vw 10vw 0vw 10vw;
+    box-shadow: inset 0vw 0vw 0vw .1vw #E645D0, 0vw 0vw 1.5vw 0vw #E645D0;
+  }
+  
+  .one {
+    transform: rotate(45deg);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 7.5vw;
+  }
+  
+  .two {
+    transform: rotate(90deg);
+    left: 5.5vw;
+    right: 0;
+    top: 0;
+    bottom: 5.5vw;
+  }
+  
+  .three {
+    transform: rotate(135deg);
+    left: 7.5vw;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .four {
+    transform: rotate(180deg);
+    left: 5.5vw;
+    right: 0;
+    top: 5.5vw;
+    bottom: 0;
+  }
+  
+  .five {
+    transform: rotate(225deg);
+    left: 0;
+    right: 0;
+    top: 7.5vw;
+    bottom: 0;
+  }
+  
+  .six {
+    transform: rotate(270deg);
+    left: 0;
+    right: 5.5vw;
+    top: 5.5vw;
+    bottom: 0;
+  }
+  
+  .seven {
+    transform: rotate(315deg);
+    left: 0;
+    right: 7.5vw;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .eight {
+    transform: rotate(360deg);
+    left: 0;
+    right: 5.5vw;
+    top: 0;
+    bottom: 5.5vw;
+  }
+  
+  
+  .one {
+    animation: one 1s ease infinite;
+    -moz-animation: one 1s ease infinite;
+    /* Firefox */
+    -webkit-animation: one 1s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: one 1s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes one {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .two {
+    animation: two 1s .125s ease infinite;
+    -moz-animation: two 1s .125s ease infinite;
+    /* Firefox */
+    -webkit-animation: two 1s .125s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: two 1s .125s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes two {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .three {
+    animation: three 1s .25s ease infinite;
+    -moz-animation: three 1s .25s ease infinite;
+    /* Firefox */
+    -webkit-animation: three 1s .25s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: three 1s .25s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes three {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .four {
+    animation: four 1s .375s ease infinite;
+    -moz-animation: four 1s .375s ease infinite;
+    /* Firefox */
+    -webkit-animation: four 1s .375s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: four 1s .375s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes four {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .five {
+    animation: five 1s .5s ease infinite;
+    -moz-animation: five 1s .5s ease infinite;
+    /* Firefox */
+    -webkit-animation: five 1s .5s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: five 1s .5s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes five {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .six {
+    animation: six 1s .625s ease infinite;
+    -moz-animation: six 1s .625s ease infinite;
+    /* Firefox */
+    -webkit-animation: six 1s .625s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: six 1s .625s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes six {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .seven {
+    animation: seven 1s .750s ease infinite;
+    -moz-animation: seven 1s .750s ease infinite;
+    /* Firefox */
+    -webkit-animation: seven 1s .750s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: seven 1s .750s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes seven {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .eight {
+    animation: eight 1s .875s ease infinite;
+    -moz-animation: eight 1s .875s ease infinite;
+    /* Firefox */
+    -webkit-animation: eight 1s .875s ease infinite;
+    /* Safari and Chrome */
+    -o-animation: eight 1s .875s ease infinite;
+    /* Opera */
+  }
+  
+  @keyframes eight {
+    0%,
+    100% {}
+    50% {
+      box-shadow: inset 0vw 0vw 0vw .1vw #17E1E6, 0vw 0vw 1.5vw 0vw #17E1E6;
+    }
+  }
+  
+  .container {
+    animation: container 5s linear infinite;
+    -moz-animation: container 5s linear infinite;
+    /* Firefox */
+    -webkit-animation: container 5s linear infinite;
+    /* Safari and Chrome */
+    -o-animation: container 5s linear infinite;
+    /* Opera */
+  }
+  
+  @keyframes container {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  
+  
+  .fade-in {
+    animation: fade-in 2s ease;
+    -moz-animation: fade-in 2s ease;
+    /* Firefox */
+    -webkit-animation: fade-in 2s ease;
+    /* Safari and Chrome */
+    -o-animation: fade-in 2s ease;
+    /* Opera */
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .out {
+    animation: out 2s 15s ease;
+    -moz-animation: out 2s 15s ease;
+    /* Firefox */
+    -webkit-animation: out 2s 15s ease;
+    /* Safari and Chrome */
+    -o-animation: out 2s 15s ease;
+    /* Opera */
+  }
+  
+  @keyframes out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+
+
+/* Global Styling */
+body, html {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Container to ensure proper layout */
+.page-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    align-items: center; 
+    z-index: 1;
+}
+
+/* Styling for the left pane */
+.left-pane {
+    flex-basis: 300px;
+    background-color: black;  
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start; 
+    gap: 10px;
+    height: 100%;
+    border-right: 3px solid #f403dc;  
+    transition: 0.5s; 
+}
+
+
+.bottom-right-image {
+    position: absolute;
+    bottom: 0px;  
+    right: 0px;  
+    width: 426px;  
+    height: 586px;
+    z-index: 1;    
+}
+
+
+/* Styling for the main content */
+.main-content {
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    align-items: center; 
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    flex-grow: 1;
+    padding: 0px;
+    position: relative;
+    z-index: 1;
+    color: #ecf0f1;
+    background-color: #000;
+
+}
+
+/* css for neon buttons */
+.neon-buttons a {
+    position: relative;
+    display: inline-block;
+    padding: 20px 30px;
+    margin: 0px 0px 0px 0px;
+    color: #f403dc;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+    width: 150px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+}
+.neon-buttons a:hover {
+    background: #f403dc;
+    color: #050801;
+    box-shadow: 0 0 5px #f403dc,
+                0 0 25px #f403dc,
+                0 0 50px #f403dc,
+                0 0 200px #f403dc;
+    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
+
+.neon-buttons a span {
+    position: absolute;
+    display: block;
+    font-size: medium;
+
+} 
+
+.neon-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    width: 100%;
+}
+
+/* css for the particle section */
+#particle-animation canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    
+}
+
+#hero h1 {
+    font-size: 50px;  /* Adjust according to your preference */
+}
+
+
+div#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+}
+div.neon-buttons{
+    justify-content: center;
+    align-items: center;
+}
+
+
+.icon {
+    margin: 0 10px;
+    
+}
+
+.icon-link {
+    text-decoration: none;
+    color: inherit;
+    align-items: center; 
+}
+
+.icon-link:hover .icon {
+    color: #2980b9;
+    
+}
+
+
+
+/* moon animation section */
+html {
+    --zoom: 120;
+    --black: #000;
+    --white: #fff;
+    --red: #d34747;
+    --green: #1c6f1c;
+    --blue: #2a2aaa;
+    --yellow: yellow;
+    --grey: grey;
+    --violet: violet;
+    --purple: purple;
+    --pink: pink;
+    --bg: #202020;
+  }
+  
+  :root {
+    --unit: 1vmin;
+    --available-screen-min: 665;
+    --px: calc(var(--zoom) * (var(--unit) / var(--available-screen-min)));
+  }
+  
+  body {
+    --moon-animation-time: 20s;
+  }
+  
+  .moon {
+    position:absolute;
+    background-color: var(--grey);
+    height: calc(150 * var(--px));
+    width: calc(150 * var(--px));
+    border-radius: 50%;
+    box-shadow: 0px 0px calc(10 * var(--px)) calc(5 * var(--px)) #fff;
+    background-image: url("https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/lroc_color_poles_1k.jpg"); 
+    background-size: calc(430 * var(--px));
+    background-position: left;
+    background-repeat: no-repeat;
+    animation: animation var(--moon-animation-time) linear infinite;
+    margin-left: -80px;
+    top: -60px;
+  }
+  
+  @keyframes animation {
+    to {
+      background-position: right;
+    }
+  }
+  
