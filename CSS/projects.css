@@ -1,0 +1,239 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');  */
+
+.page-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: #000000;
+}
+
+/* css for neon buttons */
+.neon-buttons a {
+    position: relative;
+    display: inline-block;
+    padding: 20px 30px;
+    margin: 0px 0px 0px 0px;
+    color: #f403dc;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    overflow: hidden;
+    margin-right: 50px;
+    width: 150px;
+    text-align: center;
+}
+
+.neon-buttons a:hover {
+    background: #f403dc;
+    color: #050801;
+    box-shadow: 0 0 5px #f403dc,
+                0 0 25px #f403dc,
+                0 0 50px #f403dc,
+                0 0 200px #f403dc;
+    -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}
+
+.neon-buttons a span {
+    position: absolute;
+    display: block;
+
+} 
+
+.neon-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    width: 100%;
+}
+
+
+
+
+
+/* card css */
+body {
+    background-color: #000000; /* Match the color from index.css */
+    font-family: sans-serif; 
+    -webkit-font-smoothing: antialiased;
+    margin-top: 0px;
+}
+
+
+.title {
+  font-family: "Raleway"; 
+  font-size: 24px;
+  font-weight: 700;
+  color: #fffefe;
+  text-align: center;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+h1 + p, p + p {
+  margin-top: 10px;
+}
+
+.container {
+  padding: 40px 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-wrap {
+  margin: 10px;
+  transform: perspective(1200px);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.card-wrap:hover .card-info {
+  transform: translateY(0);
+}
+.card-wrap:hover .card-info p {
+  opacity: 1;
+}
+.card-wrap:hover .card-info, .card-wrap:hover .card-info p {
+  transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.card-wrap:hover .card-info:after {
+  transition: 3s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 1;
+  transform: translateY(0);
+}
+.card-wrap:hover .card-bg {
+  transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 4s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0.8;
+}
+.card-wrap:hover .card {
+  transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: none;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 240px;
+  width: 320px;
+  height: 320px;
+  background-color: #000;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.4) 0 0 0 6px;
+  transition: 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.card-bg {
+  opacity: 0.5;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95), opacity 4s 0.8s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  pointer-events: none;
+}
+
+.card-info {
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  transform: translateY(40%);
+  transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.card-info p {
+  opacity: 0;
+  text-shadow: rgb(255, 255, 255) 0 2px 3px;
+  transition: 0.6s 1.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.card-info * {
+  position: relative;
+  z-index: 1;
+}
+.card-info:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  background-blend-mode: overlay;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 5s 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.card-info h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 10px 10px;
+}
+
+/*  sm btn styles  */
+.twitter-btn {
+  position: fixed;
+  margin: auto;
+  bottom: 0;
+  background-color: #1da1f2;
+  border: 0.15em solid #1da1f2;
+  border-left: none;
+  border-bottom: none;
+  border-radius: 0% 100% 0% 0%/0% 100% 0% 93%;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.in-btn {
+  position: fixed;
+  margin: auto;
+  bottom: 0;
+  right: 0;
+  border: 0.15em solid #0072b1;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 100% 0% 0% 0%/100% 0% 0% 0%;
+  background-color: #0072b1;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.fa-twitter {
+  position: absolute;
+  left: 0em;
+  right: 0.4em;
+  top: 0.5em;
+  bottom: 0;
+  color: #fff;
+  font-size: 1.8em;
+}
+
+.fa-linkedin-in {
+  position: absolute;
+  left: 0.4em;
+  right: 0em;
+  top: 0.55em;
+  bottom: 0;
+  color: #fff;
+  font-size: 1.8em;
+}
+
+.in-btn:hover {
+  background-color: #ffffff;
+}
+
+.twitter-btn:hover {
+  background-color: #fffefe;
+}

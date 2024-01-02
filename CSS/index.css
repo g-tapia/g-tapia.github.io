@@ -392,8 +392,8 @@ body, html {
     position: absolute;
     bottom: 0px;  
     right: 0px;  
-    width: 426px;  
-    height: 586px;
+    width: 476px;  
+    height: 480px;
     z-index: 1;    
 }
 
@@ -575,3 +575,12 @@ html {
     }
   }
   
+/* transition css*/
+.bottom-left {
+  position: absolute;
+  bottom: -300px;  
+  left: 0px;  
+  width: 476px;  
+  height: 480px;
+  z-index: 1;    
+}
