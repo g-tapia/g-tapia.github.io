@@ -2674,6 +2674,23 @@ cat(&quot;Specificity:&quot;, round(specificity, 4), &quot;\n&quot;)</code></pre
 <pre><code>## Specificity: 0.993</code></pre>
 </div>
 
+library(randomForest)
+library(caret)
+
+# Convert 'is_canceled' to a factor if it's not already
+hotel_bookings$is_canceled <- as.factor(hotel_bookings$is_canceled)
+
+# Remove the 'reservation_status' feature
+hotel_bookings_revised <- hotel_bookings[, !(names(hotel_bookings) %in% "reservation_status")]
+hotel_bookings_revised <- na.omit(hotel_bookings_revised)
+
+# Retrain the Random Forest model
+model_revised <- randomForest(is_canceled ~ ., data = hotel_bookings_revised, ntree = 50)
+
+# Check the revised model's performance and feature importance
+print(model_revised)
+importance(model_revised)
+
 
 
 
