@@ -72,7 +72,9 @@
         h3{
       color: rgb(47, 125, 203);
     }
-        
+    h4{
+      color: #099;
+    }   
     }
   
     span .hljs-comment {
@@ -1821,7 +1823,7 @@ display: none;
           <a href="/portfolio/projects.html">Return to projects</a>
           </li>
         <span class="options__division">Sections</span>
-        <li><a href="#data-cleaning-overview">Univariate Analysis</a></li>
+        <li><a href="#data-cleaning-overview">Exploratory Data Analysis</a></li>
         <li><a href="#hotel-plots">Plots Showcasing Top 10 Countries for Resort/City Hotels</a></li>
         <li><a href="#finding-missing-data">Finding Missing Values in Features</a></li>
         <li><a href="#table">Percentage of Missing Values By Column</a></li>
@@ -1834,8 +1836,9 @@ display: none;
 <div id="section-2.1" class="section level5">
 </div>
 <div id="data-cleaning-overview" class="section level3">
-<h3>Univariate Analysis</h3>
-<p>I am performing univariate analysis on a hotel dataset to gain a comprehensive understanding of the individual variables within the dataset. Univariate analysis is a crucial initial step in data exploration and provides valuable insights into each variable's characteristics and distribution without considering their relationships with other variables.</p>
+  <h3>Exploratory Data Analysis</h3>
+<p>I am conducting an Exploratory Data Analysis (EDA) on this dataset to gain a thorough understanding of its various aspects. EDA is an approach in data analysis that lays the groundwork for deeper investigation into a dataset. It's an essential step in understanding the various facets of the data by employing a range of techniques to visualize and summarize the main characteristics. EDA is characterized by its flexibility and informality, where the goal is to discover patterns, spot anomalies, test hypotheses, and check assumptions with the help of summary statistics and graphical representations. This method is particularly valuable for gaining insights into a dataset before making any assumptions or building predictive models. It helps in identifying trends, uncovering hidden relationships between variables, and understanding the data's structure and distribution. EDA is a critical process in data science that ensures the appropriate steps are taken during the subsequent data modeling and analysis.</p>
+
 <pre class="r"><code>setwd(&quot;C:/Users/DirectoryRemoved;)
 hotel_bookings &lt;- read.csv(&quot;hotel_bookings.csv&quot;)
 
@@ -1845,10 +1848,9 @@ table(hotel_bookings$hotel)</code></pre>
 ##        79330        40060</code></pre>
 </div>
 <div id="adjusting-children-column" class="section level3">
-  <p><strong>Canceled and Non-Canceled Reservations Analysis:</strong> The data revealed that out of the total guests, 44,224 had canceled their reservations, while 75,166 guests did not cancel. This analysis gives an insight into the cancellation behavior of guests at the hotels.</p>
-
-<pre class="r"><code>
-  # retrieving number of both, non canceled and canceled customers
+  <br></br>
+<h4>Canceled vs Non-Canceled</h4>
+<pre class="r"><code># retrieving number of both, non canceled and canceled customers
   class_frequency &lt;- table(hotel_bookings$is_canceled)
 canceled_count &lt;- class_frequency[[&quot;1&quot;]]
 not_canceled_count &lt;- class_frequency[[&quot;0&quot;]]
@@ -1857,11 +1859,15 @@ cat(&quot;Number of guests who canceled reservation:&quot;, canceled_count, &quo
     &quot;Number of guests who did not cancel the reservation:&quot;, not_canceled_count)</code></pre>
 <pre><code>## Number of guests who canceled reservation: 44224 
 ##  Number of guests who did not cancel the reservation: 75166</code></pre>
+
+<p><strong>Canceled and Non-Canceled Reservations Analysis:</strong> The data revealed that out of the total guests, 44,224 had canceled their reservations, while 75,166 guests did not cancel. This prompts the question: What might be influencing guests' decisions to cancel or keep their reservations? The analysis suggests that factors such as seasonality, booking lead time, and special requests could play significant roles in influencing cancellation behavior. Understanding these factors can provide valuable insights into guest preferences and booking patterns at the hotels.</p>
+<br></br>
+<br></br>
+<h4>Customer Type</h4>
 </div>
-<div id="most-reservations" class="section level3">
-  <p><strong>Most Common Customer Type:</strong> Among the various customer types, 'Transient' emerged as the most common, with 89,613 reservations. This information is crucial for understanding the predominant customer segment for targeted marketing and service optimization.</p>
-<pre class="r"><code>
-# returning the customer type with the most number of reservations
+
+
+<div id="most-reservations" class="section level3"><pre class="r"><code># returning the customer type with the most number of reservations
 customer_type_frequency &lt;- table(hotel_bookings$customer_type)
 max_index &lt;- which.max(customer_type_frequency)
 most_common_customer_type &lt;- names(customer_type_frequency)[max_index]
@@ -1871,6 +1877,8 @@ output_string &lt;- paste(&quot;Customer type with the most reservations is&quot
                        number_of_reservations, &quot;reservations&quot;)
 print(output_string)</code></pre>
 <pre><code>## [1] &quot;Customer type with the most reservations is Transient , with 89613 reservations&quot;</code></pre>
+<p><strong>Most Common Customer Type:</strong> Among the various customer types, 'Transient' emerged as the most common, with 89,613 reservations. This raises the question: Why is the 'Transient' category more prevalent than others? The data suggests that factors such as flexibility in booking, shorter duration of stays, and possibly competitive pricing may contribute to the higher prevalence of transient customers. Understanding these aspects can be crucial for developing targeted marketing strategies and optimizing services to cater to this predominant customer segment.</p>
+
 </div>
 <div id="country-value-adjustments" class="section level3">
   <p><strong>Maximum Parking Space Requirements:</strong> A unique finding was that only 2 customers required the maximum number of parking spaces, which was 8. This indicates that parking space requirements are generally low among the hotel guests.</p>
