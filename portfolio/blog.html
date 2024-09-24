@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quotes {
+            background-color: #f0e68c;
+            padding: 10px;
+            border-left: 5px solid #ffa500;
+        }
+
+        .about {
+            background-color: #fffaf0;
+            padding: 20px;
+        }
+
+        .articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .article {
+            background-color: #fff;
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Blog</h1>
+    </header>
+
+    <div class="container">
+        <!-- Quotes Section -->
+        <section class="section quotes">
+            <h2>Favorite Quotes</h2>
+            <p>"The best way to predict the future is to create it." - Peter Drucker</p>
+            <p>"Simplicity is the ultimate sophistication." - Leonardo da Vinci</p>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="section about">
+            <h2>About Me</h2>
+            <p>Hi there! I'm George, a passionate coder and lifelong learner. I love working on projects that combine creativity and technology. In my free time, I enjoy reading self-improvement books and staying active with workouts. Welcome to my personal space where I share my thoughts and insights.</p>
+        </section>
+
+        <!-- Articles Section -->
+        <section class="section articles">
+            <div class="article">
+                <h3>Article 1: Learning R</h3>
+                <p>This article explores how I learned R and applied it to real-world data analysis projects.</p>
+                <a href="#">Read more</a>
+            </div>
+            <div class="article">
+                <h3>Article 2: Web Development Journey</h3>
+                <p>A deep dive into my journey as a web developer, building projects from scratch.</p>
+                <a href="#">Read more</a>
+            </div>
+            <div class="article">
+                <h3>Article 3: Overcoming Challenges</h3>
+                <p>Lessons I’ve learned from tackling tough coding challenges and how they shaped my mindset.</p>
+                <a href="#">Read more</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 George's Blog. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
