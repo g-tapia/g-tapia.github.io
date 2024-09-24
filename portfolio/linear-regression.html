@@ -164,6 +164,85 @@
     span.options__division{
       color: rgb(255, 255, 255);
     }
+
+
+   /* neon button css */
+    button {
+  min-width: 250px;
+  min-height: 40px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #4FD1C5;
+background: linear-gradient(90deg, #81e6d9 0%, #4fd1c5 100%);
+  border: none;
+  border-radius: 75px;
+  box-shadow: 12px 12px 24px #59eedfa3;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+
+  }
+
+button::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+
+button:hover{
+  color: #292424;
+  transform: translateY(-6px);
+}
+
+button:hover::before{
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #00FFCB;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after{
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
 </style>
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
@@ -1771,7 +1850,6 @@ display: none;
 
 <body>
   <audio id="click-sound" src="/sounds/button-pressed.wav" preload="auto"></audio>
-
 <div class="container-fluid main-container">
 
 
@@ -1779,6 +1857,9 @@ display: none;
 <div id="header">
 
   <h1 class="title toc-ignore">Linear Regression Model (MPG)</h1>
+
+</div>
+
 
   <div class="columns-container">
   <div class="column">
@@ -1845,13 +1926,8 @@ display: none;
 
 <div id="part-2.1" class="section level3">
 <h3>Data Preparation and Splitting</h3>
+<p>Here, we are splitting the data set into two parts: one is the training set, and the other is the test set. We generally split our data set into two parts so that we can train our model on the larger portion and evaluate its performance on the test data set (the smaller portion). Some recommended splits for large data sets are 90/10 and 95/5, while for smaller data sets, 70/30 and 80/20 are common recommendations.</p>
 <pre class="r"><code>#install.packages(&#39;ISRL&#39;)
-
-#Here, we are splitting the data set into two parts, one is the training set, the other is the test set
-#We generally split our data set into two parts so that we can train our model on the greater portion,
-#and evaluate its performance on the test data set (the smaller portion)
-#Some recommended splits for large data sets are 90/10 and 95/5
-#Some recommended splits for small data sets are 70/30 and 80/20
 library(ISLR) 
 set.seed(1122)
 index &lt;- sample(1:nrow(Auto), 0.95*dim(Auto)[1])
@@ -1860,14 +1936,11 @@ test.df &lt;- Auto[-index,]</code></pre>
 </div>
 <div id="part-2.1-a" class="section level3">
 <h3>Initial Linear Regression Model Building</h3>
+<p>Here, we are creating a model using all predictors except for the 'name' variable. The dependent variable is 'mpg' (miles per gallon), and the independent variables are 'cylinders,' 'displacement,' 'horsepower,' 'weight,' 'acceleration,' 'year,' and 'origin.' The function reads as "generate a linear regression model using 'mpg' as the dependent or response variable, and all other variables in the dataset as predictors, excluding 'name'."</p>
+
 <pre class="r"><code>library(psych)
 #library(lessR)
 
-#creating a model using all predictors except name
-#Dependent variable -&gt; mpg
-#Independent variables -&gt; cylinders, displacement, horsepower, weight, acceleration, year, origin
-#Function reads as &quot;generate a linear regression model using mpg as the dependent/response variable and 
-#all other variables in the data set as predictors except name&quot;
 linear_regression_model &lt;- lm(mpg ~ . - name, data = train.df)
 print(linear_regression_model)</code></pre>
 <pre><code>## 
@@ -2198,7 +2271,6 @@ cat(&quot;Total observations correctly predicted:&quot;,matches_p)</code></pre>
 
 
 </div>
-
 <script>
 
 // add bootstrap table styles to pandoc tables
@@ -2238,6 +2310,7 @@ $(document).ready(function () {
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
+
 
 </body>
 </html>
