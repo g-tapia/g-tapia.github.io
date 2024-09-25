@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
+    <title>George's Blog</title>
     <style>
+        /* CSS provided */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
+            background-color: #1f1f1f;
+            padding: 20px 0;
             text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            color: #f0a500;
+            font-size: 3rem;
         }
 
         .container {
@@ -26,23 +33,47 @@
         }
 
         .section {
-            background-color: white;
+            margin-bottom: 40px;
             padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .section h2 {
             margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 2rem;
+            color: #f0a500;
+            border-bottom: 2px solid #f0a500;
+            padding-bottom: 10px;
         }
 
-        .quotes {
-            background-color: #f0e68c;
-            padding: 10px;
-            border-left: 5px solid #ffa500;
+        /* Quotes Section */
+        .quotes p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #ddd;
         }
 
-        .about {
-            background-color: #fffaf0;
-            padding: 20px;
+        .quotes p::before {
+            content: "“";
+            font-size: 2rem;
+            color: #f0a500;
         }
 
+        .quotes p::after {
+            content: "”";
+            font-size: 2rem;
+            color: #f0a500;
+        }
+
+        /* About Me Section */
+        .about p {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+
+        /* Articles Section */
         .articles {
             display: flex;
             flex-wrap: wrap;
@@ -50,29 +81,143 @@
         }
 
         .article {
-            background-color: #fff;
             flex: 1;
-            min-width: 300px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-width: 280px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .article:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(240, 165, 0, 0.4);
+        }
+
+        .article h3 {
+            color: #f0a500;
+            margin-bottom: 15px;
+        }
+
+        .article p {
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+
+        .article a {
+            text-decoration: none;
+            color: #f0a500;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .article a:hover {
+            color: #fff;
+        }
+
+        /* Neon Buttons CSS */
+        .neon-buttons a {
+            position: relative;
+            display: inline-block;
+            padding: 20px 30px;
+            margin: 0px 0px 0px 0px;
+            color: #f403dc;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.5s;
+            letter-spacing: 4px;
+            overflow: hidden;
+            margin-right: 50px;
+            width: 150px;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .neon-buttons a:hover {
+            background: #f403dc;
+            color: #050801;
+            box-shadow: 0 0 5px #f403dc,
+                        0 0 25px #f403dc,
+                        0 0 50px #f403dc,
+                        0 0 200px #f403dc;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        }
+
+        .neon-buttons a span {
+            position: absolute;
+            display: block;
+            font-size: medium;
+        }
+
+        .neon-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        /* Particle Section */
+        #particle-animation canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        /* Button Styling */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
         }
 
         footer {
             text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 15px 0;
+            background-color: #1f1f1f;
+            border-top: 1px solid #333;
+        }
+
+        footer p {
+            color: #bbb;
+        }
+
+        /* Hero Section */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        #hero h1 {
+            font-size: 50px;
+            color: #f403dc;
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Welcome to My Blog</h1>
+        <h1>George's Blog</h1>
     </header>
 
     <div class="container">
@@ -86,26 +231,35 @@
         <!-- About Me Section -->
         <section class="section about">
             <h2>About Me</h2>
-            <p>Hi there! I'm George, a passionate coder and lifelong learner. I love working on projects that combine creativity and technology. In my free time, I enjoy reading self-improvement books and staying active with workouts. Welcome to my personal space where I share my thoughts and insights.</p>
+            <p>I'm George, a passionate coder and lifelong learner with a love for working out and reading self-improvement books. This blog is my creative outlet, where I share my thoughts, projects, and experiences. Whether it's coding, design, or life in general, I'm always pushing for growth.</p>
+            <div class="neon-buttons">
+                <a href="#"><span>More</span></a>
+            </div>
         </section>
 
         <!-- Articles Section -->
         <section class="section articles">
+            <h2>Articles</h2>
+
             <div class="article">
                 <h3>Article 1: Learning R</h3>
-                <p>This article explores how I learned R and applied it to real-world data analysis projects.</p>
+                <p>Discover how I mastered R programming and applied it to real-world data analysis projects.</p>
                 <a href="#">Read more</a>
             </div>
+
             <div class="article">
                 <h3>Article 2: Web Development Journey</h3>
-                <p>A deep dive into my journey as a web developer, building projects from scratch.</p>
+                <p>My journey into web development, building dynamic websites from scratch and overcoming challenges.</p>
                 <a href="#">Read more</a>
             </div>
+
             <div class="article">
                 <h3>Article 3: Overcoming Challenges</h3>
-                <p>Lessons I’ve learned from tackling tough coding challenges and how they shaped my mindset.</p>
+                <p>How I tackled tough coding challenges, and the lessons I learned along the way.</p>
                 <a href="#">Read more</a>
             </div>
+
+            <!-- Add more article sections as needed -->
         </section>
     </div>
 
