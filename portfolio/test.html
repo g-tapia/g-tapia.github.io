@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Page</title>
+  <title>Particle Effect</title>
   <style>
     * {
       margin: 0;
@@ -12,19 +12,20 @@
 
     body {
       overflow: hidden;
+      background-color: black;
+      font-family: 'Comfortaa', cursive;
     }
 
     #wrapper {
       position: relative;
       height: 100vh;
-      background: #000;
-      font-family: 'Comfortaa', cursive;
+      width: 100vw;
     }
 
     #canvas_container {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
       width: 100%;
       height: 100vh;
       z-index: 0;
@@ -39,7 +40,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       z-index: 10;
-      color: rgb(255, 255, 255);
+      color: white;
       background-color: rgba(0, 0, 0, 0.81);
       font-size: 1.6rem;
       display: flex;
@@ -68,6 +69,7 @@
       position: absolute;
       bottom: 5%;
       right: 0px;
+      transform: translateX(-50%);
       border: 1px solid white;
       border-radius: 5px;
       font-size: 0.9rem;
@@ -79,108 +81,150 @@
       z-index: 11;
     }
 
-    .btn_works {
-      left: 100px;
-      right: unset;
-      text-decoration: none;
-    }
-
     .btn:hover {
-      background: #ffffff;
-      color: #2a2b2f;
-    }
-
-    @media only screen and (max-width: 815px) {
-      .text {
-        font-size: 1.2rem;
-      }
+      background: white;
+      color: black;
     }
   </style>
 </head>
 <body>
-
   <div id="wrapper">
     <div id="canvas_container"></div>
 
     <div class="text">
-      <p class="quoteText">“ Never memorize something that you can look
-        up.”<br><span style="font-style: italic; font-size: 1.4rem; color:#ED760D">#Stack Overflow</span></p>
+      <p class="quoteText">“ Never memorize something that you can look up.”<br>
+        <span style="font-style: italic; font-size: 1.4rem; color:#ED760D">#Stack Overflow</span>
+      </p>
     </div>
+
     <p class="clickInfo">Click anywhere to start your journey</p>
 
-    <img id="first" src="https://i.imgur.com/hDB2Egy.jpg" style="display:none;">
-
-    <a href="https://your-link-to-projects" target="_blank" class="btn btn_works">My Works</a>
     <button class="btn" id="fullscr">Go Fullscreen</button>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/SplitText.min.js"></script>
 
   <script>
-    gsap.registerPlugin(SplitText);
-
     let webgl = {};
-    let tail = {};
 
-    (function initThree() {
+    // Quotes
+    const quotes = [
+      "“ Never memorize something that you can look up.”",
+      "“ Creativity is intelligence having fun.”",
+      "“ The best way to predict the future is to invent it.”",
+      "“ Simplicity is the ultimate sophistication.”"
+    ];
+
+    let currentQuoteIndex = 0;
+
+    function updateQuote() {
+      const quoteText = document.querySelector(".quoteText");
+      gsap.to(quoteText, { opacity: 0, duration: 0.5, onComplete: () => {
+        quoteText.innerHTML = `${quotes[currentQuoteIndex]}<br>
+        <span style="font-style: italic; font-size: 1.4rem; color:#ED760D">#Stack Overflow</span>`;
+        gsap.to(quoteText, { opacity: 1, duration: 0.5 });
+      }});
+
+      // Cycle through quotes
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+    }
+
+    function initThree() {
       webgl.container = document.getElementById("canvas_container");
-      webgl.quoteText = document.querySelector(".quoteText");
-      webgl.text = document.querySelector(".text");
 
+      // Scene
       webgl.scene = new THREE.Scene();
+      
+      // Camera
       webgl.camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 10000);
-      webgl.camera.position.z = 180;
+      webgl.camera.position.z = 300;
+
+      // Renderer
       webgl.renderer = new THREE.WebGLRenderer({ alpha: true });
-      webgl.renderer.setSize(webgl.container.clientWidth, webgl.container.clientHeight);
-      webgl.renderer.setPixelRatio(window.devicePixelRatio);
+      webgl.renderer.setSize(window.innerWidth, window.innerHeight);
       webgl.container.appendChild(webgl.renderer.domElement);
 
-      webgl.loader = new THREE.TextureLoader();
-      webgl.clock = new THREE.Clock(true);
-      webgl.loader.crossOrigin = '';
+      // Geometry and particles
+      initParticles();
+    }
 
-      webgl.texture = webgl.loader.load(document.getElementById("first").src, setup);
+    function initParticles() {
+      const particleCount = 2000;
+      const geometry = new THREE.BufferGeometry();
+      const positions = new Float32Array(particleCount * 3);
+      const velocities = new Float32Array(particleCount * 3);
 
-      window.addEventListener("resize", () => {
-        clearTimeout(webgl.timeout_Debounce);
-        webgl.timeout_Debounce = setTimeout(resize, 50);
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 1000;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
+
+        velocities[i * 3] = (Math.random() - 0.5) * 0.01;
+        velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.01;
+        velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.01;
+      }
+
+      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
+
+      const material = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 2
       });
 
-      resize();
-    })();
+      webgl.particles = new THREE.Points(geometry, material);
+      webgl.scene.add(webgl.particles);
+    }
 
-    function setup() {
-      // Setup and animate logic
-      animate();
+    function animateParticles() {
+      const positions = webgl.particles.geometry.attributes.position.array;
+      const velocities = webgl.particles.geometry.attributes.velocity.array;
+
+      for (let i = 0; i < positions.length; i += 3) {
+        positions[i] += velocities[i] * 100;
+        positions[i + 1] += velocities[i + 1] * 100;
+        positions[i + 2] += velocities[i + 2] * 100;
+
+        if (positions[i] > 500 || positions[i] < -500) velocities[i] = -velocities[i];
+        if (positions[i + 1] > 500 || positions[i + 1] < -500) velocities[i + 1] = -velocities[i + 1];
+        if (positions[i + 2] > 500 || positions[i + 2] < -500) velocities[i + 2] = -velocities[i + 2];
+      }
+
+      webgl.particles.geometry.attributes.position.needsUpdate = true;
     }
 
     function animate() {
       webgl.renderer.render(webgl.scene, webgl.camera);
+      animateParticles();
       requestAnimationFrame(animate);
     }
 
-    function resize() {
-      webgl.camera.aspect = webgl.container.clientWidth / webgl.container.clientHeight;
-      webgl.camera.updateProjectionMatrix();
-      webgl.renderer.setSize(webgl.container.clientWidth, webgl.container.clientHeight);
-    }
-
+    // Fullscreen functionality
     let fsEnter = document.getElementById('fullscr');
-    fsEnter.addEventListener('click', function (e) {
+    fsEnter.addEventListener('click', function(e) {
       e.preventDefault();
-      if (!webgl.fullscreen) {
-        webgl.fullscreen = true;
+      if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
         fsEnter.innerHTML = "Exit Fullscreen";
       } else {
-        webgl.fullscreen = false;
         document.exitFullscreen();
         fsEnter.innerHTML = "Go Fullscreen";
       }
     });
-  </script>
 
+    document.getElementById("wrapper").addEventListener("click", updateQuote);
+
+    window.addEventListener('resize', () => {
+      webgl.camera.aspect = window.innerWidth / window.innerHeight;
+      webgl.camera.updateProjectionMatrix();
+      webgl.renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Initialize and start animation loop
+    initThree();
+    animate();
+
+  </script>
 </body>
 </html>
