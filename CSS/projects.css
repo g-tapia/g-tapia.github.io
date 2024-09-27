@@ -237,3 +237,209 @@ h1 + p, p + p {
 .twitter-btn:hover {
   background-color: #fffefe;
 }
+
+
+
+
+
+/* css for page transition */
+:root {
+  --unit: 20vw;
+  --total: calc(var(--unit) * 5);
+}
+
+@keyframes shadowFade {
+  25% {
+    box-shadow: 0 0 0 100vw transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 100vw white;
+  }
+  55% {
+    box-shadow: 0 0 0 100vw white;
+  }
+  100% {
+    box-shadow: 0 0 0 100vw transparent;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    transform: scale(0);
+  }
+  45% {
+    transform: scale(1);
+  }
+  55% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+/* 
+.overlay {
+  position: fixed;
+  inset: 0;
+} */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* Ensure it's behind other elements */
+  opacity: 0;
+  pointer-events: auto; /* Disable interaction when not active */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.overlay.active {
+  z-index: 9999; /* Bring it to the front when active */
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction when active */
+}
+
+.overlay__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--total);
+  box-shadow: 0 0 0 100vw transparent;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation: shadowFade 2s 400ms ease-in-out;
+  pointer-events: auto;
+}
+
+.overlay__item {
+  position: absolute;
+  width: var(--unit);
+  aspect-ratio: 1;
+
+}
+
+.overlay__item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0, 0, 0);
+  box-shadow: 0 0 0 2px #f403dc;
+  transform: scale(0);
+  animation: fadeInOut 2s 400ms ease-in-out;
+
+}
+
+.overlay__item:nth-child(13)::after {
+  animation-delay: 0ms;
+}
+
+.overlay__item:nth-child(7)::after,
+.overlay__item:nth-child(8)::after,
+.overlay__item:nth-child(9)::after,
+.overlay__item:nth-child(12)::after,
+.overlay__item:nth-child(14)::after,
+.overlay__item:nth-child(17)::after,
+.overlay__item:nth-child(18)::after,
+.overlay__item:nth-child(19)::after {
+  animation-delay: 200ms;
+}
+
+/* Replaced the SCSS @for loop with explicit nth-child CSS rules */
+.overlay__item:nth-child(1) {
+  transform: translate(calc((1 - 1) * var(--unit)), 0);
+}
+
+.overlay__item:nth-child(2) {
+  transform: translate(calc((2 - 1) * var(--unit)), 0);
+}
+
+.overlay__item:nth-child(3) {
+  transform: translate(calc((3 - 1) * var(--unit)), 0);
+}
+
+.overlay__item:nth-child(4) {
+  transform: translate(calc((4 - 1) * var(--unit)), 0);
+}
+
+.overlay__item:nth-child(5) {
+  transform: translate(calc((5 - 1) * var(--unit)), 0);
+}
+
+.overlay__item:nth-child(6) {
+  transform: translate(calc((6 - 6) * var(--unit)), var(--unit));
+}
+
+.overlay__item:nth-child(7) {
+  transform: translate(calc((7 - 6) * var(--unit)), var(--unit));
+}
+
+.overlay__item:nth-child(8) {
+  transform: translate(calc((8 - 6) * var(--unit)), var(--unit));
+}
+
+.overlay__item:nth-child(9) {
+  transform: translate(calc((9 - 6) * var(--unit)), var(--unit));
+}
+
+.overlay__item:nth-child(10) {
+  transform: translate(calc((10 - 6) * var(--unit)), var(--unit));
+}
+
+.overlay__item:nth-child(11) {
+  transform: translate(calc((11 - 11) * var(--unit)), calc(var(--unit) * 2));
+}
+
+.overlay__item:nth-child(12) {
+  transform: translate(calc((12 - 11) * var(--unit)), calc(var(--unit) * 2));
+}
+
+.overlay__item:nth-child(13) {
+  transform: translate(calc((13 - 11) * var(--unit)), calc(var(--unit) * 2));
+}
+
+.overlay__item:nth-child(14) {
+  transform: translate(calc((14 - 11) * var(--unit)), calc(var(--unit) * 2));
+}
+
+.overlay__item:nth-child(15) {
+  transform: translate(calc((15 - 11) * var(--unit)), calc(var(--unit) * 2));
+}
+
+.overlay__item:nth-child(16) {
+  transform: translate(calc((16 - 16) * var(--unit)), calc(var(--unit) * 3));
+}
+
+.overlay__item:nth-child(17) {
+  transform: translate(calc((17 - 16) * var(--unit)), calc(var(--unit) * 3));
+}
+
+.overlay__item:nth-child(18) {
+  transform: translate(calc((18 - 16) * var(--unit)), calc(var(--unit) * 3));
+}
+
+.overlay__item:nth-child(19) {
+  transform: translate(calc((19 - 16) * var(--unit)), calc(var(--unit) * 3));
+}
+
+.overlay__item:nth-child(20) {
+  transform: translate(calc((20 - 16) * var(--unit)), calc(var(--unit) * 3));
+}
+
+.overlay__item:nth-child(21) {
+  transform: translate(calc((21 - 21) * var(--unit)), calc(var(--unit) * 4));
+}
+
+.overlay__item:nth-child(22) {
+  transform: translate(calc((22 - 21) * var(--unit)), calc(var(--unit) * 4));
+}
+
+.overlay__item:nth-child(23) {
+  transform: translate(calc((23 - 21) * var(--unit)), calc(var(--unit) * 4));
+}
+
+.overlay__item:nth-child(24) {
+  transform: translate(calc((24 - 21) * var(--unit)), calc(var(--unit) * 4));
+}
+
+.overlay__item:nth-child(25) {
+  transform: translate(calc((25 - 21) * var(--unit)), calc(var(--unit) * 4));
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Particle Effect</title>
+  <title>Image to Particle Effect</title>
   <style>
     * {
       margin: 0;
@@ -107,6 +107,7 @@
 
   <script>
     let webgl = {};
+    let imagesLoaded = false;
 
     // Quotes
     const quotes = [
@@ -145,32 +146,75 @@
       webgl.renderer.setSize(window.innerWidth, window.innerHeight);
       webgl.container.appendChild(webgl.renderer.domElement);
 
-      // Geometry and particles
-      initParticles();
+      // Load images as textures
+      webgl.textureLoader = new THREE.TextureLoader();
+      webgl.images = [
+        "https://media.gettyimages.com/id/86146687/photo/los-angeles-ca-kobe-bryant-of-the-los-angeles-lakers-reacts-in-the-second-quarter-against-the.jpg?s=612x612&w=gi&k=20&c=7YPCXVIXIqO9ryF9DTJLo7JN6ecIccPudVeRW2Sau9s=",
+        "https://i.ibb.co/WnbfKGk/2.jpg",
+        "https://i.ibb.co/4RWFQtT/3.jpg"
+      ];
+
+      webgl.textures = [];
+      loadImages();
     }
 
-    function initParticles() {
-      const particleCount = 2000;
-      const geometry = new THREE.BufferGeometry();
+    function loadImages() {
+      let loadCount = 0;
+
+      webgl.images.forEach((url, index) => {
+        webgl.textureLoader.load(url, (texture) => {
+          webgl.textures[index] = texture;
+          loadCount++;
+
+          if (loadCount === webgl.images.length) {
+            imagesLoaded = true;
+            createParticles(webgl.textures[0]);
+          }
+        });
+      });
+    }
+
+    function createParticles(texture) {
+      const width = texture.image.width;
+      const height = texture.image.height;
+      const particleCount = width * height;
       const positions = new Float32Array(particleCount * 3);
-      const velocities = new Float32Array(particleCount * 3);
+      const colors = new Float32Array(particleCount * 3);
 
-      for (let i = 0; i < particleCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 1000;
-        positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;
-        positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(texture.image, 0, 0);
 
-        velocities[i * 3] = (Math.random() - 0.5) * 0.01;
-        velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.01;
-        velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.01;
+      const imageData = ctx.getImageData(0, 0, width, height).data;
+
+      let index = 0;
+      for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+          const r = imageData[(x + y * width) * 4] / 255;
+          const g = imageData[(x + y * width) * 4 + 1] / 255;
+          const b = imageData[(x + y * width) * 4 + 2] / 255;
+
+          positions[index * 3] = x - width / 2;
+          positions[index * 3 + 1] = y - height / 2;
+          positions[index * 3 + 2] = 0;
+
+          colors[index * 3] = r;
+          colors[index * 3 + 1] = g;
+          colors[index * 3 + 2] = b;
+
+          index++;
+        }
       }
 
+      const geometry = new THREE.BufferGeometry();
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-      geometry.setAttribute('velocity', new THREE.BufferAttribute(velocities, 3));
+      geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const material = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 2
+        size: 1,
+        vertexColors: true
       });
 
       webgl.particles = new THREE.Points(geometry, material);
@@ -178,20 +222,9 @@
     }
 
     function animateParticles() {
-      const positions = webgl.particles.geometry.attributes.position.array;
-      const velocities = webgl.particles.geometry.attributes.velocity.array;
-
-      for (let i = 0; i < positions.length; i += 3) {
-        positions[i] += velocities[i] * 100;
-        positions[i + 1] += velocities[i + 1] * 100;
-        positions[i + 2] += velocities[i + 2] * 100;
-
-        if (positions[i] > 500 || positions[i] < -500) velocities[i] = -velocities[i];
-        if (positions[i + 1] > 500 || positions[i + 1] < -500) velocities[i + 1] = -velocities[i + 1];
-        if (positions[i + 2] > 500 || positions[i + 2] < -500) velocities[i + 2] = -velocities[i + 2];
+      if (webgl.particles) {
+        webgl.particles.rotation.y += 0.001;
       }
-
-      webgl.particles.geometry.attributes.position.needsUpdate = true;
     }
 
     function animate() {
@@ -213,7 +246,14 @@
       }
     });
 
-    document.getElementById("wrapper").addEventListener("click", updateQuote);
+    document.getElementById("wrapper").addEventListener("click", () => {
+      if (imagesLoaded) {
+        // Cycle through images and recreate particles
+        let nextImageIndex = (currentQuoteIndex + 1) % webgl.textures.length;
+        createParticles(webgl.textures[nextImageIndex]);
+        updateQuote();
+      }
+    });
 
     window.addEventListener('resize', () => {
       webgl.camera.aspect = window.innerWidth / window.innerHeight;
