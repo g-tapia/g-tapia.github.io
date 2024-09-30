@@ -3086,8 +3086,8 @@ border-radius: 0px;
           <li><a href="/portfolio/projects.html">Return to projects</a></li>
           <span class="options__division">Sections</span>
           <li><a href="#data-cleaning-overview">Data Cleaning & Preparation</a></li>
-          <li><a href="#decision-tree">Decision Tree Visualization</a></li>
-          <li><a href="#model-performance">Model Performance & Metrics</a></li>
+          <li><a href="#decision-tree">Model 1 Analysis and Development</a></li>
+          <li><a href="#model-performance">Model 2 Analysis and Development</a></li>
           <li><a href="#findings">Key Findings & Conclusion</a></li>
         </ul>
       </div>
@@ -3117,13 +3117,17 @@ border-radius: 0px;
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-text-begin -->
-<div id="part-2.1a" class="section level3">
+<div id="data-cleaning-overview" class="section level3">
 
+  <h3>Data Cleaning and Preparation</h3>
+<p>
+I started by loading and cleaning the 'adult-test.csv' and 'adult-train.csv' datasets. This involved removing rows with missing values across various attributes such as age, education, and income. Ensuring the data is clean is a crucial step in building reliable models, as it helps prevent issues that could arise from incomplete data. After cleaning, I verified the dimensions of both datasets to confirm the number of observations and features.
+</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zZXR3ZChcIkM6L1VzZXJzL2d0YXBpL09uZURyaXZlL0RvY3VtZW50cy9SX0ZpbGVzXCIpXG5cbndvcmtpbmdfZGlyZWN0b3J5IDwtIGdldHdkKClcbnNldHdkKHdvcmtpbmdfZGlyZWN0b3J5KVxuXG50ZXN0IDwtIHJlYWQuY3N2KCdhZHVsdC10ZXN0LmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9IFwiLFwiKVxudHJhaW4gPC0gcmVhZC5jc3YoJ2FkdWx0LXRyYWluLmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9IFwiLFwiKVxuXG5cbnRlc3QgPC0gdGVzdFt0ZXN0JGFnZSAhPSAnPycgJiBcbiAgICAgICAgICAgICB0ZXN0JHdvcmtjbGFzcyAhPSAnPycgJlxuICAgICAgICAgICAgIHRlc3QkZm5sd2d0ICE9ICc/JyAmXG4gICAgICAgICAgICAgdGVzdCRlZHVjYXRpb24gIT0gJz8nICZcbiAgICAgICAgICAgICB0ZXN0JGVkdWNhdGlvbl9udW0gIT0gJz8nICZcbiAgICAgICAgICAgICB0ZXN0JG1hcml0YWxfc3RhdHVzICE9ICc/JyAmXG4gICAgICAgICAgICAgdGVzdCRvY2N1cGF0aW9uICE9ICc/JyAmXG4gICAgICAgICAgICAgdGVzdCRyZWxhdGlvbnNoaXAgIT0gJz8nICZcbiAgICAgICAgICAgICB0ZXN0JHJhY2UgIT0gJz8nICZcbiAgICAgICAgICAgICB0ZXN0JHNleCAhPSAnPycgJlxuICAgICAgICAgICAgIHRlc3QkY2FwaXRhbF9nYWluICE9ICc/JyAmXG4gICAgICAgICAgICAgdGVzdCRjYXBpdGFsX2xvc3MgIT0gJz8nICZcbiAgICAgICAgICAgICB0ZXN0JGhvdXJzX3Blcl93ZWVrICE9ICc/JyAmXG4gICAgICAgICAgICAgdGVzdCRuYXRpdmVfY291bnRyeSAhPSAnPycgJlxuICAgICAgICAgICAgIHRlc3QkaW5jb21lICE9ICc/JywgXVxuXG50cmFpbiA8LSB0cmFpblt0cmFpbiRhZ2UgIT0gJz8nICYgXG4gICAgICAgICAgICAgdHJhaW4kd29ya2NsYXNzICE9ICc/JyAmXG4gICAgICAgICAgICAgdHJhaW4kZm5sd2d0ICE9ICc/JyAmXG4gICAgICAgICAgICAgdHJhaW4kZWR1Y2F0aW9uICE9ICc/JyAmXG4gICAgICAgICAgICAgdHJhaW4kZWR1Y2F0aW9uX251bSAhPSAnPycgJlxuICAgICAgICAgICAgIHRyYWluJG1hcml0YWxfc3RhdHVzICE9ICc/JyAmXG4gICAgICAgICAgICAgdHJhaW4kb2NjdXBhdGlvbiAhPSAnPycgJlxuICAgICAgICAgICAgIHRyYWluJHJlbGF0aW9uc2hpcCAhPSAnPycgJlxuICAgICAgICAgICAgIHRyYWluJHJhY2UgIT0gJz8nICZcbiAgICAgICAgICAgICB0cmFpbiRzZXggIT0gJz8nICZcbiAgICAgICAgICAgICB0cmFpbiRjYXBpdGFsX2dhaW4gIT0gJz8nICZcbiAgICAgICAgICAgICB0cmFpbiRjYXBpdGFsX2xvc3MgIT0gJz8nICZcbiAgICAgICAgICAgICB0cmFpbiRob3Vyc19wZXJfd2VlayAhPSAnPycgJlxuICAgICAgICAgICAgIHRyYWluJG5hdGl2ZV9jb3VudHJ5ICE9ICc/JyAmXG4gICAgICAgICAgICAgdHJhaW4kaW5jb21lICE9ICc/JywgXVxuXG5cbnByaW50KGRpbSh0ZXN0KSlcbmBgYCJ9 -->
 <pre class="r"><code>
-setwd(&quot;C:/Users/gtapi/OneDrive/Documents/R_Files&quot;)
+setwd(&quot;C:/Users/directory-removed&quot;)
 
 working_directory &lt;- getwd()
 setwd(working_directory)
@@ -3179,8 +3183,12 @@ print(dim(test))</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="part-2.1b" class="section level3">
-<h3>Part 2.1(b)</h3>
+  <br><br><br>
+  <div id="decision-tree" class="section level3">
+    <h3>Model 1 Analysis and Development</h3>
+<p>
+Next, I built a decision tree classifier using the 'rpart' library in R. The model was trained on the cleaned training dataset, with income as the target variable. 
+</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTEyMilcbm1vZGVsIDwtIHJwYXJ0KGluY29tZSB+IC4gLCBkYXRhID0gdHJhaW4sIG1ldGhvZCA9IFwiY2xhc3NcIilcblxucnBhcnQucGxvdChtb2RlbCwgZXh0cmE9MTA0LCBmYWxsZW4ubGVhdmVzPVQsIHR5cGU9NCwgbWFpbj1cIjE5OTQgVVMgQ2Vuc3VzIERhdGFiYXNlIERlY2lzaW9uIFRyZWVcIilcbmBgYCJ9 -->
@@ -3195,18 +3203,38 @@ rpart.plot(model, extra=104, fallen.leaves=T, type=4, main=&quot;1994 US Census 
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="i-the-top-three-predictors-are-education-relationship-and-capital-gain." class="section level4">
-<h4>(i) The top three predictors are education, relationship, and
-capital gain.</h4>
-</div>
-<div id="ii-given-the-tree-the-first-split-is-done-on-the-relationship-attribute.-the-predicted-class-of-the-first-node-is-50k.-the-distribution-of-observations-is-0.75-and-0.25-between-the-classes-at-first-node." class="section level4">
-<h4>(ii) Given the tree, the first split is done on the relationship
-attribute. The predicted class of the first node is (&lt;=50k). The
-distribution of observations is 0.75 and 0.25 between the classes at
-first node.</h4>
+  <br><br>
+  <h4>Key Predictors and Initial Split</h4>
+
+<p>
+  <strong>Q:</strong> What are the top three predictors in your decision tree model for income classification?<br>
+  <strong>A:</strong> The top three predictors identified by the decision tree model are education, relationship status, and capital gain.
+</p>
+
+<p>
+  <strong>Q:</strong> What was the first attribute split in the decision tree, and what was the predicted class?<br>
+  <strong>A:</strong> The first split in the decision tree was made based on the relationship attribute. The predicted class for the first node was individuals earning <=50K.
+</p>
+
+<p>
+  <strong>Q:</strong> What was the distribution of observations in the first node after the initial split?<br>
+  <strong>A:</strong> The distribution of observations at the first node was 75% for individuals earning <=50K and 25% for individuals earning >50K.
+</p>
+<br><br><br>
+<h4>Summary</h4>
+
+<p>
+  In my decision tree model, the top three predictors influencing income classification were education, relationship status, and capital gain. The first split in the decision tree occurred on the relationship attribute, with the predicted class for the first node being individuals earning <=50K. At this point, the distribution of observations was 75% for the <=50K class and 25% for the >50K class, showing that relationship status plays a significant role in the model’s initial prediction.
+</p>
+
+<br><br><br> <br><br><br>
 </div>
 </div>
 <div id="part-2.1c" class="section level3">
-<h3>Part 2.1(c)</h3>
+  <h4>Model Evaluation: Confusion Matrix and Metrics</h4>
+<p>
+To evaluate the model, I used a confusion matrix to calculate important performance metrics, including accuracy, sensitivity, and specificity. The accuracy of the model was 83.9%, with a high sensitivity of 94.82% and a specificity of 50.35%. These metrics give insight into how well the model can correctly classify individuals who earn less than $50K (high sensitivity) but show the challenge of correctly identifying individuals earning more than $50K (lower specificity).
+</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZCA8LSBwcmVkaWN0KG1vZGVsLCB0ZXN0LCB0eXBlPVwiY2xhc3NcIilcbnByaW50KGNvbmZ1c2lvbk1hdHJpeChhcy5mYWN0b3IocHJlZCksIGFzLmZhY3Rvcih0ZXN0WywgMTVdKSkpXG5gYGAifQ== -->
@@ -3267,23 +3295,37 @@ cat(paste(&quot; Sensitivity:&quot;, round(sensitivity, 2), &quot;\n&quot;),
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="following-are-rounded-to-two-decimal-places" class="section level4">
-<h4>Following are rounded to two decimal places:</h4>
-</div>
-<div id="sensitivity-0.85" class="section level4">
-<h4>Sensitivity: 0.85</h4>
-</div>
-<div id="specificity-0.76" class="section level4">
-<h4>Specificity: 0.76</h4>
-</div>
-<div id="balanced-accuracy-0.81" class="section level4">
-<h4>Balanced Accuracy: 0.81</h4>
-</div>
-<div id="balanced-error-rate-0.19" class="section level4">
-<h4>Balanced Error Rate: 0.19</h4>
+  <h4>Model Performance Metrics</h4>
+
+<p>
+  <strong>Sensitivity:</strong> 85%<br>
+  This means that the model correctly identifies 85% of individuals who earn <=$50K. In other words, it is very effective at detecting people in this income group.
+</p>
+
+<p>
+  <strong>Specificity:</strong> 76%<br>
+  The model correctly identifies 76% of individuals who earn more than $50K. While not as high as sensitivity, it still performs well at recognizing individuals in the higher income bracket.
+</p>
+
+<p>
+  <strong>Balanced Accuracy:</strong> 81%<br>
+  Balanced accuracy combines sensitivity and specificity to give an overall measure of how well the model performs across both income groups. At 81%, the model shows strong, well-rounded performance.
+</p>
+
+<p>
+  <strong>Balanced Error Rate:</strong> 19%<br>
+  This indicates that the model makes errors in about 19% of cases across both income groups. A lower error rate demonstrates better reliability.
+</p>
+
+
+<br><br><br> <br><br><br>
 </div>
 </div>
 <div id="part-2.1c---iv" class="section level3">
-<h3>Part 2.1(c - iv)</h3>
+  <h4>ROC Curve and Area Under the Curve (AUC)</h4>
+<p>
+I further evaluated the model by plotting the ROC curve and calculating the area under the curve (AUC), which came out to 0.84. The AUC is a valuable metric because it measures the ability of the classifier to distinguish between classes. A higher AUC indicates a better-performing model, with 0.84 representing a strong classifier for this dataset.
+</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShST0NSKVxucHJlZGljdGVkX1JPQyA8LSBwcmVkaWN0aW9uKHByZWRpY3QobW9kZWwsIHR5cGUgPSBcInByb2JcIilbLCAyXSwgdHJhaW4kaW5jb21lKVxuXG4jIHBsb3QgUk9DIGN1cnZlXG5yb2NfY3VydmUgPC0gcGVyZm9ybWFuY2UocHJlZGljdGVkX1JPQywgXCJ0cHJcIiwgXCJmcHJcIilcbnBsb3Qocm9jX2N1cnZlLCBjb2w9XCJibHVlXCIsIG1haW49XCJST0MgQ3VydmVcIiwgbHdkID0gMilcblxuIyBkaWFnb25hbCBsaW5lXG5hYmxpbmUoYSA9IDAsIGIgPSAxLCBsd2QgPSAyLCBjb2wgPSBcInJlZFwiLCBsdHkgPSAyKVxuYGBgIn0= -->
@@ -3325,11 +3367,16 @@ cat(&quot;Area Under the Curve: &quot;, area_under_the_curve, &quot;\n&quot;)</c
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="iv-the-area-under-the-curve-is-0.84" class="section level4">
-<h4>(iv) the area under the curve is 0.84</h4>
+
 </div>
 </div>
+<br><br><br>
 <div id="part-2.1d" class="section level3">
-<h3>Part 2.1(d)</h3>
+  <h4>Cross-Validation and Tree Pruning</h4>
+<p>
+I used cross-validation to determine the optimal size of the decision tree. The complexity parameter (CP) table showed that the tree at size 4 had the lowest cross-validation error, indicating that pruning the tree beyond this point would not improve performance. By stopping at the optimal size, I ensured that the model avoided overfitting, while still maintaining good accuracy.
+</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnRjcChtb2RlbClcbmBgYCJ9 -->
@@ -3356,15 +3403,18 @@ n= 30161
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="the-cross-validation-error-xerror-is-used-to-select-the-most-optimal-tree-size.-in-this-case-the-tree-at-size-4-is-most-optimal.-since-the-last-row-has-the-smallest-cross-validation-error-this-tree-will-not-benefit-from-pruning.-if-we-pruned-the-tree-beforehand-the-performance-will-be-less-efficient." class="section level4">
-<h4>The cross validation error (xerror) is used to select the most
-optimal tree size. In this case, the tree at size 4 is most optimal.
-Since the last row has the smallest cross validation error, this tree
-will not benefit from pruning. If we pruned the tree beforehand, the
-performance will be less efficient.</h4>
+
 </div>
 </div>
 <div id="part-2.1ei-ii" class="section level3">
-<h3>Part 2.1(e)(I-II)</h3>
+
+  <br><br><br>
+
+  <h4>Class Imbalance and Balancing the Dataset</h4>
+<p>
+To address the imbalance between classes in the dataset (with significantly more people earning <=$50K than >$50K), I under-sampled the majority class. After balancing the dataset, I retrained the decision tree classifier. The new balanced model helped mitigate the class imbalance, but it also resulted in different performance metrics. Specifically, the sensitivity increased to 94%, but the specificity decreased to 52%. This trade-off reflects the challenge of improving performance across both classes.
+</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTEyMilcblxubGVzc19vcl9lcXVhbF90b181MCA8LSBucm93KHRyYWluW3RyYWluJGluY29tZSA9PSAnPD01MEsnLCBdKVxuZ3JlYXRlcl90aGFuXzUwIDwtIG5yb3codHJhaW5bdHJhaW4kaW5jb21lID09ICc+NTBLJywgXSlcbmNhdChcIiBMZXNzIG9yIGVxdWFsIHRvIDUwSzogXCIsIGxlc3Nfb3JfZXF1YWxfdG9fNTAsXCJcXG5cIixcbiAgICBcIkdyZWF0ZXIgdGhhbiA1MEs6IFwiLCBncmVhdGVyX3RoYW5fNTAsIFwiXFxuXCIpXG5gYGAifQ== -->
@@ -3383,7 +3433,8 @@ cat(&quot; Less or equal to 50K: &quot;, less_or_equal_to_50,&quot;\n&quot;,
 <!-- rnb-text-begin -->
 </div>
 <div id="part-2.1eii" class="section level3">
-<h3>Part 2.1(e)(II)</h3>
+  <br><br><br>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJhaW5fbGVzc19vcl9lcXVhbF90b181MCA8LSB0cmFpblt0cmFpbiRpbmNvbWUgPT0gJzw9NTBLJywgXVxudW5kZXJfc2FtcGxlX3RyYWluX2xlc3Nfb3JfZXF1YWxfdG9fNTAgPC0gdHJhaW5fbGVzc19vcl9lcXVhbF90b181MFtzYW1wbGUobnJvdyh0cmFpbl9sZXNzX29yX2VxdWFsX3RvXzUwKSwgZ3JlYXRlcl90aGFuXzUwLCByZXBsYWNlID0gRkFMU0UsIHByb2IgPSBOVUxMKSwgXVxuXG50cmFpbl9ncmVhdGVyX3RoYW5fNTAgPC0gdHJhaW5bdHJhaW4kaW5jb21lID09ICc+NTBLJywgXVxuY2F0KFwiIExlc3Mgb3IgZXF1YWwgdG8gNTBLOiBcIixucm93KHVuZGVyX3NhbXBsZV90cmFpbl9sZXNzX29yX2VxdWFsX3RvXzUwKSxcIlxcblwiLFxuICAgIFwiR3JlYXRlciB0aGFuIDUwSzogXCIsIG5yb3codHJhaW5fZ3JlYXRlcl90aGFuXzUwKSwgXCJcXG5cIilcbmBgYCJ9 -->
@@ -3404,8 +3455,10 @@ cat(&quot; Less or equal to 50K: &quot;,nrow(under_sample_train_less_or_equal_to
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
-<div id="part-2.1eiii" class="section level3">
-<h3>Part 2.1(e)(III)</h3>
+
+  <br><br><br>
+  <div id="model-performance" class="section level3">
+    <h3>Model 2 Analysis and Development</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB0cmFpbmluZyB0aGUgbmV3IE1vZGVsXG5tb2RlbF8yIDwtIHJwYXJ0KGluY29tZSB+IC4gLCBkYXRhID0gYmFsYW5jZWRfdHJhaW4sIG1ldGhvZCA9IFwiY2xhc3NcIilcbnJwYXJ0LnBsb3QobW9kZWxfMiwgZXh0cmE9MTA0LCBmYWxsZW4ubGVhdmVzPVQsIHR5cGU9NCwgbWFpbj1cIjE5OTQgVVMgQ2Vuc3VzIERhdGFiYXNlIEJhbGFuY2VkIERlY2lzaW9uIFRyZWVcIilcbmBgYCJ9 -->
@@ -3420,7 +3473,7 @@ rpart.plot(model_2, extra=104, fallen.leaves=T, type=4, main=&quot;1994 US Censu
 <!-- rnb-text-begin -->
 </div>
 <div id="part-2.1eiii---i-iii" class="section level3">
-<h3>Part 2.1(e)(III - (I-III))</h3>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZCA8LSBwcmVkaWN0KG1vZGVsXzIsIHRlc3QsIHR5cGU9XCJjbGFzc1wiKVxucHJpbnQoY29uZnVzaW9uTWF0cml4KGFzLmZhY3RvcihwcmVkKSwgYXMuZmFjdG9yKHRlc3RbLCAxNV0pKSlcbmBgYCJ9 -->
@@ -3480,21 +3533,44 @@ cat(paste(&quot; Sensitivity:&quot;, round(sensitivity, 2), &quot;\n&quot;),
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<h4>Model 2 Key Performance Metrics</h4>
+
+<p>
+  <strong>Sensitivity:</strong> 94%<br>
+  The model correctly identified 94% of individuals earning <=$50K, demonstrating high effectiveness in detecting this income group.
+</p>
+
+<p>
+  <strong>Specificity:</strong> 52%<br>
+  The model correctly identified 52% of individuals earning >$50K, indicating a challenge in accurately classifying the higher income group.
+</p>
+
+<p>
+  <strong>Balanced Accuracy:</strong> 73%<br>
+  This metric provides a combined measure of the model's performance across both income groups, showing moderate overall effectiveness.
+</p>
+
+<p>
+  <strong>Balanced Error Rate:</strong> 27%<br>
+  The model made errors in 27% of cases, reflecting areas for potential improvement in classification.
+</p>
+
 <div id="sensitivity-0.94" class="section level4">
-<h4>Sensitivity: 0.94</h4>
+
 </div>
 <div id="specificity-0.52" class="section level4">
-<h4>Specificity: 0.52</h4>
+
 </div>
 <div id="balanced-accuracy-0.73" class="section level4">
-<h4>Balanced Accuracy: 0.73</h4>
+
 </div>
 <div id="balanced-error-rate-0.27" class="section level4">
-<h4>Balanced Error Rate: 0.27</h4>
+
 </div>
 </div>
+<br><br><br>
 <div id="part-2.1eiii---iv" class="section level3">
-<h3>Part 2.1(e)(III - (IV))</h3>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdGVkX1JPQyA8LSBwcmVkaWN0aW9uKHByZWRpY3QobW9kZWxfMiwgdHlwZSA9IFwicHJvYlwiKVssIDJdLCBiYWxhbmNlZF90cmFpbiRpbmNvbWUpXG5cbnJvY19jdXJ2ZSA8LSBwZXJmb3JtYW5jZShwcmVkaWN0ZWRfUk9DLCBcInRwclwiLCBcImZwclwiKVxucGxvdChyb2NfY3VydmUsIGNvbD1cImJsdWVcIiwgbWFpbj1cIlJPQyBDdXJ2ZVwiLCBsd2QgPSAyKVxuYWJsaW5lKGEgPSAwLCBiID0gMSwgbHdkID0gMiwgY29sID0gXCJyZWRcIiwgbHR5ID0gMilcbmBgYCJ9 -->
@@ -3528,47 +3604,19 @@ cat(&quot;Area Under the Curve: &quot;, area_under_the_curve, &quot;\n&quot;)</c
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<div id="part-2.1f" class="section level4">
-<h4>Part 2.1(f)</h4>
-</div>
-<div id="first-model" class="section level4">
-<h4>First Model:</h4>
-</div>
-<div id="sensitivity-0.85-1" class="section level4">
-<h4>Sensitivity: 0.85</h4>
-</div>
-<div id="specificity-0.76-1" class="section level4">
-<h4>Specificity: 0.76</h4>
-</div>
-<div id="balanced-accuracy-0.81-1" class="section level4">
-<h4>Balanced Accuracy: 0.81</h4>
-</div>
-<div id="balanced-error-rate-0.19-1" class="section level4">
-<h4>Balanced Error Rate: 0.19</h4>
-</div>
-<div id="second-model" class="section level4">
-<h4>Second Model:</h4>
-</div>
-<div id="sensitivity-0.94-1" class="section level4">
-<h4>Sensitivity: 0.94</h4>
-</div>
-<div id="specificity-0.52-1" class="section level4">
-<h4>Specificity: 0.52</h4>
-</div>
-<div id="balanced-accuracy-0.73-1" class="section level4">
-<h4>Balanced Accuracy: 0.73</h4>
-</div>
-<div id="balanced-error-rate-0.27-1" class="section level4">
-<h4>Balanced Error Rate: 0.27</h4>
-</div>
-<div id="the-first-model-has-a-higher-balanced-accuracy-and-specificity-but-a-lower-sensitivity-compared-to-the-second-model-while-the-auc-for-both-models-is-roughly-the-same.-it-seems-that-balancing-the-training-samples-in-the-second-model-did-not-improve-the-performance-despite-making-it-more-equivalent-in-terms-of-observations.-additionally-since-the-test-data-set-was-not-balanced-this-could-explain-why-the-balanced-accuracy-and-specificity-was-worse." class="section level4">
-<h4>The first model has a higher balanced accuracy, and specificity, but
-a lower sensitivity compared to the second model, while the AUC for both
-models is roughly the same. It seems that balancing the training samples
-in the second model did not improve the performance, despite making it
-more equivalent in terms of observations. Additionally, since the test
-data set was not balanced, this could explain why the balanced accuracy,
-and specificity was worse.</h4>
+<div id="findings" class="section level3">
+<h3>Key Findings</h3>
+
+<p>
+In comparing the two models, the first model had a sensitivity of 85%, specificity of 76%, and a balanced accuracy of 81%. The second model, which used a balanced dataset, achieved a higher sensitivity of 94%, but its specificity dropped to 52%, and the balanced accuracy was 73%. Both models had a similar Area Under the Curve (AUC).
+</p>
+
+<h3>Conclusion</h3>
+
+<p>
+While the second model improved sensitivity by balancing the dataset, it did not enhance overall performance, as evidenced by the lower specificity and balanced accuracy. The first model performed better in terms of balanced accuracy and specificity. The discrepancy in performance can be attributed to the unbalanced nature of the test dataset, which affected the second model's ability to generalize well across income groups.
+</p>
+
 <!-- rnb-text-end -->
 </div>
 </div>
