@@ -193,9 +193,9 @@ div.toc-content.col-xs-12.col-sm-8.col-md-9 {
   text-align: center;
   letter-spacing: 1.3px;
   font-weight: 700;
-  color: #fafafa;
+  color: white; /* Initial blue text color */
   background: #0ab; /* Brighter version of #099 */
-  background: linear-gradient(90deg, #0ab 0%, #0bb 100%); /* Gradient for a slight brightness */
+  background: linear-gradient(90deg, #0ab 0%, #0bb 100%); /* Gradient for slight brightness */
   border: none;
   border-radius: 300px;
   box-shadow: 12px 12px 24px rgba(10, 187, 187, 0.8); /* Brighter and more opaque shadow */
@@ -221,24 +221,37 @@ div.toc-content.col-xs-12.col-sm-8.col-md-9 {
   transition: all 0.3s ease-in-out;
 }
 
-
-.btn-custom:hover,
-.btn-custom:focus {
-  color: white;
+/* Hover state: change text color to blue when hovering */
+.btn-custom:hover {
+  color: #0098fd6e important; /* Ensure blue text color on hover */
   transform: translateY(-6px);
 }
 
-.btn-custom:hover::before,
+/* When focused (clicked) */
+.btn-custom:focus {
+  color: #ffffff !important; /* Keep the blue color when clicked */
+  transform: translateY(0); /* Reset translate effect */
+  outline: none; /* Remove focus outline */
+}
+
+/* Hover before effect */
+.btn-custom:hover::before {
+  opacity: 1;
+}
+
+/* After click and during focus */
+.btn-custom:active,
 .btn-custom:focus::before {
   opacity: 1;
 }
 
+/* Glow effect */
 .btn-custom::after {
   content: '';
   width: 50px;  /* Adjust initial glow size */
   height: 50px; /* Adjust initial glow size */
   border-radius: 100%;
-  border: 6px solid #0ab; /* Brighter color */
+  border: 6px solid rgb(255, 255, 255); /* Brighter color */
   position: absolute;
   z-index: -1;
   top: 50%;
@@ -247,12 +260,14 @@ div.toc-content.col-xs-12.col-sm-8.col-md-9 {
   animation: ring 1.5s infinite;
 }
 
+/* Remove animation on hover and focus */
 .btn-custom:hover::after,
 .btn-custom:focus::after {
   animation: none;
   display: none;
 }
 
+/* Animation keyframes */
 @keyframes ring {
   0% {
     width: 50px;   /* Adjust to match new initial ring size */
