@@ -179,6 +179,95 @@ div.toc-content.col-xs-12.col-sm-8.col-md-9 {
     span.options__division{
       color: rgb(255, 255, 255);
     }
+
+
+    .btn.btn-custom {
+  min-width: 220px; /* Button width */
+  min-height: 40px; /* Button height */
+  display: inline-flex;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #fafafa;
+  background: #0ab; /* Brighter version of #099 */
+  background: linear-gradient(90deg, #0ab 0%, #0bb 100%); /* Gradient for a slight brightness */
+  border: none;
+  border-radius: 300px;
+  box-shadow: 12px 12px 24px rgba(10, 187, 187, 0.8); /* Brighter and more opaque shadow */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+}
+
+.btn-custom::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(220px + 12px); /* Adjust to match new button width */
+  min-height: calc(40px + 12px);  /* Adjust to match new button height */
+  border: 6px solid #0ab; /* Brighter color */
+  box-shadow: 0 0 60px rgba(10, 187, 187, 0.8); /* Brighter glow */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.btn-custom:hover,
+.btn-custom:focus {
+  color: white;
+  transform: translateY(-6px);
+}
+
+.btn-custom:hover::before,
+.btn-custom:focus::before {
+  opacity: 1;
+}
+
+.btn-custom::after {
+  content: '';
+  width: 50px;  /* Adjust initial glow size */
+  height: 50px; /* Adjust initial glow size */
+  border-radius: 100%;
+  border: 6px solid #0ab; /* Brighter color */
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.btn-custom:hover::after,
+.btn-custom:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 50px;   /* Adjust to match new initial ring size */
+    height: 50px;  /* Adjust to match new initial ring size */
+    opacity: 1;
+  }
+  100% {
+    width: 300px;  /* Adjusted glow ring size */
+    height: 300px; /* Adjusted glow ring size */
+    opacity: 0;
+  }
+}
+
+
+
 </style>
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
@@ -3101,16 +3190,15 @@ border-radius: 0px;
 </div>
 
 
-
 <div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
-<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
-<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
-<li role="separator" class="divider"></li>
-<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
-</ul>
+  <button type="button" class="btn btn-custom" id="toggle-code-btn">
+    <span id="button-text">Hide All Code</span>
+  </button>
 </div>
+
+<a id="rmd-show-all-code" href="#" style="display: none;"></a>
+<a id="rmd-hide-all-code" href="#"></a>
+
 
 
 
@@ -3720,5 +3808,25 @@ $(document).ready(function ()  {
   })();
 </script>
 
+<script>
+  document.getElementById('toggle-code-btn').addEventListener('click', function() {
+    var showCode = document.getElementById('rmd-show-all-code');
+    var hideCode = document.getElementById('rmd-hide-all-code');
+    var buttonText = document.getElementById('button-text');
+    
+    // Check if the button text is "Hide All Code"
+    if (buttonText.textContent === "Hide All Code") {
+        // Simulate clicking "Hide All Code"
+        hideCode.click();
+        buttonText.textContent = "Show All Code"; // Update button text
+    } else {
+        // Simulate clicking "Show All Code"
+        showCode.click();
+        buttonText.textContent = "Hide All Code"; // Update button text
+    }
+});
+
+
+</script>
 </body>
 </html>
