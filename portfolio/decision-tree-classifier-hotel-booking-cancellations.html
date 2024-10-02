@@ -1847,8 +1847,9 @@ display: none;
         <span class="options__division">Sections</span>
         <li><a href="#data-cleaning-overview">Exploratory Data Analysis</a></li>
         <li><a href="#hotel-plots">Plots Showcasing Top 10 Countries for Resort/City Hotels</a></li>
-        <li><a href="#finding-missing-data">Data Cleaning</a></li>
-        <li><a href="#table">Percentage of Missing Values By Column</a></li>
+        <li><a href="#data-cleaning">Data Cleaning</a></li>
+        <li><a href="#model-selection">Model Selection</a></li>
+        <li><a href="#conclusions">Conclusions</a></li>
                   
       </ul>
     </div>
@@ -2303,7 +2304,7 @@ cat(&quot;The country with the most visitors is&quot;, most_visitors, &quot;\n&q
 <div id="finding-missing-data" class="section level3">
   <br></br>
   <br></br>
-  <h3>Data Cleaning</h3>
+  <h3 id="data-cleaning">Data Cleaning</h3>
 <p>In this section, I focus on identifying missing values and irrelevant features within the dataset, both of which are essential for ensuring data quality. Detecting missing values is a crucial first step in data preparation, as it allows me to decide how to handle gaps, whether through imputation, removal, or other techniques. To streamline this process, I will create a function to calculate the percentage of missing values by column and display the results in a table. This will make it easier to pinpoint which columns contain missing data, allowing for more informed decisions during the cleaning process.</p>
 
 <p>Additionally, I will address irrelevant or non-useful features in the dataset. These are variables that do not contribute meaningfully to the model’s predictive power and may introduce noise, increase computational complexity, or lead to overfitting. By identifying and removing such features, I can improve the efficiency, interpretability, and overall performance of the model, ensuring it generalizes better to new data. This will also provide me with the necessary information to determine if I need more data or features, and if some attributes need to be combined or split for better predective power.</p>
@@ -2961,9 +2962,10 @@ knitr::kable(missing_values, align = &quot;c&quot;)</code></pre>
 </tbody>
 </table>
 </div>
-<div id="splitting-the-data-into-test-and-training-sets-set.seed-was-used-in-data-cleaning-phase" class="section level3">
-<h3>Splitting the data into test and training sets (set.seed was used in
-data cleaning phase)</h3>
+
+  <h3 id="model-selection">Model Selection</h3>
+<p>For this project, I was assigned by my professor to use a decision tree model to predict hotel booking cancellations. A decision tree is a simple yet powerful machine learning model that makes predictions by splitting data into branches based on specific conditions, like a flowchart. By fine-tuning the model, I was able to improve its accuracy to 81%. In addition to the decision tree, I also experimented with a random forest model, which is an ensemble method that combines multiple decision trees to make more accurate predictions. With the random forest model, I achieved a 95% accuracy in predicting new customer cancellations. However, I ultimately removed the random forest model from my analysis, as my professor requested that I focus solely on the decision tree.</p>
+
 <pre class="r"><code># Split the data into training and test sets
 n_obs &lt;- nrow(hotel_bookings)
 train_idx &lt;- sample(n_obs, 0.9 * n_obs)
@@ -3004,10 +3006,36 @@ specificity &lt;- conf_matrix[1, 1] / sum(conf_matrix[1, ])
 cat(&quot;Specificity:&quot;, round(specificity, 4), &quot;\n&quot;)</code></pre>
 <pre><code>## Specificity: 0.993</code></pre>
 </div>
+<br></br>
+<br></br>
+
+<h3 id="conclusions">Conclusions</h3>
+<p>After building the decision tree model using features such as deposit type, previous cancellations, and arrival date, I was able to apply it to the test dataset and evaluate its performance. The model achieved an accuracy of 76.31%, meaning that it correctly predicted whether a customer would cancel their booking about 76% of the time. While this accuracy is respectable, the sensitivity and specificity of the model provide a deeper insight into its performance.</p>
+
+<p>To further evaluate the model, I used a confusion matrix, which is a useful tool for measuring classification performance. The confusion matrix compares the actual outcomes with the predicted outcomes, showing how well the model distinguishes between canceled and non-canceled bookings. In this case, the confusion matrix looked like this:</p>
+
+<pre>
+    pred
+        0    1
+   0 7412   52
+   1 2776 1699
+</pre>
+
+<p>Here’s how to interpret each observation:</p>
+<ul>
+  <li><strong>True Negatives (TN):</strong> The model correctly predicted that 7,412 bookings would not be canceled (top-left value: <code>7412</code>).</li>
+  <li><strong>False Positives (FP):</strong> The model incorrectly predicted that 52 bookings would be canceled when they were not (top-right value: <code>52</code>).</li>
+  <li><strong>False Negatives (FN):</strong> The model incorrectly predicted that 2,776 bookings would not be canceled when they were actually canceled (bottom-left value: <code>2776</code>).</li>
+  <li><strong>True Positives (TP):</strong> The model correctly predicted that 1,699 bookings would be canceled (bottom-right value: <code>1699</code>).</li>
+</ul>
+<br></br>
+<p>The accuracy of 76.31% means that the model correctly predicted both canceled and non-canceled bookings. The <strong>sensitivity</strong> (also known as the true positive rate) of 37.97% indicates how well the model identifies actual cancellations, and the <strong>specificity</strong> of 99.3% shows how well it correctly predicts bookings that are not canceled. This high specificity means the model is excellent at identifying non-cancelled bookings, but the relatively low sensitivity suggests that the model struggles more with identifying actual cancellations.</p>
+<br></br>
+<p>In summary, while the decision tree model performs well in predicting non-cancelled bookings, achieving high specificity, further fine-tuning was needed to improve its ability to detect cancellations. I experimented with various tuning techniques and even tried a random forest model, which boosted the accuracy to 95% for predicting cancellations. I focused on optimizing this model as much as possible, bringing its accuracy to 81% with the regular decision tree. Despite the lower accuracy compared to the random forest model, the decision tree provides valuable insights into booking behaviors while maintaining interpretability.</p>
 
 
-
-
+<br></br>
+<br></br>
 </div>
 
 <script>
