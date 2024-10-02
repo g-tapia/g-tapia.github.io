@@ -4,7 +4,7 @@
 
 <head>
   <style>
-    body {
+   body {
         margin: 0;
         padding-left: 29rem;
         font-family: 'Arial', sans-serif;
@@ -14,9 +14,20 @@
     }
 
     .columns-container {
-            display: flex;
-            max-width: calc(100% + 28rem);
-        }
+    display: flex;
+    justify-content: center;   /* Center the columns horizontally */
+}
+
+div.toc-content.col-xs-12.col-sm-8.col-md-9 {
+             
+  justify-content: center;       
+  margin: 0 auto;               
+  width: 100%;                 
+  text-align: left;            
+  align-items: center;  
+}
+
+
         .columns-container h4{
            color:#099;
         }
@@ -127,6 +138,8 @@
     .container-fluid.main-container {
         /* background-image: url(https://images.unsplash.com/photo-1635492491273-455af7728453?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); */
         background-color: #000000;
+        width: 100%;
+        background-size: cover;
     }
 
     .sidebar li:hover {
@@ -166,6 +179,8 @@
     span.options__division{
       color: rgb(255, 255, 255);
     }
+
+
 </style>
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
@@ -1773,7 +1788,13 @@ display: none;
 
 
 <div class="container-fluid main-container">
+  <div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
 
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 <audio id="click-sound" src="/sounds/button-pressed.wav" preload="auto"></audio>
 
 <div id="header">
@@ -1809,6 +1830,7 @@ display: none;
     <p>The project demonstrated comprehensive data cleaning, exploratory analysis, and predictive modeling skills. It highlighted the importance of data preprocessing in achieving meaningful insights and the efficacy of decision trees in classification tasks.</p>
   
   </div>
+  
   </div>
   
   <div class="sidebar">
@@ -1825,7 +1847,7 @@ display: none;
         <span class="options__division">Sections</span>
         <li><a href="#data-cleaning-overview">Exploratory Data Analysis</a></li>
         <li><a href="#hotel-plots">Plots Showcasing Top 10 Countries for Resort/City Hotels</a></li>
-        <li><a href="#finding-missing-data">Finding Missing Values in Features</a></li>
+        <li><a href="#finding-missing-data">Data Cleaning</a></li>
         <li><a href="#table">Percentage of Missing Values By Column</a></li>
                   
       </ul>
@@ -1833,7 +1855,11 @@ display: none;
     </div>
   </div>
 </div>
+
+
 <div id="section-2.1" class="section level5">
+
+
 </div>
 <div id="data-cleaning-overview" class="section level3">
   <h3>Exploratory Data Analysis: Hotel Bookings Dataset</h3>
@@ -2140,6 +2166,7 @@ cat(&quot;Number of guests who canceled reservation:&quot;, canceled_count, &quo
 <br></br>
 <br></br>
 <h4>Customer Type</h4>
+<p><strong>Most Common Customer Type:</strong> Among the various customer types, 'Transient' emerged as the most common, with 89,613 reservations. This raises the question: Why is the 'Transient' category more prevalent than others? The data suggests that factors such as flexibility in booking, shorter duration of stays, and possibly competitive pricing may contribute to the higher prevalence of transient customers. Understanding these aspects can be crucial for developing targeted marketing strategies and optimizing services to cater to this predominant customer segment.</p>
 <div id="most-reservations" class="section level3"><pre class="r"><code># returning the customer type with the most number of reservations
 customer_type_frequency &lt;- table(hotel_bookings$customer_type)
 max_index &lt;- which.max(customer_type_frequency)
@@ -2150,10 +2177,13 @@ output_string &lt;- paste(&quot;Customer type with the most reservations is&quot
                        number_of_reservations, &quot;reservations&quot;)
 print(output_string)</code></pre>
 <pre><code>## [1] &quot;Customer type with the most reservations is Transient , with 89613 reservations&quot;</code></pre>
-<p><strong>Most Common Customer Type:</strong> Among the various customer types, 'Transient' emerged as the most common, with 89,613 reservations. This raises the question: Why is the 'Transient' category more prevalent than others? The data suggests that factors such as flexibility in booking, shorter duration of stays, and possibly competitive pricing may contribute to the higher prevalence of transient customers. Understanding these aspects can be crucial for developing targeted marketing strategies and optimizing services to cater to this predominant customer segment.</p>
+
 
 </div>
 <div id="country-value-adjustments" class="section level3">
+  <br></br>
+<br></br>
+<h4>Parking Spaces</h4>
   <p><strong>Maximum Parking Space Requirements:</strong> A unique finding was that only 2 customers required the maximum number of parking spaces, which was 8. This indicates that parking space requirements are generally low among the hotel guests.</p>
 <pre class="r"><code>
 # returning both, max number of parking spaces and customers with those spaces.
@@ -2198,6 +2228,7 @@ print(matching_rows)</code></pre>
 
 </div>
 <div id="market-segment-adjustments" class="section level3">
+  <br></br>
   <p><strong>Minimum Parking Space Requirements:</strong> In stark contrast to the maximum requirements, a significant majority of 111,974 customers did not require any parking space, highlighting the minimal parking needs of most hotel guests.</p>
 
 <pre class="r"><code>
@@ -2217,6 +2248,9 @@ print(output_string)</code></pre>
 #print(matching_rows)</code></pre>
 </div>
 <div id="distribution-channel-adjustments" class="section level3">
+  <br></br>
+  <br></br>
+  <h4>Room Preferences</h4>
   <p><strong>Room Preference Fulfillment:</strong> Analysis showed that 87.51% of guests who had a room preference during reservation were assigned their preferred room during check-in. This high percentage suggests effective room allocation practices by the hotels.</p>
 
 <pre class="r"><code>
@@ -2231,6 +2265,8 @@ cat(sprintf(&quot;%.2f%% of the people who expressed a room preference during re
 
 
 <div id="hotel-plots" class="section level3">
+  <br></br>
+  <br></br>
 <h3>Plots Showcasing Top 10 Countries for Resort/City Hotels</h3>
 <p><strong>Top 10 Countries of Origin for City and Resort Hotels:</strong> The data visualizations provided insights into the top 10 countries of origin for guests at both City and Resort Hotels. For City Hotels, the highest number of guests came from a diverse range of countries, with the most visitors being from Portugal. The analysis for Resort Hotels also showed a similar trend with a variety of countries making up the top 10, emphasizing the international appeal of these hotels.</p>
 <pre class="r"><code># create separate data frames for city and resort hotels
@@ -2265,8 +2301,14 @@ cat(&quot;The country with the most visitors is&quot;, most_visitors, &quot;\n&q
 </div>
 </div>
 <div id="finding-missing-data" class="section level3">
-<h3>Finding Missing Values in Features</h3>
-<p>In this section, I am focusing on the task of identifying missing values within the dataset's features. Detecting missing values is a crucial preliminary step in data analysis and preparation. By systematically identifying where data is absent, I can make informed decisions on how to handle these gaps, whether through imputation, removal, or other data cleaning techniques. This process helps ensure the integrity and reliability of our data for subsequent analysis and modeling.</p>
+  <br></br>
+  <br></br>
+  <h3>Data Cleaning</h3>
+<p>In this section, I focus on identifying missing values and irrelevant features within the dataset, both of which are essential for ensuring data quality. Detecting missing values is a crucial first step in data preparation, as it allows me to decide how to handle gaps, whether through imputation, removal, or other techniques. To streamline this process, I will create a function to calculate the percentage of missing values by column and display the results in a table. This will make it easier to pinpoint which columns contain missing data, allowing for more informed decisions during the cleaning process.</p>
+
+<p>Additionally, I will address irrelevant or non-useful features in the dataset. These are variables that do not contribute meaningfully to the model’s predictive power and may introduce noise, increase computational complexity, or lead to overfitting. By identifying and removing such features, I can improve the efficiency, interpretability, and overall performance of the model, ensuring it generalizes better to new data. This will also provide me with the necessary information to determine if I need more data or features, and if some attributes need to be combined or split for better predective power.</p>
+
+
 
 <pre class="r"><code>set.seed(1122)
 
@@ -2303,7 +2345,11 @@ missing_values &lt;- sapply(hotel_bookings, function (x) sum(x %in% check_values
 missing_percentages &lt;- sapply(hotel_bookings, function (x) mean(x %in% check_values) * 100)
 
 # displaying the tables of missing values
+
 knitr::kable(missing_values, align = &quot;c&quot;)</code></pre>
+<br></br>
+<br></br>
+<h4>Table showing missing all the missing values by column</h4>
 <table>
 <thead>
 <tr class="header">
@@ -2436,7 +2482,7 @@ knitr::kable(missing_values, align = &quot;c&quot;)</code></pre>
 </table>
 <pre class="r"><code>knitr::kable(missing_percentages, align = &quot;c&quot;)</code></pre>
 <div id="table" class="section level3">
-<h3>Features Percentage of Missing Values By Column</h3></div>
+</div>
 <table>
 <thead>
 <tr class="header">
@@ -2569,7 +2615,9 @@ knitr::kable(missing_values, align = &quot;c&quot;)</code></pre>
 </table>
 </div>
 <div id="children-column-adjusted" class="section level3">
-<h3>Data Cleaning</h3>
+  <br></br>
+
+<h4>Filling in all missing values by either mean, median, or mode.</h4>  <br></br>
 <p>Children Column</p>
 
 <pre class="r"><code># taking care of the missing children columns first
@@ -2615,7 +2663,7 @@ mode_of_distribution &lt;- find_mode(hotel_bookings$distribution_channel)
 hotel_bookings[missing_distribution_indices,]$distribution_channel &lt;- mode_of_distribution</code></pre>
 </div>
 <div id="agent-missing-values-adjustment-by-mode-of-each-country" class="section level3">
-<h3>Agent missing values adjustment by mode of each country</h3>
+<p>Agent missing values adjustment by mode of each country</p>
 <pre class="r"><code># grabbing the rows that have null for agent to see if there is a pattern
 null_agent_indices&lt;- which(hotel_bookings$agent == &quot;NULL&quot;)
 
@@ -2649,14 +2697,16 @@ for (i in null_agent_indices) {
 }</code></pre>
 </div>
 <div id="company-column-and-arrival_date_week_number-removed" class="section level3">
-<h3>Company column and arrival_date_week_number removed</h3>
+<p>Company column and arrival_date_week_number column were removed. The company column had over 70% missing values and the other column did not provide that much insight. I already have the date of arrival in another column (redundant information).</p>
 <pre class="r"><code># since the company column has more than 70% of missing values, I will be removing it from the data set
 # I will also remove the arrival date week number column since it is of no use, we have the arrival date already
 hotel_bookings$company &lt;- NULL
 hotel_bookings$arrival_date_week_number &lt;- NULL</code></pre>
 </div>
 <div id="data-is-finally-clean-and-ready-to-be-processed" class="section level3">
-<h3>Data is finally clean, and ready to be processed</h3>
+  <br></br>
+  <br></br>
+<h4>Data is finally clean, and ready to be processed</h4>
 <pre class="r"><code>check_values &lt;- c(&quot;Undefined&quot;, &quot;undefined&quot;, &quot;NULL&quot;, &quot;&quot;, NA)
 
 # finding the sum of missing values for each column
@@ -2999,6 +3049,7 @@ $(document).ready(function () {
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
+
 
 </body>
 </html>
