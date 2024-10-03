@@ -1864,8 +1864,6 @@ display: none;
   <div class="columns-container">
   <div class="column">
     <h4><strong>Instructor:</strong> <a href="https://youtu.be/8oDjrAknr4o?t=11"  style="color: rgb(47, 125, 203);">Vijay Gurbani (Chief Data Scientist at Vail Systems, Inc)</a></h4>
-    <h4><strong>Webpage Design</strong></h4>
-    <p>Hey there, welcome to my webpage! I've put this together myself, taking cues from the background picture's color scheme. I wanted to step away from the usual look of sites like Medium or LinkedIn. The whole idea here is to use warm colors that are easy on the eyes, and to organize the content into clear sections for smooth browsing. You'll see R code on this page – that's all my own work, along with the comments and the output of the code. I've marked my comments with a '#' symbol and colored them blue to make them stand out. In this project, I also have white text comments above each section." </p>
     <h4><strong>Project Summary</strong></h4>
   
     <ul>
@@ -1875,7 +1873,12 @@ display: none;
     <li>Calculated correlation coefficients and performed normality tests on residuals.</li>
     <li>Refined the model to use 'year', 'origin', and 'displacement' as the main predictors for 'mpg'.</li>
     </ul>
-  
+    <h4><strong>About the Auto Dataset</strong></h4>
+
+<p>
+  The Auto dataset from R contains 392 observations and 9 features related to the characteristics of various cars, including horsepower, weight, displacement, and acceleration. The goal of this dataset is to predict the miles per gallon (mpg) of cars using linear regression based on these variables. This dataset is widely used for regression analysis, making it ideal for studying relationships between vehicle attributes and fuel efficiency.
+</p>
+
     <h4><strong>Libraries Used:</strong> ISLR, psych, nortest</h4>
   
   </div>
@@ -1888,6 +1891,11 @@ display: none;
 
     <h4><strong>Conclusions</strong></h4>
     <p>The project showcased effective data handling, statistical modeling, and analysis skills. It highlighted the trade-offs between model complexity and predictive power and emphasized the challenges in achieving normal distribution of residuals in real-world datasets.</p>
+
+  
+  
+  
+
   
   </div>
   </div>
@@ -1926,7 +1934,7 @@ display: none;
 
 <div id="part-2.1" class="section level3">
 <h3>Data Preparation and Splitting</h3>
-<p>Here, we are splitting the data set into two parts: one is the training set, and the other is the test set. We generally split our data set into two parts so that we can train our model on the larger portion and evaluate its performance on the test data set (the smaller portion). Some recommended splits for large data sets are 90/10 and 95/5, while for smaller data sets, 70/30 and 80/20 are common recommendations.</p>
+<p>I started by splitting the data set into two parts: one is the training set, and the other is the test set. Datasets are generally split into two parts so that we can train our model on the larger portion and evaluate its performance on the test data set (the smaller portion). Some recommended splits for large data sets are 90/10 and 95/5, while for smaller data sets, 70/30 and 80/20 are common recommendations.</p>
 <pre class="r"><code>#install.packages(&#39;ISRL&#39;)
 library(ISLR) 
 set.seed(1122)
@@ -1936,7 +1944,9 @@ test.df &lt;- Auto[-index,]</code></pre>
 </div>
 <div id="part-2.1-a" class="section level3">
 <h3>Initial Linear Regression Model Building</h3>
-<p>Here, we are creating a model using all predictors except for the 'name' variable. The dependent variable is 'mpg' (miles per gallon), and the independent variables are 'cylinders,' 'displacement,' 'horsepower,' 'weight,' 'acceleration,' 'year,' and 'origin.' The function reads as "generate a linear regression model using 'mpg' as the dependent or response variable, and all other variables in the dataset as predictors, excluding 'name'."</p>
+<p>Next, I created a base model using all predictors except for the 'name' variable. The dependent variable is 'mpg' (miles per gallon), and the independent variables are 'cylinders,' 'displacement,' 'horsepower,' 'weight,' 'acceleration,' 'year,' and 'origin.' This initial model will serve as a baseline for comparison with the improved model I plan to build after performing a data analysis to determine which attributes will enhance the model's accuracy.</p>
+
+
 
 <pre class="r"><code>library(psych)
 #library(lessR)
@@ -1968,7 +1978,7 @@ cor.plot(auto_subset)</code></pre>
 <div id="part-2.1-i" class="section level3">
 <h3>Rationale Against Using 'Name' as a Predictor</h3>
 <div id="why-is-using-name-as-a-predictor-not-a-reasonable-thing-to-do-using-the-name-predictor-is-not-a-reasonable-thing-to-do-since-the-name-will-not-provide-any-useful-information-for-our-model.-the-name-attribute-is-unique-so-we-cant-generate-any-useful-pattern-from-it.-the-variables-that-are-likely-to-contribute-to-our-model-will-be-the-other-values-given-that-we-can-derive-a-pattern-from-them-and-they-all-have-some-sort-of-relationship-to-the-mpgcorrelation-plot-shows-it.-also-if-we-look-at-the-scatter-plot-between-name-and-mpg-we-can-see-that-this-is-a-noisy-graph-there-is-no-relationship-between-name-and-mpg." class="section level4">
-  <h4>Why Using 'Name' as a Predictor Is Unreasonable</h4>
+  <h4>Why Using 'Name' as a Predictor Is Unreasonable.</h4>
 <p>Using 'name' as a predictor in the model is not reasonable because it does not provide useful information. Each 'name' attribute is unique, preventing the generation of meaningful patterns. In contrast, other variables are likely to contribute more effectively to the model, as they demonstrate discernible patterns and relationships with mpg, as evidenced by the correlation plot. Additionally, the scatter plot between 'name' and mpg indicates a lack of correlation, presenting as a noisy graph with no discernible relationship.</p>
 
 </div>
