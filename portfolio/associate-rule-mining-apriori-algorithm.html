@@ -3156,30 +3156,29 @@ border-radius: 0px;
 
 
       <h4><strong>Project Summary</strong></h4>
-      <ul>
-        <li>Analyzed a dataset to predict whether individuals earn more or less than $50K based on demographic and financial features.</li>
-        <li>Cleaned and prepared the dataset, handling missing values and feature selection.</li>
-        <li>Constructed a decision tree classifier to predict income levels and evaluated model performance with accuracy, sensitivity, and specificity metrics.</li>
-        <li>Compared the performance of balanced and imbalanced datasets to identify the most effective approach.</li>
-      </ul>
-      <h4><strong>About the Dataset</strong></h4>
+<ul>
+  <li>Analyzed a bakery dataset using the Apriori algorithm to uncover associations between frequently purchased items.</li>
+  <li>Processed transaction data to generate frequent itemsets and rules that help understand customer purchasing behavior.</li>
+  <li>Utilized association rule mining to identify relationships and patterns between different bakery products.</li>
+  <li>Generated rules based on support, confidence, and lift metrics to identify strong associations and their reliability in predicting item combinations.</li>
+</ul>
 
+<h4><strong>About the Dataset</strong></h4>
 <p>
-  This dataset, extracted from the 1994 Census Bureau database by Ronny Kohavi and Barry Becker, contains 48,221 records and 15 attributes. It includes demographic and financial data to predict whether an individual earns more than $50K annually. Key features include age, education, occupation, and capital gain, with the goal of identifying patterns related to income levels.
+  This dataset contains transactions from a bakery, with various numbers of transactions, including 1,000 to 75,000. Each transaction lists the items purchased by a customer during their visit. Key attributes include product names and transaction IDs, with the goal of identifying frequent itemsets and association rules that capture the relationship between products purchased together.
 </p>
-
-      <h4><strong>Libraries Used:</strong> rpart, rpart.plot, caret</h4>
+<h4><strong>Libraries Used:</strong> arules, arulesViz</h4>
     </div>
 
     <div class="column">
       <h4><strong>Key Findings</strong></h4>
-      <p>The decision tree classifier revealed significant predictors such as education, relationship status, and capital gain. The first model achieved a balanced accuracy of 81%, while the second model (with a balanced dataset) showed a sensitivity of 94% but a lower balanced accuracy of 73%. This highlights the trade-off between balancing datasets and overall performance.</p>
+<p>The Apriori algorithm successfully identified frequent itemsets such as {Coffee Eclair}, {Hot Coffee}, and {Strawberry Cake}, with rules indicating strong associations between items like {Green Tea, Lemon Cookie, and Raspberry Lemonade}. This allowed for better insights into customer purchasing habits and potential cross-selling opportunities.</p>
 
-      <h4><strong>Data Visualizations</strong></h4>
-      <p>Decision trees and confusion matrices were used to visually assess the model’s performance. A decision tree plot clearly demonstrated how different features influenced the income prediction. Additionally, scatter plots provided insight into feature distributions.</p>
+<h4><strong>Data Visualizations</strong></h4>
+<p>Scatter plots and bar charts were used to visualize the support and confidence of various rules, making it easier to interpret the frequent itemsets and their corresponding relationships. A graphical representation of the rules provided a clear overview of the most significant product combinations.</p>
 
-      <h4><strong>Conclusions</strong></h4>
-      <p>This project demonstrates my ability to build, evaluate, and optimize machine learning models using decision trees. It underscores the importance of data preprocessing and balancing techniques to improve model accuracy. The insights gained from comparing different models showcase the complexities of trade-offs in predictive modeling.</p>
+<h4><strong>Conclusions</strong></h4>
+<p>This project highlights my ability to apply the Apriori algorithm for association rule mining in real-world datasets. The insights gained from frequent itemsets and strong rules demonstrate how data mining techniques can be used to enhance marketing strategies, optimize inventory, and improve customer experience in retail environments.</p>
     </div>
   </div>
 
@@ -3882,5 +3881,26 @@ $(document).ready(function ()  {
   })();
 </script>
 
+
+<script>
+  document.getElementById('toggle-code-btn').addEventListener('click', function() {
+    var showCode = document.getElementById('rmd-show-all-code');
+    var hideCode = document.getElementById('rmd-hide-all-code');
+    var buttonText = document.getElementById('button-text');
+    
+    // Check if the button text is "Hide All Code"
+    if (buttonText.textContent === "Hide All Code") {
+        // Simulate clicking "Hide All Code"
+        hideCode.click();
+        buttonText.textContent = "Show All Code"; // Update button text
+    } else {
+        // Simulate clicking "Show All Code"
+        showCode.click();
+        buttonText.textContent = "Hide All Code"; // Update button text
+    }
+});
+
+
+</script>
 </body>
 </html>
