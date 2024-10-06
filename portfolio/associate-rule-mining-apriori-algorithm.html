@@ -3098,7 +3098,7 @@ padding-left: 30px;
 padding-right: 40px;
 }
 div.main-container {
-max-width: 1200px;
+  max-width: fit-content;
 }
 div.tocify {
 width: 20%;
@@ -3148,7 +3148,7 @@ border-radius: 0px;
 
 <div id="header">
 
-  <h1 class="title toc-ignore">Decision Tree Classifier (Income Prediction)</h1>
+  <h1 class="title toc-ignore">Association Rule Mining - (Frequently Purchased Items in Groups Prediction)</h1>
 
   <div class="columns-container">
     <div class="column">
@@ -3185,7 +3185,7 @@ border-radius: 0px;
   <div class="sidebar">
     <div class="user">
       <div class="user__pic"></div>
-      <div class="user__name">Income Prediction Classifier</div>
+      <div class="user__name">Associate Rule Mining</div>
     </div>
     <div class="bar">
       <div class="options">
@@ -3220,7 +3220,11 @@ border-radius: 0px;
 <!-- rnb-text-end -->
 <!-- rnb-text-begin -->
 <div id="part-2.1b" class="section level3">
-<h3>Part 2.1(b)</h3>
+  <h3>Setting Up the Environment</h3>
+<p>
+    The <code>arules</code> library in R was loaded to implement the Apriori algorithm. The working directory was retrieved using <code>getwd()</code> to ensure correct file path references throughout the project.
+</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShhcnVsZXMpXG4jbGlicmFyeShhcnVsZXNWaXopXG5cbndvcmtpbmdfZGlyZWN0b3J5IDwtIGdldHdkKClcbnNldF93b3JraW5nX2RpcmVjdG9yeSA8LSB3b3JraW5nX2RpcmVjdG9yeVxuYGBgIn0= -->
@@ -3233,8 +3237,25 @@ set_working_directory &lt;- working_directory</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
+<br></br><br></br>
 <div id="transactions-equal-to-1k-minsup-0.01-minconf-0.85" class="section level3">
-<h3>Transactions Equal to 1k (minsup = 0.01, minconf = 0.85)</h3>
+  <h3>Processing Transactions and Finding Frequent Itemsets</h3>
+<p>
+    A dataset of 1,000 transactions was processed using the <code>read.transactions</code> function, and frequent itemsets were identified using the <code>apriori</code> algorithm. The minimum support was set to 0.01, and the absolute minimum support count was 10. A total of 132 frequent itemsets were generated, providing key insights into item relationships within the dataset.
+</p>
+<br></br>
+<h4>Understanding Minimum Support</h4>
+<p>
+    <strong>Minimum Support (support)</strong> is the threshold that defines how frequently an item or itemset must appear in the dataset. In this case, a minimum support of 0.01 means that an itemset must appear in at least 1% of the transactions to be considered frequent. It helps to filter out infrequent itemsets that are not significant for analysis.
+</p><p>
+<br></br>
+<strong>Why is 1% Considered Frequent?</strong>
+<p>
+    In the context of data mining, "frequent" does not always imply a high percentage of occurrences across the entire dataset. A minimum support threshold of 1% means that an itemset must appear in at least 1% of the transactions to be considered frequent. This might seem low, but in large datasets with thousands or millions of transactions, even a 1% occurrence can represent a significant number of transactions. Frequent patterns help identify meaningful relationships between items that occur often enough to be considered relevant for analysis or decision-making, even at a seemingly small percentage.
+</p>
+
+
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHIxayA8LSByZWFkLnRyYW5zYWN0aW9ucyhcInRyLTFrLWNhbm9uaWNhbC5jc3ZcIiwgc2VwID0gXCIsXCIpXG5mcmVxdWVudF9pdGVtX3NldHNfdHIxayA8LSBhcHJpb3JpKHRyMWssIHBhcmFtZXRlciA9IGxpc3Qoc3VwcG9ydCA9IDAuMDEsIHRhcmdldCA9IFwiZnJlcXVlbnQgaXRlbXNldHNcIikpXG5gYGAifQ== -->
@@ -3276,8 +3297,20 @@ checking subsets of size 1 2 3 4 5 done [0.00s].
 sorting transactions ... done [0.00s].
 writing ... [132 set(s)] done [0.00s].
 creating S4 object  ... done [0.00s].</code></pre>
+
+<h4>Frequent Itemsets Generation</h4>
+<p>
+    The Apriori algorithm identified frequent itemsets with an absolute minimum support count of 10, meaning that only itemsets appearing in at least 10 transactions were included. A total of 50 unique items were processed across 1,000 transactions, and 132 frequent itemsets were generated. The algorithm efficiently sorted and recoded the items, created a transaction tree, and analyzed subsets of size 1 to 5, ensuring accurate and timely results.
+</p>
+<br></br><br></br>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucnVsZXNfZm9yX3RyMWsgPC0gYXByaW9yaSh0cjFrLCBwYXJhbWV0ZXIgPSBsaXN0KHN1cHBvcnQgPSAwLjAxLCBjb25mID0gMC44NSwgdGFyZ2V0ID0gXCJydWxlc1wiKSlcbmBgYCJ9 -->
+<h3>Generating Association Rules</h3>
+<br></br>
+<h4>Understanding Minimum Confindence</h4>
+</p>
+    <strong>Minimum Confidence</strong> (minconf) is the threshold that indicates how often a rule must be correct. A minimum confidence of 0.85, for example, means that the association rule should be accurate 85% of the time when the itemset's condition is met. Confidence helps to measure the strength of the relationships between items in the dataset. Here, I will be using minimum support, which was mentioned earlier, with the minimum confindence.
+</p>
 <pre class="r"><code>rules_for_tr1k &lt;- apriori(tr1k, parameter = list(support = 0.01, conf = 0.85, target = &quot;rules&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiQXByaW9yaVxuXG5QYXJhbWV0ZXIgc3BlY2lmaWNhdGlvbjpcbiJ9 -->
@@ -3314,11 +3347,48 @@ creating transaction tree ... done [0.00s].
 checking subsets of size 1 2 3 4 5 done [0.01s].
 writing ... [72 rule(s)] done [0.00s].
 creating S4 object  ... done [0.00s].</code></pre>
+
+<h4>Association Rules Generation</h4>
+<p>
+    After processing the transactions, the Apriori algorithm generated a total of 72 association rules. Association rules are conditional statements that show the relationship between items in the dataset. For example, a rule like <strong>{bread} → {butter}</strong> would suggest that when a customer buys bread, they are likely to buy butter as well. Each rule consists of two parts: the <strong>antecedent</strong> (the if-part) and the <strong>consequent</strong> (the then-part). These rules help uncover patterns and predict future behavior based on previous transactions.
+</p>
+<p>
+    The absolute minimum support count was set to 10, ensuring that only itemsets appearing in at least 10 transactions were considered. The algorithm efficiently processed 50 unique items across 1,000 transactions, creating a transaction tree and checking item subsets to identify meaningful patterns. The final output included 72 rules, ready for further analysis.
+</p>
+
+
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+
+<br></br><br></br>
 <div id="frequent-itemsets-tr1k" class="section level4">
-<h4>Frequent Itemsets (Tr1k)</h4>
+<h3>Frequent Itemsets 1,000 Transactions (Tr1k)</h3>
+<p>
+    Using the Apriori algorithm on the Tr1k dataset, frequent itemsets were identified with a minimum support threshold of 1%. These itemsets represent combinations of items that appear together in at least 1% of the 1,000 transactions, providing insights into common item groupings within the dataset.
+</p>
+<br></br>
+<h4>Frequent Itemsets (1,000 Transactions) - Examples</h4>
+<p>
+    Here are two examples of frequent itemsets identified in the Tr1k dataset:
+</p>
+<ul>
+    <li><strong>Itemset:</strong> {Gongolais Cookie}, <strong>Support:</strong> 10.8%, <strong>Count:</strong> 108 transactions</li>
+    <li><strong>Itemset:</strong> {Truffle Cake}, <strong>Support:</strong> 10.3%, <strong>Count:</strong> 103 transactions</li>
+</ul>
+
+<p>
+    These frequent itemsets appear in a significant portion of the dataset, providing valuable insights into item combinations.
+</p>
+<br></br>
+<h4>Understanding Support and Count</h4>
+<p>
+    <strong>Support</strong> refers to the proportion of transactions in which a specific item or itemset appears. For example, a support of 10.8% means that the itemset {Gongolais Cookie} appears in 10.8% of the total transactions. Support helps measure how frequently an itemset occurs in the dataset.
+</p>
+<p>
+    <strong>Count</strong> is the actual number of transactions in which the item or itemset appears. For example, a count of 108 means that the itemset {Gongolais Cookie} was found in 108 out of the 1,000 transactions. The count provides a concrete representation of how often an itemset occurs in absolute terms.
+</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoaW5zcGVjdChzb3J0KGZyZXF1ZW50X2l0ZW1fc2V0c190cjFrLCBkZWNyZWFzaW5nID0gVCwgYnk9XCJjb3VudFwiKSkpXG5gYGAifQ== -->
