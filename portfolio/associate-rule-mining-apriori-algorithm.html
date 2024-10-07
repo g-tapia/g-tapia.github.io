@@ -3239,7 +3239,8 @@ set_working_directory &lt;- working_directory</code></pre>
 </div>
 <br></br><br></br>
 <div id="transactions-equal-to-1k-minsup-0.01-minconf-0.85" class="section level3">
-  <h3>Generating Frequent Itemsets with Apriori</h3>
+  <h3> 1,000 Transactions Dataset</h3> <br></br>
+  <h4>Generating Frequent Itemsets with Apriori</h4>
 <p>
     A dataset of 1,000 transactions was processed using the <code>read.transactions</code> function, and frequent itemsets were identified using the <code>apriori</code> algorithm. The minimum support was set to 0.01, and the absolute minimum support count was 10. A total of 132 frequent itemsets were generated, providing key insights into item relationships within the dataset.
 </p>
@@ -3305,7 +3306,7 @@ creating S4 object  ... done [0.00s].</code></pre>
 <br></br><br></br>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucnVsZXNfZm9yX3RyMWsgPC0gYXByaW9yaSh0cjFrLCBwYXJhbWV0ZXIgPSBsaXN0KHN1cHBvcnQgPSAwLjAxLCBjb25mID0gMC44NSwgdGFyZ2V0ID0gXCJydWxlc1wiKSlcbmBgYCJ9 -->
-<h3>Generating Association Rules with Apriori</h3>
+<h4>Generating Association Rules with Apriori</h4>
 <p>
     The <code>apriori</code> algorithm is applied to the Tr1k dataset (1,000 transactions dataset) to generate association rules. The parameters are set with a minimum support of 1% and a confidence threshold of 85%, meaning that only itemsets appearing in at least 1% of transactions and rules with at least 85% confidence are considered. The algorithm processes the dataset to uncover strong relationships between items, focusing on rules that meet these criteria.
 </p>
@@ -3362,7 +3363,7 @@ creating S4 object  ... done [0.00s].</code></pre>
 
 <br></br><br></br>
 <div id="frequent-itemsets-tr1k" class="section level4">
-  <h3>Frequent Itemsets 1,000 Transactions (Tr1k) Analysis</h3>
+  <h4>Frequent Itemsets 1,000 Transactions (Tr1k) Analysis</h4>
 <p>
     After generating the frequent itemsets using the Apriori algorithm on the Tr1k dataset, we identified combinations of items that co-occur in at least 1% of the 1,000 transactions. These frequent itemsets provide valuable insights into common item groupings, which can be useful for understanding purchasing behaviors or identifying related products.
 </p>
@@ -3422,7 +3423,7 @@ creating S4 object  ... done [0.00s].</code></pre>
 
 <br></br><br></br>
 <div id="rules-tr1k" class="section level4">
-<h3>Association Rules 1,000 Transactions (Tr1k) Analysis</h3>
+<h4>Association Rules 1,000 Transactions (Tr1k) Analysis</h4>
 
 <p>
     After generating association rules with the Apriori algorithm on the Tr1k dataset, we identified patterns where the left-hand side (LHS) shows the items a customer buys ("if"), and the right-hand side (RHS) predicts what they are likely to buy next ("then"). These rules reveal how items are commonly purchased together, providing insights into customer behavior.
@@ -3485,12 +3486,17 @@ creating S4 object  ... done [0.00s].</code></pre>
 <!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Note that the <code>echo = FALSE</code> parameter was added to the
-code chunk to prevent printing of the R code that generated the plot.
-### Transactions Equal to 5k (minsup = 0.01, minconf = 0.85)</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHI1ayA8LSByZWFkLnRyYW5zYWN0aW9ucyhcInRyLTVrLWNhbm9uaWNhbC5jc3ZcIiwgc2VwID0gXCIsXCIpXG5mcmVxdWVudF9pdGVtX3NldHNfdHI1ayA8LSBhcHJpb3JpKHRyNWssIHBhcmFtZXRlciA9IGxpc3Qoc3VwcG9ydCA9IDAuMDEsIHRhcmdldCA9IFwiZnJlcXVlbnQgaXRlbXNldHNcIikpXG5gYGAifQ== -->
+
+<br></br><br></br>
+<h3>5,000 Transactions Dataset</h3>
+<br></br>
+<h4>Frequent Itemsets Generated</h4>
+<p>The Apriori algorithm identified frequent itemsets with an absolute minimum support count of 50, meaning that only itemsets appearing in at least 50 transactions were included. A total of 50 unique items were processed across 5,000 transactions, and 124 frequent itemsets were generated. The algorithm efficiently sorted and recoded the items, created a transaction tree, and analyzed subsets of size 1 to 5, ensuring accurate and timely results.</p>
+
 <pre class="r"><code>tr5k &lt;- read.transactions(&quot;tr-5k-canonical.csv&quot;, sep = &quot;,&quot;)
 frequent_item_sets_tr5k &lt;- apriori(tr5k, parameter = list(support = 0.01, target = &quot;frequent itemsets&quot;))</code></pre>
 <!-- rnb-source-end -->
@@ -3531,6 +3537,11 @@ writing ... [124 set(s)] done [0.00s].
 creating S4 object  ... done [0.00s].</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucnVsZXNfZm9yX3RyNWsgPC0gYXByaW9yaSh0cjVrLCBwYXJhbWV0ZXIgPSBsaXN0KHN1cHBvcnQgPSAwLjAxLGNvbmYgPSAwLjg1LCB0YXJnZXQgPSBcInJ1bGVzXCIpKVxuYGBgIn0= -->
+
+<br></br><br></br>
+<h3>Association Rules Generated for 5k transactions</h3>
+<p>After processing the transactions, the Apriori algorithm generated a total of 78 association rules. The absolute minimum support count was set to 50, ensuring that only itemsets appearing in at least 50 transactions were considered. The algorithm efficiently processed 50 unique items across 5,000 transactions, creating a transaction tree and checking item subsets to identify meaningful patterns. The final output included 78 rules, ready for further analysis.</p>
+
 <pre class="r"><code>rules_for_tr5k &lt;- apriori(tr5k, parameter = list(support = 0.01,conf = 0.85, target = &quot;rules&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiQXByaW9yaVxuXG5QYXJhbWV0ZXIgc3BlY2lmaWNhdGlvbjpcbiJ9 -->
@@ -3572,7 +3583,13 @@ creating S4 object  ... done [0.00s].</code></pre>
 <!-- rnb-text-begin -->
 </div>
 <div id="frequent-itemsets-tr5k" class="section level4">
-<h4>Frequent Itemsets (Tr5k)</h4>
+  <h4>Frequent Itemsets - Examples</h4>
+<ul>
+  <li>Itemset: {Coffee Eclair}, Support: 11.08%, Count: 554 transactions</li>
+  <li>Itemset: {Hot Coffee}, Support: 10.26%, Count: 513 transactions</li>
+</ul>
+<p>These itemsets occur frequently across the dataset, indicating that these items are commonly purchased together or individually, providing useful information about customer preferences.</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoaW5zcGVjdChzb3J0KGZyZXF1ZW50X2l0ZW1fc2V0c190cjVrLCBkZWNyZWFzaW5nID0gVCwgYnk9XCJjb3VudFwiKSkpXG5gYGAifQ== -->
