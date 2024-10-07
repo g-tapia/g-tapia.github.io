@@ -3239,7 +3239,7 @@ set_working_directory &lt;- working_directory</code></pre>
 </div>
 <br></br><br></br>
 <div id="transactions-equal-to-1k-minsup-0.01-minconf-0.85" class="section level3">
-  <h3>Processing Transactions and Finding Frequent Itemsets</h3>
+  <h3>Generating Frequent Itemsets with Apriori</h3>
 <p>
     A dataset of 1,000 transactions was processed using the <code>read.transactions</code> function, and frequent itemsets were identified using the <code>apriori</code> algorithm. The minimum support was set to 0.01, and the absolute minimum support count was 10. A total of 132 frequent itemsets were generated, providing key insights into item relationships within the dataset.
 </p>
@@ -3298,19 +3298,18 @@ sorting transactions ... done [0.00s].
 writing ... [132 set(s)] done [0.00s].
 creating S4 object  ... done [0.00s].</code></pre>
 
-<h4>Frequent Itemsets Generation</h4>
+<h4>Frequent Itemsets Generated</h4>
 <p>
     The Apriori algorithm identified frequent itemsets with an absolute minimum support count of 10, meaning that only itemsets appearing in at least 10 transactions were included. A total of 50 unique items were processed across 1,000 transactions, and 132 frequent itemsets were generated. The algorithm efficiently sorted and recoded the items, created a transaction tree, and analyzed subsets of size 1 to 5, ensuring accurate and timely results.
 </p>
 <br></br><br></br>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucnVsZXNfZm9yX3RyMWsgPC0gYXByaW9yaSh0cjFrLCBwYXJhbWV0ZXIgPSBsaXN0KHN1cHBvcnQgPSAwLjAxLCBjb25mID0gMC44NSwgdGFyZ2V0ID0gXCJydWxlc1wiKSlcbmBgYCJ9 -->
-<h3>Generating Association Rules</h3>
-<br></br>
-<h4>Understanding Minimum Confindence</h4>
+<h3>Generating Association Rules with Apriori</h3>
+<p>
+    The <code>apriori</code> algorithm is applied to the Tr1k dataset (1,000 transactions dataset) to generate association rules. The parameters are set with a minimum support of 1% and a confidence threshold of 85%, meaning that only itemsets appearing in at least 1% of transactions and rules with at least 85% confidence are considered. The algorithm processes the dataset to uncover strong relationships between items, focusing on rules that meet these criteria.
 </p>
-    <strong>Minimum Confidence</strong> (minconf) is the threshold that indicates how often a rule must be correct. A minimum confidence of 0.85, for example, means that the association rule should be accurate 85% of the time when the itemset's condition is met. Confidence helps to measure the strength of the relationships between items in the dataset. Here, I will be using minimum support, which was mentioned earlier, with the minimum confindence.
-</p>
+
 <pre class="r"><code>rules_for_tr1k &lt;- apriori(tr1k, parameter = list(support = 0.01, conf = 0.85, target = &quot;rules&quot;))</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiQXByaW9yaVxuXG5QYXJhbWV0ZXIgc3BlY2lmaWNhdGlvbjpcbiJ9 -->
@@ -3348,7 +3347,7 @@ checking subsets of size 1 2 3 4 5 done [0.01s].
 writing ... [72 rule(s)] done [0.00s].
 creating S4 object  ... done [0.00s].</code></pre>
 
-<h4>Association Rules Generation</h4>
+<h4>Association Rules Generated</h4>
 <p>
     After processing the transactions, the Apriori algorithm generated a total of 72 association rules. Association rules are conditional statements that show the relationship between items in the dataset. For example, a rule like <strong>{bread} → {butter}</strong> would suggest that when a customer buys bread, they are likely to buy butter as well. Each rule consists of two parts: the <strong>antecedent</strong> (the if-part) and the <strong>consequent</strong> (the then-part). These rules help uncover patterns and predict future behavior based on previous transactions.
 </p>
@@ -3363,16 +3362,14 @@ creating S4 object  ... done [0.00s].</code></pre>
 
 <br></br><br></br>
 <div id="frequent-itemsets-tr1k" class="section level4">
-<h3>Frequent Itemsets 1,000 Transactions (Tr1k)</h3>
+  <h3>Frequent Itemsets 1,000 Transactions (Tr1k) Analysis</h3>
 <p>
-    Using the Apriori algorithm on the Tr1k dataset, frequent itemsets were identified with a minimum support threshold of 1%. These itemsets represent combinations of items that appear together in at least 1% of the 1,000 transactions, providing insights into common item groupings within the dataset.
+    After generating the frequent itemsets using the Apriori algorithm on the Tr1k dataset, we identified combinations of items that co-occur in at least 1% of the 1,000 transactions. These frequent itemsets provide valuable insights into common item groupings, which can be useful for understanding purchasing behaviors or identifying related products.
 </p>
+
 <br></br>
-<h4>Frequent Itemsets (1,000 Transactions) - Examples</h4>
-<p>
-    Note: Click the white arrow facing right, on the items row, to see the support and count associated with each item. 
- </p>   
-  <p>  Here are two examples of frequent itemsets identified in the Tr1k dataset:</p>
+<h4>Frequent Itemsets - Examples</h4>
+<p>Here are two examples of frequent itemsets identified in the Tr1k dataset:</p>
 
 <ul>
     <li><strong>Itemset:</strong> {Gongolais Cookie}, <strong>Support:</strong> 10.8%, <strong>Count:</strong> 108 transactions</li>
@@ -3380,15 +3377,24 @@ creating S4 object  ... done [0.00s].</code></pre>
 </ul>
 
 <p>
-    These frequent itemsets appear in a significant portion of the dataset, providing valuable insights into item combinations.
+    These itemsets occur frequently across the dataset, indicating that these items are commonly purchased together or individually, providing useful information about customer preferences.
 </p>
+
+<p>
+    Note: To see the support and count for each item, click the arrow on the item row to expand the row and reveal the details.
+</p>
+
+
 <br></br>
 <h4>Understanding Support and Count</h4>
 <p>
-    <strong>Support</strong> refers to the proportion of transactions in which a specific item or itemset appears. For example, a support of 10.8% means that the itemset {Gongolais Cookie} appears in 10.8% of the total transactions. Support helps measure how frequently an itemset occurs in the dataset.
+    <strong>Support</strong> reflects how often an item or itemset appears in the dataset as a percentage of total transactions. For instance, a support value of 10.8% for {Gongolais Cookie} means it appears in 10.8% of all transactions. Support is a crucial measure for identifying frequently occurring itemsets.
 </p>
 <p>
-    <strong>Count</strong> is the actual number of transactions in which the item or itemset appears. For example, a count of 108 means that the itemset {Gongolais Cookie} was found in 108 out of the 1,000 transactions. The count provides a concrete representation of how often an itemset occurs in absolute terms.
+    <strong>Count</strong> is the actual number of transactions that include the specific item or itemset. For example, the count for {Gongolais Cookie} is 108, meaning it appears in 108 out of 1,000 transactions. The count provides a concrete, numerical representation of how often an itemset is seen in the dataset.
+</p>
+<p>
+    By understanding both support and count, we can better evaluate the significance of different itemsets in the transaction dataset, helping to inform decisions based on purchasing trends.
 </p>
 
 <!-- rnb-text-end -->
@@ -3413,8 +3419,51 @@ creating S4 object  ... done [0.00s].</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
+
+<br></br><br></br>
 <div id="rules-tr1k" class="section level4">
-<h4>Rules (Tr1k)</h4>
+<h3>Association Rules 1,000 Transactions (Tr1k) Analysis</h3>
+
+<p>
+    After generating association rules with the Apriori algorithm on the Tr1k dataset, we identified patterns where the left-hand side (LHS) shows the items a customer buys ("if"), and the right-hand side (RHS) predicts what they are likely to buy next ("then"). These rules reveal how items are commonly purchased together, providing insights into customer behavior.
+</p>
+
+<br></br>
+<h4>Association Rules - Examples</h4>
+<p>Here are two examples of association rules identified in the Tr1k dataset:</p>
+
+<ul>
+    <li><strong>Rule 1:</strong> LHS: {Chocolate Tart, Walnut Cookie} → RHS: {Vanilla Frappuccino}, <strong>Support:</strong> 1.8%, <strong>Confidence:</strong> 1.0, <strong>Lift:</strong> 13.51, <strong>Count:</strong> 18 transactions</li>
+    <p>If a customer buys both a Chocolate Tart and a Walnut Cookie, then they are likely to buy a Vanilla Frappuccino.</p>
+
+    <li><strong>Rule 2:</strong> LHS: {Apricot Croissant, Hot Coffee} → RHS: {Blueberry Tart}, <strong>Support:</strong> 3.2%, <strong>Confidence:</strong> 1.0, <strong>Lift:</strong> 12.34, <strong>Count:</strong> 32 transactions</li>
+    <p>If a customer buys both an Apricot Croissant and a Hot Coffee, then they are likely to buy a Blueberry Tart.</p>
+</ul>
+
+
+
+
+<p>
+    These association rules illustrate how certain items are frequently purchased together, providing valuable insights into potential bundling or product recommendation strategies.
+</p>
+
+<br></br>
+<h4>Understanding Support, Confidence, Lift, and Count</h4>
+<p>
+    <strong>Support:</strong> This represents the proportion of transactions that include both the LHS and RHS items. For example, a support value of 1.8% means the rule occurs in 1.8% of all transactions.
+</p>
+<p>
+    <strong>Confidence:</strong> The probability that the RHS item will be purchased when the LHS items are bought. A confidence of 1.0 means the rule holds 100% of the time.
+</p>
+<p>
+    <strong>Lift:</strong> This measures how much more likely the RHS item is to be bought when the LHS items are purchased, compared to random chance. A lift greater than 1 indicates a strong association.
+</p>
+<p>
+    <strong>Count:</strong> The number of transactions where both the LHS and RHS items occur together, providing an absolute number of occurrences.
+</p>
+
+
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoaW5zcGVjdChzb3J0KHJ1bGVzX2Zvcl90cjFrLCBieT1cImNvbmZpZGVuY2VcIikpKVxuYGBgIn0= -->
