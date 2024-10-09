@@ -3233,12 +3233,16 @@ border-radius: 0px;
 </div>
 <br></br><br></br>
 
+
 <div id="1k-transactions" class="section level3">
+  <h4>What is associate rule mining?</h4>
+  <p>Association rule mining is a data analysis technique that helps uncover patterns and relationships between items in large datasets. It’s commonly used in retail to discover which items are frequently bought together. The Apriori algorithm is a popular tool for this task, as it identifies frequent itemsets based on how often they appear together and creates rules to predict future purchases. For example, if many people buy cookies and coffee together, the algorithm can suggest that customers who buy cookies are also likely to buy coffee. This helps businesses optimize product placement, create bundles, and design targeted promotions.</p>
   <h3>1,000 Transactions Dataset</h3>
   <p>
     I began this project by analyzing a dataset of 1,000 transactions using the <code>read.transactions</code> function and applying the <code>apriori</code> algorithm to identify frequent itemsets. With a minimum support of 0.01 (1%) and a support count threshold of 10 (meaning an itemset had to appear in at least 10 transactions, which is 1% of the total transactions), I identified 132 frequent itemsets, revealing key insights into item relationships and filtering out less common combinations.
 </p>
 
+<p>Note: In the section covering the 1,000 transactions dataset, I provided a detailed explanation of how the plots work and the key features of the Apriori algorithm, including support, confidence, and lift. I recommend reviewing this section first, as it covers the foundational concepts that will help you better understand the analysis of the larger datasets.</p>
 
 
 <br></br>
