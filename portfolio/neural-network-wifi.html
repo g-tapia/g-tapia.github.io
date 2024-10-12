@@ -3572,11 +3572,12 @@ The key issue here is that the model only has one neuron in the hidden layer, wh
 <!-- rnb-text-begin -->
 </div>
 <div id="iii" class="section level4">
-<h4>(iii)</h4>
 </div>
 
 <div id="part-2.1-c" class="section level3">
-<h3>Part 2.1 (c)</h3>
+<h3>Neural Network Optimization</h3>
+<p>In this part, I tinkered with the neural network to find the best performance. I started by adding neurons to the hidden layer and found that 8 neurons gave me the sweet spot in terms of accuracy. The model has two layers: a hidden layer with 8 neurons using the ReLU activation function, and an output layer with 4 neurons using softmax to output probabilities across four categories. After compiling the model with categorical cross-entropy and the Adam optimizer, I trained it for 100 epochs with a batch size of 32, using 20% of the data for validation. This setup gave me the best accuracy results.</p>
+
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2V0LnNlZWQoMTEyMilcbnRlbnNvcmZsb3c6OnNldF9yYW5kb21fc2VlZCgxMTIyKVxuXG5zZWNvbmRfbW9kZWwgPC0ga2VyYXNfbW9kZWxfc2VxdWVudGlhbCgpICU+JVxuICBsYXllcl9kZW5zZSh1bml0cyA9IDgsIGFjdGl2YXRpb249XCJyZWx1XCIsIGlucHV0X3NoYXBlPWMoNykpICU+JVxuICBsYXllcl9kZW5zZSh1bml0cyA9IDQsIGFjdGl2YXRpb249XCJzb2Z0bWF4XCIpXG5cbnNlY29uZF9tb2RlbFxuYGBgIn0= -->
@@ -4197,10 +4198,10 @@ result_2 &lt;- second_model %&gt;% evaluate(as.matrix(x_test), y_test_one_hot_en
 <pre><code>Warning: Levels are not in the same order for reference and data. Refactoring data to match.</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoXCJCZXN0IG1vZGVsIGhhcyA3IG5ldXJvbnMgaW4gdGhlIGhpZGRlbiBsYXllclwiKVxuYGBgIn0= -->
-<pre class="r"><code>print(&quot;Best model has 7 neurons in the hidden layer&quot;)</code></pre>
+<pre class="r"><code>print(&quot;Best model has 8 neurons in the hidden layer&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiQmVzdCBtb2RlbCBoYXMgNyBuZXVyb25zIGluIHRoZSBoaWRkZW4gbGF5ZXJcIlxuIn0= -->
-<pre><code>[1] &quot;Best model has 7 neurons in the hidden layer&quot;</code></pre>
+<pre><code>[1] &quot;Best model has 8 neurons in the hidden layer&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQocmVzdWx0XzIpXG5gYGAifQ== -->
 <pre class="r"><code>print(result_2)</code></pre>
@@ -4212,42 +4213,10 @@ result_2 &lt;- second_model %&gt;% evaluate(as.matrix(x_test), y_test_one_hot_en
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="ii-1" class="section level4">
-<h4>(ii)</h4>
-</div>
-<div id="after-incrementally-increasing-the-number-of-neurons" class="section level4">
-<h4>After incrementally increasing the number of neurons,</h4>
-</div>
-<div id="i-noticed-that-at-8-neurons-the-neural-network-was" class="section level4">
-<h4>I noticed that at 8 neurons, the neural network was</h4>
-</div>
-<div id="producing-better-results.-given-this-information" class="section level4">
-<h4>producing better results. Given this information,</h4>
-</div>
-<div id="i-believe-that-the-bias-is-just-right-since" class="section level4">
-<h4>I believe that the bias is just right since</h4>
-</div>
-<div id="it-seems-that-the-networks-bias-tradeoff-is-well-balanced" class="section level4">
-<h4>it seems that the network’s bias tradeoff is well balanced</h4>
-</div>
-<div id="at-this-configuration." class="section level4">
-<h4>at this configuration.</h4>
-</div>
-<div id="iii-1" class="section level4">
-<h4>(iii)</h4>
-</div>
-<div id="i-say-we-should-stop-at-around-epoch-98" class="section level4">
-<h4>I say we should stop at around epoch 98</h4>
-</div>
-<div id="since-the-validation-and-accurracy-converged-at-around-this-point." class="section level4">
-<h4>since the validation and accurracy converged at around this
-point.</h4>
-</div>
-<div id="i-think-this-point-will-minimize-over-fitting" class="section level4">
-<h4>I think this point will minimize over-fitting</h4>
 </div>
 </div>
 <div id="part-2.1-d" class="section level3">
-<h3>Part 2.1 (d)</h3>
+<h3>Final Conclusion</h3>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoXCJCZXN0IE5ldXJhbCBOZXR3b3JrIE1vZGVsXCIpXG5gYGAifQ== -->
