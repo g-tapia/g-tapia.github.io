@@ -170,7 +170,7 @@ div.toc-content.col-xs-12.col-sm-8.col-md-9 {
     .sidebar .user__pic {
         width: 10rem;
         height: 10rem;
-        background: url(/images/bakery.png);
+        background: url(/images/neural-network.png);
         background-size: cover;
         margin-right: 0.5rem;
         border-radius: 50%;
@@ -3194,11 +3194,13 @@ border-radius: 0px;
         <ul>
           <li><a href="/portfolio/projects.html">Return to projects</a></li>
           <span class="options__division">Sections</span>
-          <li><a href="#1k-transactions">1,000 Transactions Dataset</a></li>
-          <li><a href="#5k-transactions">5,000 Transactions Dataset</a></li>
-          <li><a href="#20k-transactions">20,000 Transactions Dataset</a></li>
-          <li><a href="#75k-transactions">75,000 Transactions Dataset</a></li>
-          <li><a href="#final-conclusions">Final Conclusions</a></li>
+          <li><a href="#decision-tree-model">Introduction: Building a Decision Tree Model</a></li>
+          <li><a href="#decision-tree-results">Decision Tree Results Summary</a></li>
+          <li><a href="#neural-network">Neural Network</a></li>
+          <li><a href="#neural-network-results">Neural Network Results</a></li>
+          <li><a href="#neural-network-optimization">Neural Network Optimization</a></li>
+          <li><a href="#final-conclusion">Final Conclusion</a></li>
+
 
         </ul>
       </div>
@@ -3222,7 +3224,7 @@ border-radius: 0px;
 
 
 <!-- rnb-text-begin -->
-<div id="part-2.1-a" class="section level3">
+<div id="part-2" class="section level3">
   <h2>Project Overview</h2>
 <p>In this project, I’m working on predicting the location of a device inside a building based on wifi signal strengths. The dataset includes signal data from different wifi access points, and my goal is to build a model that can accurately determine which room the device is in. I’ll be starting with a decision tree model to get some initial results, but I’ll also dive into more advanced techniques like neural networks to improve the accuracy of the predictions.</p>
 
@@ -3230,7 +3232,7 @@ border-radius: 0px;
 <p>Neural networks are a type of machine learning model that’s inspired by how the human brain works. Just like the brain has neurons, a neural network has layers of connected nodes (or "neurons") that process data. These networks are especially good at recognizing patterns in complicated data.</p>
 
 <p>For example, in this project, the neural network will help identify patterns in the wifi signals to figure out which room the device is in. The network learns by adjusting the strength of the connections between neurons based on the data it’s trained on. Neural networks are used in all kinds of tasks, from recognizing images to predicting locations, and they’re a powerful tool when it comes to making sense of complex data.</p>
-
+<div id="decision-tree-model" class="section level3"></div>
 <h3>Introduction: Building a Decision Tree Model</h3>
 <p>To kick off the project, I will first be building a decision tree model to predict the location of a device based on wifi signal strengths. This model will help provide a baseline for comparison when I later introduce a neural network. Decision trees are simple yet effective models that are easy to interpret and quick to train, making them a good starting point.</p>
 
@@ -3276,7 +3278,7 @@ decision_tree &lt;- rpart(label ~ wifi1 + wifi2 + wifi3 + wifi4, data = train.df
 rpart.plot(decision_tree, extra=104, fallen.leaves=T, type=4, main=&quot;Wifi Localization Dataset Decision Tree&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-plot-begin eyJoZWlnaHQiOjQzMi42MzI5LCJ3aWR0aCI6NzAwLCJzaXplX2JlaGF2aW9yIjowLCJjb25kaXRpb25zIjpbXX0= -->
-
+<div id="decision-tree-results" class="section level3"></div>
 <h3>Decision Tree Results Summary</h3>
 <p>The decision tree illustrates how various WiFi signal strengths (wifi1 and wifi3) are used to classify a location into one of four rooms. Each number (0, 1, 2, 3) corresponds to a specific room in the dataset. Here's how they map:</p>
 
@@ -3377,7 +3379,9 @@ Balanced Accuracy       0.929    0.919    0.951    0.944</code></pre>
 <!-- rnb-text-begin -->
 </div>
 <div id="part-2.1-b" class="section level3">
-<h3>Part 2.1 (b)</h3>
+<div id="neural-network" class="section level3">
+
+<h3>Neural Network</h3>
 <p>In this section, a neural network model is being built using the Keras library in R. First, the data is prepared by separating the features (Wi-Fi signals) into <code>x_train</code> and <code>x_test</code>, and the labels (representing the room locations) into <code>y_train</code> and <code>y_test</code>. The labels are one-hot encoded using the <code>to_categorical()</code> function, which converts them into a format suitable for multi-class classification.</p>
 
 <p>The neural network model is defined as a simple sequential model. It contains two layers: the first layer has 1 unit and uses the ReLU activation function, which ensures non-negative outputs. The second layer has 4 units and uses the softmax activation function, which outputs a probability distribution across 4 classes (representing the rooms). The model has a total of 16 trainable parameters, which are adjusted during training to optimize performance.</p>
@@ -3523,8 +3527,8 @@ Balanced Accuracy       0.500    0.500     0.50     0.50</code></pre>
 <pre><code>[1] &quot;This is for one neuron in hidden layer&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQocmVzdWx0KVxuYGBgIn0= -->
-
-<h3>First Neural Network Results</h3>
+<div id="neural-network-results" class="section level3"></div>
+<h3>Neural Network Results</h3>
 <p>
 After running the neural network model on the test data, I found that the results were not as great as I hoped. The model predicted the room based on WiFi signals, but it only achieved an accuracy of 23%, which is quite low.
 </p>
@@ -3574,6 +3578,7 @@ The key issue here is that the model only has one neuron in the hidden layer, wh
 </div>
 
 <div id="part-2.1-c" class="section level3">
+  <div id="neural-network-optimization" class="section level3"></div>
 <h3>Neural Network Optimization</h3>
 <p>In this part, I tinkered with the neural network to find the best performance. I started by adding neurons to the hidden layer and found that 8 neurons gave me the sweet spot in terms of accuracy. The model has two layers: a hidden layer with 8 neurons using the ReLU activation function, and an output layer with 4 neurons using softmax to output probabilities across four categories. After compiling the model with categorical cross-entropy and the Adam optimizer, I trained it for 100 epochs with a batch size of 32, using 20% of the data for validation. This setup gave me the best accuracy results.</p>
 
@@ -3693,7 +3698,14 @@ result_2 &lt;- second_model %&gt;% evaluate(as.matrix(x_test), y_test_one_hot_en
 </div>
 </div>
 <div id="part-2.1-d" class="section level3">
-<h3>Final Conclusion</h3>
+  <div id="final-conclusion" class="section level3">
+  <h3><strong>Final Conclusion</strong></h3>
+<p>
+This project demonstrated the application of machine learning techniques for indoor localization using WiFi signal strength data. By comparing the performance of a neural network and a decision tree model, I found that while the neural network performed well with a carefully tuned architecture, the decision tree ultimately provided the most accurate results with an overall accuracy of 90.2%. This highlights the importance of model selection and optimization when dealing with real-world data.
+</p>
+<p>
+The decision tree's ability to interpret WiFi signals and produce clear classification paths made it the ideal model for this task, showcasing its effectiveness in scenarios where signal-based localization is needed. Despite the power of deep learning, simpler models like decision trees can outperform more complex ones depending on the nature of the data. This project has provided valuable insights into machine learning applications in localization, and underscores the importance of experimentation and model tuning in achieving optimal results.
+</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJpbnQoXCJCZXN0IE5ldXJhbCBOZXR3b3JrIE1vZGVsXCIpXG5gYGAifQ== -->
@@ -3741,7 +3753,6 @@ Balanced Accuracy       0.923    0.898    0.844    0.842</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="i" class="section level4">
-<h4>(i)</h4>
 </div>
 <div></div>
 <div id="rmd-source-code">LS0tDQp0aXRsZTogIkhvbWV3b3JrIDgiDQphdXRob3I6ICJHZW9yZ2UgVGFwaWEgKEEyMDQ1MDg1NykiDQpkYXRlOiAiMjAyMy0wNC0yNCINCm91dHB1dDoNCiAgaHRtbF9kb2N1bWVudDoNCiAgICB0b2M6IHllcw0KICAgIGRmX3ByaW50OiBwYWdlZA0KICBodG1sX25vdGVib29rOg0KICAgIHRvYzogeWVzDQogICAgdG9jX2Zsb2F0OiB5ZXMNCi0tLQ0KDQoNCiMjIyBQYXJ0IDIuMSAoYSkNCmBgYHtyfQ0KbGlicmFyeShrZXJhcykNCnRlbnNvcmZsb3c6OnNldF9yYW5kb21fc2VlZCgxMTIyKQ0KDQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShjYXJldCkNCmxpYnJhcnkocnBhcnQpDQpsaWJyYXJ5KHJwYXJ0LnBsb3QpDQoNCnNldC5zZWVkKDExMjIpDQpvcHRpb25zKGRpZ2l0cyA9IDIpDQp3b3JraW5nX2RpcmVjdG9yeSA8LSBnZXR3ZCgpDQpzZXR3ZCh3b3JraW5nX2RpcmVjdG9yeSkNCg0Kd2lmaSA8LSByZWFkLmNzdigid2lmaV9sb2NhbGl6YXRpb24uY3N2IiwgaGVhZGVyID0gVFJVRSkNCg0Kd2lmaSRsYWJlbCA8LSByZXAoMCwgbnJvdyh3aWZpKSkNCndpZmkkbGFiZWxbd2lmaSRyb29tID09IDFdIDwtIDANCndpZmkkbGFiZWxbd2lmaSRyb29tID09IDJdIDwtIDENCndpZmkkbGFiZWxbd2lmaSRyb29tID09IDNdIDwtIDINCndpZmkkbGFiZWxbd2lmaSRyb29tID09IDRdIDwtIDMNCg0Kd2lmaSRyb29tIDwtIE5VTEwNCm51bWJlcl9vZl9zYW1wbGVzIDwtIG5yb3cod2lmaSkNCg0Kd2lmaSA8LSB3aWZpW3NhbXBsZShudW1iZXJfb2Zfc2FtcGxlcyksXQ0KDQpyYW5nZV9vZl9zYW1wbGVzIDwtIDE6bnJvdyh3aWZpKQ0KDQppbmRleCA8LSBzYW1wbGUocmFuZ2Vfb2Zfc2FtcGxlcywgMC44MCAqIGRpbSh3aWZpKVsxXSwgcmVwbGFjZSA9IEZBTFNFKQ0KdHJhaW4uZGYgPC0gd2lmaVtpbmRleCxdDQp0ZXN0LmRmIDwtIHdpZmlbLWluZGV4LF0NCg0KZGVjaXNpb25fdHJlZSA8LSBycGFydChsYWJlbCB+IHdpZmkxICsgd2lmaTIgKyB3aWZpMyArIHdpZmk0LCBkYXRhID0gdHJhaW4uZGYsIG1ldGhvZCA9ICJjbGFzcyIpDQoNCnJwYXJ0LnBsb3QoZGVjaXNpb25fdHJlZSwgZXh0cmE9MTA0LCBmYWxsZW4ubGVhdmVzPVQsIHR5cGU9NCwgbWFpbj0iV2lmaSBMb2NhbGl6YXRpb24gRGF0YXNldCBEZWNpc2lvbiBUcmVlIikNCg0KcHJlZGljdF9yZXN1bHRzIDwtIHByZWRpY3QoZGVjaXNpb25fdHJlZSwgdGVzdC5kZiwgdHlwZT0iY2xhc3MiKQ0KcHJpbnQoY29uZnVzaW9uTWF0cml4KGFzLmZhY3RvcihwcmVkaWN0X3Jlc3VsdHMpLCBhcy5mYWN0b3IodGVzdC5kZlssIDhdKSkpDQoNCmBgYA0KIyMjIFBhcnQgMi4xIChiKQ0KYGBge3J9DQpzZXQuc2VlZCgxMTIyKQ0KdGVuc29yZmxvdzo6c2V0X3JhbmRvbV9zZWVkKDExMjIpDQoNCnhfdHJhaW4gPC0gc2VsZWN0KHRyYWluLmRmLCAtbGFiZWwpDQp5X3RyYWluIDwtIHRyYWluLmRmJGxhYmVsDQp5X3RyYWluX29uZV9ob3RfZW5jb2RlZCA8LSB0b19jYXRlZ29yaWNhbCh5X3RyYWluKQ0KDQoNCg0KeF90ZXN0IDwtIHNlbGVjdCh0ZXN0LmRmLCAtbGFiZWwpDQp5X3Rlc3QgPC0gdGVzdC5kZiRsYWJlbA0KeV90ZXN0X29uZV9ob3RfZW5jb2RlZCA8LSB0b19jYXRlZ29yaWNhbCh5X3Rlc3QpDQoNCm1vZGVsIDwtIGtlcmFzX21vZGVsX3NlcXVlbnRpYWwoKSAlPiUNCiAgbGF5ZXJfZGVuc2UodW5pdHMgPSAxLCBhY3RpdmF0aW9uPSJyZWx1IiwgaW5wdXRfc2hhcGU9Yyg3KSkgJT4lDQogIGxheWVyX2RlbnNlKHVuaXRzID0gNCwgYWN0aXZhdGlvbj0ic29mdG1heCIpDQoNCm1vZGVsDQoNCm1vZGVsICU+JSANCiAgY29tcGlsZShsb3NzID0gImNhdGVnb3JpY2FsX2Nyb3NzZW50cm9weSIsIG9wdGltaXplcj0iYWRhbSIsIG1ldHJpY3M9YygiYWNjdXJhY3kiKSkNCg0KbW9kZWwgJT4lIA0KICBmaXQoZGF0YS5tYXRyaXgoeF90cmFpbiksIHlfdHJhaW5fb25lX2hvdF9lbmNvZGVkLCBlcG9jaHM9MTAwLCBiYXRjaF9zaXplPTMyLCB2YWxpZGF0aW9uX3NwbGl0PTAuMjApDQoNCg0KcHJlZGljdGVkX3Byb2JhYmlsaXR5IDwtIHByZWRpY3QobW9kZWwsIGFzLm1hdHJpeCh4X3Rlc3QpKQ0KcHJlZGljdGVkX2NsYXNzZXMgPC0gYXBwbHkocHJlZGljdGVkX3Byb2JhYmlsaXR5LCAxLCBmdW5jdGlvbih4KSB3aGljaC5tYXgoeCktMSkNCg0KcmVzdWx0IDwtIG1vZGVsICU+JSBldmFsdWF0ZShhcy5tYXRyaXgoeF90ZXN0KSwgeV90ZXN0X29uZV9ob3RfZW5jb2RlZCkNCmNvbmZ1c2lvbl9tYXRyaXggPC0gY29uZnVzaW9uTWF0cml4KGFzLmZhY3RvcihwcmVkaWN0ZWRfY2xhc3NlcyksIGFzLmZhY3Rvcih5X3Rlc3QpKQ0KDQpwcmludChjb25mdXNpb25fbWF0cml4KQ0KDQpwcmludCgiVGhpcyBpcyBmb3Igb25lIG5ldXJvbiBpbiBoaWRkZW4gbGF5ZXIiKQ0KcHJpbnQocmVzdWx0KQ0KDQoNCmBgYA0KIyMjIyAoaWkpIA0KIyMjIyBUaGUgYWNjY3VyYWN5IGlzIGxvdyBnaXZlbiB0aGUgZmFjdCB0aGF0DQojIyMjIGl0IGlzIGp1c3Qgb25lIG5ldXJvbi4gVGhlcmUgaXMgbm90IG11Y2gNCiMjIyMgb2YgYSBwZXJmb3JtYW5jZSBnYWluIHdpdGggb25lLiBUaG91Z2gsDQojIyMjIGl0IGNhbiBzdGlsbCBwcm9kdWNlIGdvb2QgcmVzdWx0cywgYnkgbHVjay4NCg0KYGBge3J9DQpwcmludChwcmVkaWN0ZWRfY2xhc3NlcykNCmBgYA0KIyMjIyAoaWlpKSANCiMjIyMgVGhlIHBhdHRlcm4gaXMgdmVyeSByZW5kdW5kYW50DQojIyMjIGFsbCBvZiB0aGUgY2xhc3MgbGFiZWxzIGFyZSB0aGUgc2FtZS4NCiMjIyMgU2luY2UgdGhlIHByZWRpY3RlZCB2YWx1ZSBpcyBmYXIgZnJvbSB0aGUgYWN0dWFsLA0KIyMjIyB0aGlzIG1lYW5zIHRoYXQgdGhlIGJpYXMgbXVzdCBiZSBoaWdoIHRvIGNvbWUgdXAgd2l0aCByZXN1bHRzIGxpa2UgdGhlc2UNCiMjIyMgKGl2KSANCiMjIyMgSW5jcmVhc2luZyB0aGUgbnVtYmVyIG9mIHRyYWluaW5nIGVwb2NocyB3aWxsIG5vdA0KIyMjIyBtYWtlIGFueSBkaWZmZXJlbmNlIHNpbmNlIG91ciBwcmVkaWN0aW9ucyBhcmUgY29taW5nIG91dCB0aGUgc2FtZS4NCiMjIyMgUGx1cywgdGhlIG5ldHdvcmsgaXMgbm90IGFzIGNvbXBsZXggc28gYW55IGFkanVzdGVtdHMgdG8gdGhlIG51bWJlciBvZiBlcG9jaHMgd2lsbCBvdXRwdXQgc2ltaWxhciByZXN1bHRzDQoNCg0KDQojIyMgUGFydCAyLjEgKGMpDQpgYGB7cn0NCnNldC5zZWVkKDExMjIpDQp0ZW5zb3JmbG93OjpzZXRfcmFuZG9tX3NlZWQoMTEyMikNCg0Kc2Vjb25kX21vZGVsIDwtIGtlcmFzX21vZGVsX3NlcXVlbnRpYWwoKSAlPiUNCiAgbGF5ZXJfZGVuc2UodW5pdHMgPSA4LCBhY3RpdmF0aW9uPSJyZWx1IiwgaW5wdXRfc2hhcGU9Yyg3KSkgJT4lDQogIGxheWVyX2RlbnNlKHVuaXRzID0gNCwgYWN0aXZhdGlvbj0ic29mdG1heCIpDQoNCnNlY29uZF9tb2RlbA0KDQpzZWNvbmRfbW9kZWwgJT4lIA0KICBjb21waWxlKGxvc3MgPSAiY2F0ZWdvcmljYWxfY3Jvc3NlbnRyb3B5Iiwgb3B0aW1pemVyPSJhZGFtIiwgbWV0cmljcz1jKCJhY2N1cmFjeSIpKQ0KDQpzZWNvbmRfbW9kZWwgJT4lIA0KICBmaXQoZGF0YS5tYXRyaXgoeF90cmFpbiksIHlfdHJhaW5fb25lX2hvdF9lbmNvZGVkLCBlcG9jaHM9IDEwMCwgYmF0Y2hfc2l6ZT0zMiwgdmFsaWRhdGlvbl9zcGxpdD0wLjIwKQ0KDQpwcmVkaWN0ZWRfcHJvYmFiaWxpdHlfMiA8LSBwcmVkaWN0KHNlY29uZF9tb2RlbCwgYXMubWF0cml4KHhfdGVzdCkpDQpwcmVkaWN0ZWRfY2xhc3Nlc18yIDwtIGFwcGx5KHByZWRpY3RlZF9wcm9iYWJpbGl0eSwgMSwgZnVuY3Rpb24oeCkgd2hpY2gubWF4KHgpLTEpDQoNCnJlc3VsdF8yIDwtIHNlY29uZF9tb2RlbCAlPiUgZXZhbHVhdGUoYXMubWF0cml4KHhfdGVzdCksIHlfdGVzdF9vbmVfaG90X2VuY29kZWQpDQpjb25mdXNpb25fbWF0cml4XzIgPC0gY29uZnVzaW9uTWF0cml4KGFzLmZhY3RvcihwcmVkaWN0ZWRfY2xhc3Nlc18yKSwgYXMuZmFjdG9yKHlfdGVzdCkpDQoNCnByaW50KCJCZXN0IG1vZGVsIGhhcyA4IG5ldXJvbnMgaW4gdGhlIGhpZGRlbiBsYXllciIpDQpwcmludChyZXN1bHRfMikNCg0KDQpgYGANCiMjIyMgKGlpKSANCiMjIyMgQWZ0ZXIgaW5jcmVtZW50YWxseSBpbmNyZWFzaW5nIHRoZSBudW1iZXIgb2YgbmV1cm9ucywNCiMjIyMgSSBub3RpY2VkIHRoYXQgYXQgOCBuZXVyb25zLCB0aGUgbmV1cmFsIG5ldHdvcmsgd2FzDQojIyMjIHByb2R1Y2luZyBiZXR0ZXIgcmVzdWx0cy4gR2l2ZW4gdGhpcyBpbmZvcm1hdGlvbiwNCiMjIyMgSSBiZWxpZXZlIHRoYXQgdGhlIGJpYXMgaXMganVzdCByaWdodCBzaW5jZQ0KIyMjIyBpdCBzZWVtcyB0aGF0IHRoZSBuZXR3b3JrJ3MgYmlhcyB0cmFkZW9mZiBpcyB3ZWxsIGJhbGFuY2VkDQojIyMjIGF0IHRoaXMgY29uZmlndXJhdGlvbi4NCiMjIyMgKGlpaSkNCiMjIyMgSSBzYXkgd2Ugc2hvdWxkIHN0b3AgYXQgYXJvdW5kIGVwb2NoIDk4DQojIyMjIHNpbmNlIHRoZSB2YWxpZGF0aW9uIGFuZCBhY2N1cnJhY3kgY29udmVyZ2VkIGF0IGFyb3VuZCB0aGlzIHBvaW50Lg0KIyMjIyBJIHRoaW5rIHRoaXMgcG9pbnQgd2lsbCBtaW5pbWl6ZSBvdmVyLWZpdHRpbmcNCg0KIyMjIFBhcnQgMi4xIChkKQ0KYGBge3J9DQpwcmludCgiQmVzdCBOZXVyYWwgTmV0d29yayBNb2RlbCIpDQpwcmludChjb25mdXNpb25fbWF0cml4XzIpDQoNCmBgYA0KIyMjIyAoaSkgDQojIyMjIExvb2tpbmcgYXQgdGhlIG91dHB1dHMsIHRoZSBuZXVyYWwgbmV0d29yayBwZXJmb3JtcyBiZXR0ZXIgaW4gYWxsIGFzcGVjdHMuDQojIyMjIChpaSkgDQojIyMjIEkgd291bGQgZGVwbG95IHRoZSBuZXVyYWwgbmV0d29yayBpbiB0aGlzIGNhc2Ugc2luY2UgaXQgaGFzIGEgaGlnaGVyIGFjY3VyYWN5LCBhbmQgYmVjYXVzZSB0aGV5DQojIyMjIGFyZSBiZXR0ZXIgc3VpdGVkIHRvIGNyZWF0ZSBub24tbGluZWFyIGJvdW5kYXJpZXMuIFdoZXJlIGFzIHRoZSBkZWNpc2lvbiB0cmVlIHdpbGwgaGF2ZSBpc3N1ZXMNCiMjIyMgd2l0aCBwZXJmb3JtYW5jZSwgaW4gdGhlIGNhc2Ugb2Ygd2lmaSBzaWduYWxzLg==</div>
