@@ -4,6 +4,182 @@
 
 <head>
 
+<style>   body {
+  margin: 0;
+  padding-left: 29rem;
+  font-family: 'Arial', sans-serif;
+}
+.column p {
+padding-left: 25px;
+}
+
+.columns-container {
+display: flex;
+justify-content: center;   /* Center the columns horizontally */
+}
+
+div.toc-content.col-xs-12.col-sm-8.col-md-9 {
+       
+justify-content: center;       
+margin: 0 auto;               
+width: 100%;                 
+text-align: left;            
+align-items: center;  
+}
+
+
+  .columns-container h4{
+     color:#099;
+  }
+
+  .column {
+      width: 50%; 
+      padding: 0px;
+  }
+
+  .columns-container::after {
+      content: "";
+      clear: both;
+      display: table;
+  }
+
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+      .columns-container {
+          margin-left: 0;
+          flex-direction: column;
+      }
+      .column {
+          width: 100%; /* Full width columns on smaller screens */
+      }
+  }
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 29rem;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #000000;
+  box-shadow: 3px 0 10px rgba(49, 46, 46, 0.5);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s;
+  z-index: 1;
+}
+
+.sidebar h2 {
+  color: #010608;
+  text-align: center;
+  margin-top: 0;
+}
+
+.container-fluid {
+  color: rgb(255, 251, 255);
+  background-size: 90%;
+  background-attachment: fixed;
+  background-position: 109rem 0;
+  h3{
+color: rgb(47, 125, 203);
+}
+h4{
+color: #099;
+}   
+}
+
+span .hljs-comment {
+  color: rgba(30, 1, 255, 0.824);
+}
+.hljs-comment {
+  color: rgba(30, 1, 255, 0.824);
+}
+
+
+.section.level3 {
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.options__division {
+  padding: 5px;
+}
+
+.sidebar li {
+  color: #000000;
+  font-size: 1.3rem;
+  padding: 10px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: none;
+  transition: all 0.5s;
+  text-decoration: none;
+}
+.sidebar li a {
+  display: block; 
+  width: 100%; 
+  height: 100%; 
+  text-decoration: none; 
+  transition: inherit; 
+  color: rgb(47, 125, 203);
+}
+.container-fluid.main-container {
+  /* background-image: url(https://images.unsplash.com/photo-1635492491273-455af7728453?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); */
+  background-color: #000000;
+  width: 100%;
+  background-size: cover;
+}
+
+.sidebar li:hover {
+  background-color: #ff07de47;
+  color: #000000;
+}
+
+.sidebar li a:hover {
+color: rgb(253, 253, 253);
+}
+.sidebar .user {
+  color: white;
+  height: 170px;
+  background: #48444753;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+@supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+  .sidebar .user {
+      -webkit-clip-path: polygon(50% 100%, 100% 80%, 100% 0, 0 0, 0 80%);
+      clip-path: polygon(50% 100%, 100% 80%, 100% 0, 0 0, 0 80%);
+  }
+}
+
+.sidebar .user__pic {
+  width: 10rem;
+  height: 10rem;
+  background: url(/images/hotel.png);
+  background-size: cover;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+
+}
+span.options__division{
+color: rgb(255, 255, 255);
+}
+</style>
 <meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
@@ -13,7 +189,7 @@
 
 <meta name="date" content="2023-05-01" />
 
-<title>Homework 9</title>
+<title>Clustering</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1529,11 +1705,6 @@ if (window.hljs) {
 
 
 <style type="text/css">
-.main-container {
-max-width: 940px;
-margin-left: auto;
-margin-right: auto;
-}
 img {
 max-width:100%;
 }
@@ -1612,18 +1783,82 @@ display: none;
 <body>
 
 
-<div class="container-fluid main-container">
 
+  <div class="container-fluid main-container">
+  <div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
 
+</div>
+</div>
 
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+<audio id="click-sound" src="/sounds/button-pressed.wav" preload="auto"></audio>
 
 <div id="header">
 
+  <h1 class="title toc-ignore">Decision Tree Classifier (Hotel Cancelation Rate)</h1>
 
+  <div class="columns-container">
+  <div class="column">
+    <h4><strong>Instructor:</strong> <a href="https://youtu.be/8oDjrAknr4o?t=11"  style="color: rgb(47, 125, 203);">Vijay Gurbani (Chief Data Scientist at Vail Systems, Inc)</a></h4>
 
-<h1 class="title toc-ignore">Homework 9</h1>
-<h4 class="author">George Tapia</h4>
-<h4 class="date">2023-05-01</h4>
+    <h4><strong>Project Summary</strong></h4>
+  
+    <ul>
+      <li>Cleaned the 'hotel_bookings.csv' dataset, adjusting columns, handling null values, and removing unnecessary columns.</li>
+  <li>Analyzed booking cancellation rates, customer types, and car parking space requirements.</li>
+  <li>Identified the top countries of origin for both city and resort hotels.</li>
+  <li>Split the data into training and testing sets, and constructed a classification model to predict booking cancellations.</li>
+    </ul>
+
+    <h4><strong>About the Dataset</strong></h4>
+
+<p>
+  This dataset contains 119,390 records and 32 features, representing hotel bookings from City and Resort Hotels between July 1, 2015, and August 31, 2017. It includes details such as stay duration, room type, number of guests, meal preferences, and booking cancellations. Sensitive information, like customer identification, has been removed, while artificial fields for names, emails, phone numbers, and credit cards were added. The dataset is ideal for analyzing booking patterns and predicting cancellations.
+</p>
+
+  
+    <h4><strong>Libraries Used:</strong> xgboost, rpart, rpart.plot</h4>
+  
+  </div>
+  <div class="column">
+    <h4><strong>Key Findings</strong></h4>
+    <p>Significant insights were gained about booking behaviors, including the high cancellation rate and predominant customer types. The classification model achieved an accuracy of 76.31%, with sensitivity and specificity rates highlighting its predictive strength in identifying cancellations.</p>
+
+    <h4><strong>Data Visualizations</strong></h4>
+    <p>Utilized bar plots to represent the distribution of guests from different countries in city and resort hotels. A decision tree visualization provided a clear understanding of the factors influencing booking cancellations.</p>
+
+    <h4><strong>Conclusions</strong></h4>
+    <p>The project demonstrated comprehensive data cleaning, exploratory analysis, and predictive modeling skills. It highlighted the importance of data preprocessing in achieving meaningful insights and the efficacy of decision trees in classification tasks.</p>
+  
+  </div>
+  
+  </div>
+  
+  <div class="sidebar">
+    <div class="user">
+      <div class="user__pic"></div>
+      <div class="user__name">Decision Tree Classifier</div>
+    </div>
+    <div class="bar">
+      <div class="options">
+      <ul>
+        <li>
+          <a href="/portfolio/projects.html">Return to projects</a>
+          </li>
+        <span class="options__division">Sections</span>
+        <li><a href="#data-cleaning-overview">Exploratory Data Analysis</a></li>
+        <li><a href="#hotel-plots">Plots Showcasing Top 10 Countries for Resort/City Hotels</a></li>
+        <li><a href="#data-cleaning">Data Cleaning</a></li>
+        <li><a href="#model-selection">Model Selection</a></li>
+        <li><a href="#conclusions">Conclusions</a></li>
+                  
+      </ul>
+    </div>
+    </div>
+  </div>
+</div>
+
 
 </div>
 
