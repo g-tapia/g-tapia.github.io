@@ -1862,59 +1862,57 @@ display: none;
 
 </div>
 
-<div id="TOC">
-<ul>
-<li><a href="#part-2.1-a" id="toc-part-2.1-a">Part 2.1 (a)</a></li>
-<li><a href="#part-2.1-b-removed-attribute---bottom-canines-c" id="toc-part-2.1-b-removed-attribute---bottom-canines-c">Part 2.1 (b)
-(REMOVED ATTRIBUTE - BOTTOM CANINES (c))</a></li>
-<li><a href="#part-2.2" id="toc-part-2.2">Part 2.2</a></li>
-</ul>
-</div>
 
 <div id="part-2.1-a" class="section level3">
-<h3>Part 2.1 (a)</h3>
-<div id="i" class="section level4">
-<h4>(i)</h4>
+  <h1>Clustering and Data Preparation: Unlocking Patterns in Tooth Data</h1>
+
+<p>Before diving into how I prepared the data for clustering, let’s first break down what <strong>clustering</strong> is and why it’s so valuable.</p>
+
+<h4>What is Clustering?</h4>
+<p>Imagine you have a large dataset—let’s say a collection of different animals—and you want to find out how they naturally group together based on their physical traits. This is where <strong>clustering</strong> comes in.</p>
+
+<p>Clustering is a type of <em>unsupervised learning</em> in machine learning that helps group data points into clusters (or groups) based on their similarities. It doesn’t require labeled data or predefined categories. Instead, it analyzes the patterns in the data and groups together points that are more alike. It’s like sorting puzzle pieces into piles by matching their edges, colors, and patterns.</p>
+
+<p>For example:</p>
+<ul>
+    <li>In biology, clustering can help group species based on physical traits or genetic similarities.</li>
+    <li>In marketing, clustering helps companies group customers by similar behavior, allowing targeted campaigns.</li>
+    <li>In social media, clustering can help detect communities within networks by grouping users who interact more frequently.</li>
+</ul>
+
+<p>For my project, clustering will help me discover groups of mammals with similar tooth patterns, without me telling the algorithm how to classify them. It's a powerful way to unlock hidden patterns in the data.</p>
+
+<h2>Data Preparation: Getting the Data Ready for Clustering</h2>
+<p>Now that I know how valuable clustering is, let’s talk about the process of preparing the data. Here’s a simple breakdown of the steps I took:</p>
+
+<div class="highlight">
+    <strong>Step 1: Removing the name field</strong> – Each mammal has a unique name, but this doesn’t help when clustering. The goal of clustering is to find similarities, and since every name is different, it would just create unnecessary noise in the data. I removed the names so I could focus on what really matters: the tooth pattern data.
 </div>
-<div id="we-should-remove-the-name-before-we-do-clustering-since-this-value-is-unique" class="section level4">
-<h4>We should remove the name before we do clustering since this value
-is unique,</h4>
+
+<div class="highlight">
+    <strong>Step 2: Handling correlated features</strong> – When I examined the dataset, I noticed that “top canines (C)” and “bottom canines (c)” had very similar values. This makes sense because top and bottom canines typically grow in proportion to one another. Including both could cause redundant information to skew the clustering process, so I chose to remove one (I picked “bottom canines” randomly since both were similar).
 </div>
-<div id="it-will-not-provide-us-with-any-useful-insights" class="section level4">
-<h4>it will not provide us with any useful insights</h4>
+
+<p>Correlated features like this can confuse the algorithm, making it harder to detect the true patterns in the data. By removing one, I made the analysis cleaner and more reliable.</p>
+
+<div class="highlight">
+    <strong>Step 3: No need for standardization</strong> – Often, data needs to be standardized (or scaled) to make sure no single feature dominates the analysis due to differences in magnitude. In this case, all the tooth features had similar scales, so I didn’t need to do any scaling.
 </div>
-<div id="after-looking-at-the-dataset-i-noticed-that-top-canines-c-and-bottom-canines-c" class="section level4">
-<h4>After looking at the dataset, I noticed that, top canines (C) and
-bottom canines (c)</h4>
-</div>
-<div id="had-similar-values.-i-double-checked-by-using-a-correlation-plot." class="section level4">
-<h4>had similar values. I double checked by using a correlation
-plot.</h4>
-</div>
-<div id="since-the-two-attributes-are-highly-correlated.-if-we-use-both-of-them-this-can-lead-us" class="section level4">
-<h4>since the two attributes are highly correlated. If we use both of
-them, this can lead us</h4>
-</div>
-<div id="to-less-reliable-statistical-inferences-so-it-is-best-to-remove-one." class="section level4">
-<h4>to less reliable statistical inferences so it is best to remove
-one.</h4>
-</div>
-<div id="i-will-remove-the-bottom-canine-attribute-random-choice--both-are-similar" class="section level4">
-<h4>I will remove the bottom canine attribute (random choice- both are
-similar)</h4>
-</div>
-<div id="ii" class="section level4">
-<h4>(ii)</h4>
-</div>
-<div id="given-that-all-the-features-dont-have-a-significant-difference-in-terms-of-scale" class="section level4">
-<h4>Given that all the features don’t have a significant difference, in
-terms of scale,</h4>
-</div>
-<div id="we-do-not-need-to-standardize-the-data" class="section level4">
-<h4>we do not need to standardize the data</h4>
-</div>
+
+<h2>Visualizing the Relationships Between Features</h2>
+<p>To double-check my assumptions, I used a <em>correlation plot</em> to visualize how the tooth features are related. This plot shows which features are strongly related (correlated) and which ones aren’t. Here’s what that looked like in the code:</p>
+
+<pre><code>correlation_matrix <- cor(mammals_old[2:9])
+corrplot(correlation_matrix, method = "color", type = "upper", order = "hclust", addCoef.col = "black", tl.col = "black", tl.srt = 45)</code></pre>
+
+<p>The plot gave me a clearer picture and reinforced my decision to remove the bottom canine. By streamlining the data, I’m ensuring that clustering gives the best possible insights into the tooth patterns of these mammals.</p>
+
+<h2>Conclusion: Why This Matters</h2>
+<p>Clustering is incredibly valuable because it helps discover hidden patterns without needing predefined categories. Whether you're sorting animals by tooth traits or finding customer groups in a business, clustering provides a way to let the data speak for itself. Preparing the data carefully, like I did by removing unique names and correlated features, is essential to getting meaningful, reliable results.</p>
+
+
+
 <div id="iii-below-done-through-code" class="section level4">
-<h4>(iii) (below, done through code)</h4>
 <pre class="r"><code>library(factoextra)</code></pre>
 <pre><code>## Warning: package &#39;factoextra&#39; was built under R version 4.2.3</code></pre>
 <pre><code>## Loading required package: ggplot2</code></pre>
