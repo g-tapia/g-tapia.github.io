@@ -1805,33 +1805,35 @@ display: none;
     <h4><strong>Project Summary</strong></h4>
   
     <ul>
-      <li>Cleaned the 'hotel_bookings.csv' dataset, adjusting columns, handling null values, and removing unnecessary columns.</li>
-  <li>Analyzed booking cancellation rates, customer types, and car parking space requirements.</li>
-  <li>Identified the top countries of origin for both city and resort hotels.</li>
-  <li>Split the data into training and testing sets, and constructed a classification model to predict booking cancellations.</li>
-    </ul>
+  <li>Cleaned the dataset by handling missing values, adjusting columns, and removing unnecessary features for better clustering results.</li>
+  <li>Analyzed animal traits such as diet type, physical attributes, and behavior to identify meaningful clusters.</li>
+  <li>Applied K-means and hierarchical clustering techniques to group animals based on their traits, uncovering distinct clusters that reflect biological or ecological similarities.</li>
+  <li>Evaluated clustering results by comparing clusters with known biological classifications and refined the model by reassigning outliers to appropriate clusters.</li>
+</ul>
 
-    <h4><strong>About the Dataset</strong></h4>
+<h4><strong>About the Dataset</strong></h4>
 
 <p>
-  This dataset contains 119,390 records and 32 features, representing hotel bookings from City and Resort Hotels between July 1, 2015, and August 31, 2017. It includes details such as stay duration, room type, number of guests, meal preferences, and booking cancellations. Sensitive information, like customer identification, has been removed, while artificial fields for names, emails, phone numbers, and credit cards were added. The dataset is ideal for analyzing booking patterns and predicting cancellations.
+  This dataset, titled <em>"Dentition of Mammals"</em>, originates from the book <strong>Clustering Algorithms</strong> by John Hartigan (Wiley, 1975). The dataset contains the dentition patterns of various mammals and is specifically designed for exploring biological traits using clustering techniques. It includes 8 key dental traits for each animal, capturing the number of incisors, canines, premolars, and molars in both the top and bottom jaws.
 </p>
 
-  
-    <h4><strong>Libraries Used:</strong> xgboost, rpart, rpart.plot</h4>
-  
+<p>
+  Each row in the dataset represents a different mammal, identified by its "Name". The tooth pattern is broken down into the following columns:
+</p>
+
+<h4><strong>Libraries Used:</strong> factoextra, cluster, dendextend, ggplot2</h4>
+
   </div>
   <div class="column">
-    <h4><strong>Key Findings</strong></h4>
-    <p>Significant insights were gained about booking behaviors, including the high cancellation rate and predominant customer types. The classification model achieved an accuracy of 76.31%, with sensitivity and specificity rates highlighting its predictive strength in identifying cancellations.</p>
+  <h4><strong>Key Findings</strong></h4>
+  <p>By applying clustering techniques, distinct animal groups were identified, including small herbivores, large carnivores, and omnivores. Hierarchical clustering revealed a clear structure, while K-means helped refine the groups. The analysis highlighted how dietary habits and physical traits influence the natural grouping of species.</p>
 
-    <h4><strong>Data Visualizations</strong></h4>
-    <p>Utilized bar plots to represent the distribution of guests from different countries in city and resort hotels. A decision tree visualization provided a clear understanding of the factors influencing booking cancellations.</p>
+  <h4><strong>Data Visualizations</strong></h4>
+  <p>Cluster plots and dendrograms were used to visualize the clusters formed through hierarchical and K-means clustering. These visualizations provided a clear understanding of how animals with similar traits are grouped together. Additional bar plots and heatmaps were utilized to illustrate trait distributions across clusters.</p>
 
-    <h4><strong>Conclusions</strong></h4>
-    <p>The project demonstrated comprehensive data cleaning, exploratory analysis, and predictive modeling skills. It highlighted the importance of data preprocessing in achieving meaningful insights and the efficacy of decision trees in classification tasks.</p>
-  
-  </div>
+  <h4><strong>Conclusions</strong></h4>
+  <p>The project demonstrated strong data preprocessing and clustering techniques, offering insights into animal groupings based on physical and dietary traits. The use of hierarchical clustering provided an understanding of how species are related, while K-means refined those relationships by minimizing within-group variability.</p>
+</div>
   
   </div>
   
@@ -2023,7 +2025,7 @@ one_hot_diet &lt;- model.matrix(~ diet - 1, data = mammals_old)
 mammals_encoded &lt;- cbind(mammals_old, one_hot_diet)
 </code></pre>
 
-<pre class="r"><code># Step 4: Optionally remove columns 1, 4, 6, 8 from the encoded dataframe (this step may vary based on your goal)
+<pre class="r"><code>
 
 mammals_encoded &lt;- mammals_encoded[,-c(1,4,6,8,10)]
 
