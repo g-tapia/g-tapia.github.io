@@ -1866,12 +1866,11 @@ display: none;
 
 
 <div id="part-2.1-a" class="section level3">
-  <h3>Clustering and Data Preparation: Unlocking Patterns in Tooth Data</h3>
+  <h2>Clustering and Data Preparation: Unlocking Patterns in Tooth Data</h2>
 
 <p>Before diving into how I prepared the data for clustering, let’s first break down what <strong>clustering</strong> is and why it’s so valuable.</p>
-
+<div style="margin-top: 25px;"></div> <!-- Inline small line break -->
 <h4>What is Clustering?</h4>
-<p>Imagine you have a large dataset—let’s say a collection of different animals—and you want to find out how they naturally group together based on their physical traits. This is where <strong>clustering</strong> comes in.</p>
 
 <p>Clustering is a type of <em>unsupervised learning</em> in machine learning that helps group data points into clusters (or groups) based on their similarities. It doesn’t require labeled data or predefined categories. Instead, it analyzes the patterns in the data and groups together points that are more alike. It’s like sorting puzzle pieces into piles by matching their edges, colors, and patterns.</p>
 
@@ -1883,19 +1882,27 @@ display: none;
 </ul>
 
 <p>For my project, clustering will help me discover groups of mammals with similar tooth patterns, without me telling the algorithm how to classify them. It's a powerful way to unlock hidden patterns in the data.</p>
+<br></br>
+<h4>Types of Teeth</h4>
+<p>The image below provides a visual representation of the various types of teeth, which are categorized in the dataset. It helps illustrate the different tooth types, including incisors, canines, premolars, and molars, for both the upper and lower jaw.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/3D_Medical_Animation_Still_Showing_Types_of_Teeth.jpg" 
+         alt="3D Medical Animation Showing Types of Teeth" 
+         width="500px" height="auto">
 
-<h2>Data Preparation: Getting the Data Ready for Clustering</h2>
-<p>Now that you know how valuable clustering is, let’s talk about the process of preparing the data. Here’s a simple breakdown of the steps I took:</p>
-
+<br></br>
+<h3>Data Preparation: Getting the Data Ready for Clustering</h3>
+<p>Now that you know how valuable clustering is, let’s jump into my project and talk about the process I took to prepare the data. Here’s a simple breakdown of the steps I took:</p>
+<p>
 <div class="highlight">
     <strong>Step 1: Removing the name field</strong> – Each mammal has a unique name, but this doesn’t help when clustering. The goal of clustering is to find similarities, and since every name is different, it would just create unnecessary noise in the data. I removed the names so I could focus on what really matters: the tooth pattern data.
 </div>
-
+</p>
+<p>
 <div class="highlight">
-    <strong>Step 2: Handling correlated features</strong> – When I examined the dataset, I noticed that “top canines (C)” and “bottom canines (c)” had very similar values. This makes sense because top and bottom canines typically grow in proportion to one another. Including both could cause redundant information to skew the clustering process, so I chose to remove one (I picked “bottom canines” randomly since both were similar) and two other highly correlated features.
+  <strong>Step 2: Handling correlated features</strong> – When I examined the dataset, I noticed that “top canines (C)” and “bottom canines (c)” had very similar values. This makes sense because top and bottom canines typically grow in proportion to one another. Including both could cause redundant information to skew the clustering process, so I chose to remove one (I picked “bottom canines” since the top canines usually have more distinct features in animals). For the same reason, I also removed “bottom molars (m)” and “bottom premolars (p)” as they exhibited similar correlations with their corresponding top teeth.
 </div>
-
-<p>Correlated features like this can confuse the algorithm, making it harder to detect the true patterns in the data. By removing one, I made the analysis cleaner and more reliable.</p>
+</p>
+<p>Highly correlated features like this can confuse the algorithm, making it harder to detect the true patterns in the data. By removing one, I made the analysis cleaner and more reliable.</p>
 
 <div class="highlight">
     <strong>Step 3: No need for standardization</strong> – Often, data needs to be standardized (or scaled) to make sure no single feature dominates the analysis due to differences in magnitude. In this case, all the tooth features had similar scales, so I didn’t need to do any scaling.
