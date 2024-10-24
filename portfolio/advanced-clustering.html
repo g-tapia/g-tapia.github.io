@@ -2123,16 +2123,26 @@ print(&quot;Total SSE:&quot;)</code></pre>
 ## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
 </div>
 <div id="however-armadillos-have-no-canines-after-research-so-it-can-be-meaningful." class="section level4">
+  <h4>Cluster One</h4>
+<p>This cluster groups large herbivores like Elk, Moose, and Bison. Their dentition patterns feature fewer canines and more premolars and molars, adapted for grinding plants. These similarities suggest a common evolutionary adaptation for herbivorous diets. There don’t appear to be any major outliers in this group.</p>
+
 <pre class="r"><code>print(cluster_one[, 1])</code></pre>
 <pre><code>##  [1] &quot;Coyote&quot;         &quot;Elk&quot;            &quot;Deer&quot;           &quot;Moose&quot;         
 ##  [5] &quot;Reindeer&quot;       &quot;Antelope&quot;       &quot;Bison&quot;          &quot;Mountain goat&quot; 
 ##  [9] &quot;Musk ox&quot;        &quot;Mountain sheep&quot;</code></pre>
 </div>
 <div id="all-share-a-similar-characteristic.-they-all-have-a-lot-of-fur." class="section level4">
+  <h4>Cluster Two</h4>
+<p>Walrus and Elephant Seal form Cluster Two, both showing highly specialized dentition for marine environments. Their dental traits include many incisors and reduced molars, reflecting a clear adaptation to marine feeding. No outliers are present, as both species share very similar ecological roles and dental structures.</p>
+
+
 <pre class="r"><code>print(cluster_two[, 1])</code></pre>
 <pre><code>## [1] &quot;Walrus&quot;        &quot;Elephant seal&quot;</code></pre>
 </div>
 <div id="cluster-3-several-of-these-animals-are-fast-and-use-their-senses-to-hunt-their-prey" class="section level4">
+  <h4>Cluster Three</h4>
+<p>Cluster Three contains burrowing mammals like moles and larger predators such as the Wolf and Bear. These species share similar dentition patterns in terms of incisors and canines, which suggests some overlap in their foraging or predatory behaviors. However, the presence of larger predators like the Wolf and Bear, alongside small mammals like moles could indicate potential outliers, as their diets and lifestyles are significantly different, despite the dentition similarities.</p>
+
 <pre class="r"><code>print(cluster_three[, 1])</code></pre>
 <pre><code>## [1] &quot;Hairy tail mole&quot; &quot;Common mole&quot;     &quot;Star nose mole&quot;  &quot;Wolf&quot;           
 ## [5] &quot;Fox&quot;             &quot;Bear&quot;            &quot;Civet cat&quot;       &quot;Raccoon&quot;        
@@ -2143,17 +2153,26 @@ print(&quot;Total SSE:&quot;)</code></pre>
 <div id="while-fur-seals-sea-lions-walruses-and-elephant-seals-primarily-consume-fish" class="section level4">
 </div>
 <div id="and-other-marine-animals.-this-cluster-is-meh." class="section level4">
+  <h4>Cluster Four</h4>
+<p>This cluster is dominated by small rodents such as the Gray Squirrel and Pocket Gopher. Their dental traits reflect adaptations for gnawing, with prominent incisors and simplified molar structures. No clear outliers exist in this group, as the species share similar ecological niches and feeding habits.</p>
+
 <pre class="r"><code>print(cluster_four[, 1])</code></pre>
 <pre><code>##  [1] &quot;Gray squirrel&quot; &quot;Fox squirrel&quot;  &quot;Pocket gopher&quot; &quot;Kangaroo rat&quot; 
 ##  [5] &quot;Pack rat&quot;      &quot;Field mouse&quot;   &quot;Muskrat&quot;       &quot;Black rat&quot;    
 ##  [9] &quot;House mouse&quot;   &quot;Porcupine&quot;     &quot;Guinea pig&quot;</code></pre>
 </div>
 <div id="cluster-5-most-of-these-animals-are-bats-so-this-is-a-great-grouping" class="section level4">
+  <h4>Cluster Five</h4>
+<p>Cluster Five includes various bat species, known for their specialized dentition for diverse diets. The Peccary, however, stands out as a potential outlier in this group. While bats share traits suited for flying and nocturnal foraging, the Peccary is a terrestrial, hoofed mammal with a completely different diet and dentition. Its inclusion in this cluster might suggest convergence in specific dental traits but still marks it as an outlier due to its vastly different biology.</p>
+
 <pre class="r"><code>print(cluster_five[, 1])</code></pre>
 <pre><code>## [1] &quot;Brown bat&quot;       &quot;Silver hair bat&quot; &quot;Pigmy bat&quot;       &quot;House bat&quot;      
 ## [5] &quot;Red bat&quot;         &quot;Hoary bat&quot;       &quot;Lump nose bat&quot;   &quot;Peccary&quot;</code></pre>
 </div>
 <div id="cluster-6-the-majority-of-these-animals-are-rodents-so-this-is-a-good-cluster-as-well" class="section level4">
+  <h4>Cluster Six</h4>
+<p>The Opossum is the sole member of this cluster, indicating its unique combination of dentition traits. This reflects its omnivorous diet and marsupial nature, which likely set it apart from all other species in the dataset.</p>
+
 <pre class="r"><code>print(cluster_six[, 1])</code></pre>
 <pre><code>## [1] &quot;Opossum&quot;</code></pre>
 </div>
@@ -2164,10 +2183,19 @@ print(&quot;Total SSE:&quot;)</code></pre>
 <div id="coyotes-are-not-ungulates-but-they-share-a-common-habitat-with-many-ungulates." class="section level4">
 </div>
 <div id="great-grouping" class="section level4">
+  <h4>Cluster Seven</h4>
+<p>The Armadillo is also a solitary member in Cluster Seven, reflecting its distinct dentition, adapted for an insectivorous diet. Its highly specialized dental traits set it apart from other mammals, which is why it stands alone.</p>
+
 <pre class="r"><code>print(cluster_seven[, 1])</code></pre>
 <pre><code>## [1] &quot;Armadillo&quot;</code></pre>
 </div>
 <div id="cluster-8-most-of-these-are-rodents-so-this-is-a-good-grouping-as-well" class="section level4">
+  <h4>Cluster Eight Review</h4>
+<p>This cluster groups together carnivorous mammals such as the Marten, Jaguar, and Wolverine, along with semi-aquatic species like the River Otter, Sea Otter, Fur Seal, and Sea Lion. These animals share dental traits such as well-developed canines and fewer premolars and molars, indicating their adaptation to predatory lifestyles. The mix of land and marine species suggests that their dentition is specialized for hunting and consuming a variety of prey, whether on land or in water.</p>
+
+<p>While the cluster makes sense from a dentition perspective, it’s worth noting the diversity in habitats. Semi-aquatic mammals like the Sea Otter and Sea Lion might appear as potential outliers given their different ecological environments, but their dental structures align with the broader carnivorous adaptations seen in this group.</p>
+
+
 <pre class="r"><code>print(cluster_eight[, 1])</code></pre>
 <pre><code>##  [1] &quot;Marten&quot;      &quot;Fisher&quot;      &quot;Weasel&quot;      &quot;Mink&quot;        &quot;Ferrer&quot;     
 ##  [6] &quot;Wolverine&quot;   &quot;Badger&quot;      &quot;Skunk&quot;       &quot;River otter&quot; &quot;Sea otter&quot;  
@@ -2175,6 +2203,8 @@ print(&quot;Total SSE:&quot;)</code></pre>
 ## [16] &quot;Sea lion&quot;</code></pre>
 </div>
 <div id="cluster-9" class="section level4">
+  <h4>Cluster Nine</h4>
+<p>Cluster Nine includes small herbivores such as the Pika, Beaver, and Groundhog. Their dental patterns, suited to gnawing and grinding plants, are highly similar. No outliers appear in this group, as the species share both environmental adaptations and dietary needs.</p>
 <pre class="r"><code>print(cluster_nine[,1])</code></pre>
 <pre><code>## [1] &quot;Pika&quot;            &quot;Snowshoe rabbit&quot; &quot;Beaver&quot;          &quot;Marmot&quot;         
 ## [5] &quot;Groundhog&quot;       &quot;Prairie Dog&quot;     &quot;Ground Squirrel&quot; &quot;Chipmunk&quot;</code></pre>
