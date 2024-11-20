@@ -6,23 +6,33 @@
     <title>Phone-Friendly Schedule</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #070000;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 10px;
-        }
-        .row {
-            margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 8px;
-            color: #fff;
-        }
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
         .driver-G {
             background-color: #4CAF50;
         }
