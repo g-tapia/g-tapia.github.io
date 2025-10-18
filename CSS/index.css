@@ -584,3 +584,109 @@ html {
   height: 480px;
   z-index: 1;    
 }
+
+
+/* ======== RESPONSIVE FIXES (append at end) ======== */
+
+/* 1) Base safety + no sideways scroll */
+* { box-sizing: border-box; }
+html, body { width: 100%; }
+body { margin: 0; overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* 2) Page sizing that plays nice with mobile address bars */
+.page-container {
+  min-height: 100svh;           /* safer than 100vh on mobile */
+  align-items: center;
+}
+.main-content {
+  position: relative;
+  width: min(100%, 1100px);
+  margin-inline: auto;
+  padding: clamp(.75rem, 3vw, 2rem);
+  text-align: center;
+}
+
+/* 3) Typewriter line scales down on phones */
+.typewriter h1 {
+  font-size: clamp(14px, 3.5vw, 18px);
+  letter-spacing: .12em;
+}
+
+/* 4) Hero heading scales instead of overflowing */
+#hero h1 { font-size: clamp(28px, 6vw, 50px); }
+
+/* 5) Social icons wrap instead of squeezing */
+#buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* 6) Neon buttons: allow wrapping and remove hard margins */
+.neon-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem;
+  width: 100%;
+}
+.neon-buttons a {
+  margin: 0;                    /* overrides margin-right: 50px; */
+  width: auto;                  /* no fixed width on tiny screens */
+  padding: .6rem 1rem;
+  font-size: clamp(13px, 3.5vw, 18px);
+  white-space: nowrap;
+}
+
+/* 7) Decorative character image: responsive; avoid overlap */
+.bottom-right-image {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: clamp(140px, 35vw, 320px);  /* was fixed 476px */
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 8) Moon size cap so it never forces scroll */
+.moon {
+  width: clamp(80px, 22vw, 150px);
+  height: clamp(80px, 22vw, 150px);
+  top: clamp(-40px, -6vw, -60px);
+  margin-left: clamp(-40px, -8vw, -80px);
+}
+
+/* 9) Keep the particle canvas from creating scrollbars */
+#particle-animation canvas {
+  inset: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 10) Breakpoints for tighter stacking on small devices */
+@media (max-width: 768px) {
+  .page-container { flex-direction: column; }
+  #hero { height: auto; padding-top: 10svh; padding-bottom: 6svh; }
+
+  /* If .left-pane is used elsewhere, stack it on mobile */
+  .left-pane {
+    flex-basis: auto;
+    width: 100%;
+    height: auto;
+    border-right: 0;
+    border-bottom: 3px solid #f403dc;
+  }
+}
+
+@media (max-width: 520px) {
+  /* On very small phones, let the image drop under the hero */
+  .bottom-right-image {
+    position: static;
+    margin: 1rem auto 0;
+    display: block;
+  }
+}
