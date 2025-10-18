@@ -1,87 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>George Tapia - Passionate, creative dev.</title>
-    <link rel="icon" href="/images/logo-g.png" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="CSS/index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>George Tapia - Passionate, creative dev.</title>
 
+  <link rel="icon" href="/images/logo-g.png" type="image/png" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="CSS/index.css" />
 </head>
 <body>
 
-    <!-- pedal intro -->
-    <div class="pedal">
-        <div class="out">
-          <div class="fade-in">
-            <div class="container">
-              <div class="one common"></div>
-              <div class="two common"></div>
-              <div class="three common"></div>
-              <div class="four common"></div>
-              <div class="five common"></div>
-              <div class="six common"></div>
-              <div class="seven common"></div>
-              <div class="eight common"></div>
-              
-            </div>
-            <div class="typing-container">
-            <div class="typewriter">
-                <h1>Crafting digital solutions that delight and inspire...</h1>
-              </div>
-            </div>
+  <!-- Intro pedal -->
+  <div class="pedal" aria-hidden="true">
+    <div class="out">
+      <div class="fade-in">
+        <div class="container">
+          <div class="one common"></div>
+          <div class="two common"></div>
+          <div class="three common"></div>
+          <div class="four common"></div>
+          <div class="five common"></div>
+          <div class="six common"></div>
+          <div class="seven common"></div>
+          <div class="eight common"></div>
+        </div>
+
+        <div class="typing-container">
+          <div class="typewriter">
+            <h1>Crafting digital solutions that delight and inspire...</h1>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 
+  <!-- Home page -->
+  <main class="page-container">
+    <section class="main-content" id="particle-animation">
+      <div class="moon" aria-hidden="true"></div>
 
-<!-- Home page -->
-<div class="page-container">
-    <div class="main-content" id="particle-animation">
-        <div class="moon"></div>
-        <div class="neon-buttons">
+      <!-- Top nav buttons -->
+      <nav class="neon-buttons" aria-label="Primary">
         <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Home
+          <span></span><span></span><span></span><span></span>
+          Home
         </a>
         <a href="/portfolio/projects.html">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Projects
+          <span></span><span></span><span></span><span></span>
+          Projects
         </a>
         <a href="/maintenance-notifications/under-construction.html">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Blog
+          <span></span><span></span><span></span><span></span>
+          Blog
         </a>
-        </div>
-        <div id="hero">
-            <h1>George Tapia<br/>Software Engineer</h1>
+      </nav>
 
-            <div id="buttons">
-                <a href="mailto:gtapia.2400@gmail.com" target="_blank" class="icon-link">
-                    <i class="fa fa-envelope-o fa-3x icon" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/g-tapia/" target="_blank" class="icon-link">
-                    <i class="fa fa-linkedin-square fa-3x icon" aria-hidden="true"></i>
-                </a>
-                <a href="https://github.com/g-tapia" target="_blank" class="icon-link">
-                    <i class="fa fa-github-alt fa-3x icon" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>
-        <img src="./madeup-character-removebg-preview.png" alt="Description of Image" class="bottom-right-image"  bottom: 100px;">
-    </div>
-</div>
+      <!-- Hero -->
+      <header id="hero">
+        <h1>George Tapia<br />Software Engineer</h1>
 
-    <script type="module" src="JS/index.js"></script>
+        <div id="buttons" role="group" aria-label="Social links">
+          <a href="mailto:gtapia.2400@gmail.com" target="_blank" rel="noopener" class="icon-link" aria-label="Email">
+            <i class="fa fa-envelope-o fa-3x icon" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/g-tapia/" target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
+            <i class="fa fa-linkedin-square fa-3x icon" aria-hidden="true"></i>
+          </a>
+          <a href="https://github.com/g-tapia" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
+            <i class="fa fa-github-alt fa-3x icon" aria-hidden="true"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- Decorative character -->
+      <img src="./madeup-character-removebg-preview.png"
+           alt="Illustration"
+           class="bottom-right-image" />
+    </section>
+  </main>
+
+  <script type="module" src="JS/index.js"></script>
 </body>
 </html>
