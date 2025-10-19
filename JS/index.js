@@ -2,13 +2,13 @@ import { particlesCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/thre
 
 const pc = particlesCursor({
   el: document.getElementById('particle-animation'),
-  gpgpuSize: 512, // Increased particle density
-  colors: [0xf403dc, 0xf403dc, 0xf403dc], // Three similar shades
+  gpgpuSize: 712, 
+  colors: [0xf403dc, 0xf403dc, 0xf403dc], 
   color: 0xf403dc, 
   coordScale: .9,
   noiseIntensity: 0.001,
   noiseTimeCoef: 0.0001,
-  pointSize: 5, // Increased point size
+  pointSize: 5, 
   pointDecay: 0.00543424,
   sleepRadiusX: 250,
   sleepRadiusY: 250,
