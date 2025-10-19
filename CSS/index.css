@@ -449,14 +449,10 @@ body, html {
 } 
 
 .neon-buttons {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 3rem; 
-    z-index: 2;
+    align-items: flex-start; 
+    width: 100%;
 }
 
 
