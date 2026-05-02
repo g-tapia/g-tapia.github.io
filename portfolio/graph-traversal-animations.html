@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph Traversal Animation Project</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    background-color: #0b0b0b;
+    color: #f5f5f5;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    background-color: #111;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar-header img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid #4da6ff;
+    transition: 0.2s ease;
+}
+
+.sidebar-header img:hover {
+    transform: scale(1.05);
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    color: #4da6ff;
+}
+
+/* Back Link */
+.back-link {
+    display: block;
+    margin: 15px 0 25px 0;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.back-link:hover {
+    color: #4da6ff;
+}
+
+/* Sidebar Links */
+.sidebar a {
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+    margin: 10px 0;
+    font-size: 1rem;
+}
+
+.sidebar a:hover {
+    color: #4da6ff;
+}
+
+/* Sub-links (NEW) */
+.sub-links {
+    margin-left: 15px;
+    margin-bottom: 15px;
+    border-left: 1px solid #333;
+    padding-left: 12px;
+}
+
+.sub-links a {
+    font-size: 0.9rem;
+    margin: 6px 0;
+    color: #999;
+}
+
+.sub-links a:hover {
+    color: #4da6ff;
+}
+
+/* Main Content */
+.main {
+    margin-left: 260px;
+    padding: 40px;
+    max-width: 950px;
+}
+
+section {
+    margin-bottom: 70px;
+}
+
+h1 {
+    color: #4da6ff;
+}
+
+h2 {
+    color: #00b3b3;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: #4da6ff;
+}
+
+p, li {
+    line-height: 1.6;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: #ffffff;
+    opacity: 0.3;
+    margin: 40px 0;
+}
+.sub-title {
+    color: #00b3b3;
+    opacity: 1;
+    font-size: 0.95rem;
+    margin-top: -20px;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<nav class="sidebar">
+
+    <div class="sidebar-header">
+        <h2>Graph Traversal</h2>
+        <img src="..\images\Graph.png" alt="Graph Visualization">
+    </div>
+
+    <a href="./projects.html" class="back-link">← Back to Projects</a>
+
+    <a href="#overview">Overview</a>
+    <a href="#uses">Uses and Applications</a>
+    <a href="#read-before">Read Before Playing Animations</a>
+
+    <!-- Algorithms + Subsection -->
+    <a href="#algorithms">Algorithms & Animations</a>
+    <div class="sub-links">        
+        <a href="#bfs">Breadth First Search</a>
+        <a href="#dfs">Depth First Search</a>       
+        <a href="#best-first">Best First</a>        
+        <a href="#dijkstra">Dijkstra</a>
+        <a href="#astar">A* Search</a>
+        <a href="#beam-search">Beam Search</a>
+
+    </div>
+
+    <a href="#run-locally">Run Locally</a>
+    <a href="#features">Key Features</a>
+    <a href="#technical-details">Technical Details</a>
+    <a href="#challenges">Challenges</a>
+    <a href="#results">Results</a>
+
+</nav>
+
+<!-- Main -->
+<main class="main">
+
+<section id="overview">
+        <h1>Graph Traversal Animation Project</h1>
+    <p>
+    This project, <strong>PathfindingApp</strong>, was developed prior to the widespread availability of generative AI tools such as GPT and was built entirely from my own ideas and experimentation. The goal was to challenge my programming abilities by designing and implementing an interactive system that visualizes graph traversal and pathfinding algorithms from the ground up, without relying on tutorials or reference implementations.
+    </p>
+
+    <p>
+    Because this project was developed before tools like GPT were available, I had to independently research libraries, understand how their functions operated, evaluate required arguments, and experiment with their behavior to achieve the desired results. This process required hands on exploration and continuous adjustment, reflecting the type of problem solving expected from a developer working without predefined guidance.
+    </p>
+
+    <p>
+    The application enables users to explore and understand algorithms such as Breadth First Search (BFS), Depth First Search (DFS), Dijkstra’s Algorithm, A* Search, and others through real time animation. Users can define start and goal state nodes, adjust execution speed during runtime, resize graph components, and pause or resume the animation at any point to analyze the algorithm’s behavior step by step.
+    </p>
+
+    <p>
+    A significant portion of the work involved designing both the system architecture and the user interface. With no reference projects available, I relied on structured debugging and iterative testing to resolve issues related to state management, rendering performance, and user interaction. This required careful analysis and persistence to ensure the system behaved correctly across different scenarios.
+    </p>
+
+    <p>
+    This was a demanding project that involved a substantial amount of code and iterative debugging. The complexity becomes clear when exploring the underlying Python implementation, and I encourage reviewing the source code on my GitHub to fully appreciate the depth and structure of the system. It reflects the effort required to build a fully functioning, interactive application from scratch. Despite the challenges, the process significantly strengthened my understanding of object oriented programming, data structures, and algorithm design.
+    </p>
+
+    <p>
+    This project demonstrates the ability to independently design, implement, and refine a complex software system while translating abstract algorithm concepts into an intuitive and interactive visual experience.
+    </p>
+</section>
+
+<section id="uses">
+    <h2>Uses and Applications</h2>
+
+    <p>
+        Graph traversal and pathfinding algorithms such as DFS, BFS, Dijkstra’s Algorithm, A* Search, and Beam Search are widely used in real world systems where efficient navigation, exploration, and decision making are required.
+    </p>
+
+    <ul>
+        <li>Navigation systems such as GPS routing use algorithms like Dijkstra and A* to determine the shortest or fastest path between locations</li>
+        <li>Network routing relies on traversal algorithms to efficiently transfer data between nodes across large systems</li>
+        <li>Artificial intelligence and game development use pathfinding to guide characters and simulate intelligent movement</li>
+        <li>Search engines and recommendation systems use graph based approaches to explore relationships between data points</li>
+        <li>Robotics and autonomous systems use these algorithms to plan movement and avoid obstacles in dynamic environments</li>
+    </ul>
+
+    <p>
+        Each algorithm offers different strengths depending on the problem. Some prioritize completeness and accuracy, while others focus on speed and efficiency. This project demonstrates how these tradeoffs affect real time decision making and system behavior.
+    </p>
+    <p>
+    The application is designed as an interactive learning tool, giving users the ability to adjust execution speed to match their learning style, modify inputs to test different scenarios, and pause the animation to predict what will happen next before continuing. Users can also redraw and resize the graph to improve clarity and better observe algorithm behavior based on their preferences.
+</p>
+</section>
+
+
+</section>
+
+<section id="read-before">
+
+<h2>Read Before Playing Animations</h2>
+
+<!-- Step 1 -->
+<p>
+Before watching the animations, review the information below to understand how each algorithm behaves during execution.
+</p>
+
+<p>
+<strong>For the best viewing experience, please watch the animations in full screen.</strong>
+</p>
+
+<p>
+The animations are organized in a specific order, starting with more basic algorithms and progressing to more advanced ones. As you move further down the list, the animations demonstrate more complex strategies and behaviors, so it is recommended to follow them in sequence.
+</p>
+<p>
+Some animations may also include visual indicators such as numbered rankings or changing connections to show how states are evaluated, sorted, or updated during execution.
+</p>
+
+<!-- Step 2: Legend -->
+<h3>Color Legend</h3>
+<ul>
+<li>
+    <span style="color:green; border:2px solid gold; padding:2px 6px; border-radius:4px;">
+        <strong>Green with Gold Trim</strong>
+    </span> – Current state being explored, indicating the algorithm’s active position
+</li>    <li><span style="color:green;"><strong>Green</strong></span> – State is being explored and added to the open list</li>
+    <li><span style="color:red;"><strong>Red</strong></span> – State has been visited (added to visited list) and will not be revisited</li>
+    <li><span style="color:gold;"><strong>Gold</strong></span> – Final path found (optimal or non optimal depending on the algorithm)</li>
+</ul>
+
+<!-- Step 3: Expectations -->
+<h3>Important Notes</h3>
+<p>
+Depending on the algorithm and its constraints, a path may not always be found. Some algorithms may prune or ignore paths that could lead to the goal state, especially when prioritizing speed or limiting the number of states explored.
+</p>
+
+<p>
+Each algorithm evaluates and manages multiple possible paths at the same time. When a final path is displayed, it represents the best path selected from many alternatives considered during execution.
+</p>
+
+<!-- Step 4: Concept -->
+<h3>Understanding Path Growth</h3>
+<p>
+To understand how quickly the number of possible paths grows, consider the following example:
+</p>
+
+<pre>
+Start
+├── A
+│   ├── A1
+│   │   ├── A1a
+│   │   └── A1b
+│   └── A2
+│       ├── A2a
+│       └── A2b
+└── B
+    ├── B1
+    │   ├── B1a
+    │   └── B1b
+    └── B2
+        ├── B2a
+        └── B2b
+</pre>
+
+<p>
+From this structure, the algorithm must consider multiple possible paths. In practice, many algorithms internally track and evaluate a large number of these paths at the same time. In this visualization, not all paths are shown, since displaying every possibility would quickly become overwhelming.
+</p>
+
+<h3>Example of all paths from the structure above</h3>
+<ul>
+    <li>Start → A → A1 → A1a</li>
+    <li>Start → A → A1 → A1b</li>
+    <li>Start → A → A2 → A2a</li>
+    <li>Start → A → A2 → A2b</li>
+    <li>Start → B → B1 → B1a</li>
+    <li>Start → B → B1 → B1b</li>
+    <li>Start → B → B2 → B2a</li>
+    <li>Start → B → B2 → B2b</li>
+</ul>
+
+<p>
+That is a lot of paths. Now imagine all of these paths being stored and evaluated during the animations below.
+</p>
+
+<!-- Step 6: Conclusion -->
+<p>
+Even with a small depth, the number of possible paths increases rapidly. This demonstrates why search algorithms must decide which paths to explore and which to ignore, since evaluating every possible path becomes computationally expensive as the graph grows.
+</p>
+
+</section>
+<!-- Algorithms -->
+<section id="algorithms">
+<h2>Algorithms & Animations</h2>
+<section id="bfs">
+<h3>Breadth First Search</h3>
+<p>
+Breadth First Search (BFS) is a graph traversal algorithm that explores nodes in layers, starting from a given node and moving outward. It uses a queue to keep track of which node to visit next, ensuring that the first node added is the first one processed.
+</p>
+
+<p>
+The algorithm begins by visiting the starting node and adding its neighbors to the queue. It then repeatedly removes the next node from the front of the queue, visits it, and adds its unvisited neighbors to the back. This process continues, expanding outward step by step, until all reachable nodes are explored or a target node (goal state) is found.
+</p>
+
+<p>
+Breadth First Search guarantees the shortest path only when all edges have equal weight. In cases where edge weights differ, such as distances measured in miles, BFS no longer produces the optimal path.
+</p>
+
+<p>
+This is because BFS treats every edge as having the same cost, focusing only on the number of steps taken rather than the actual distance traveled. As a result, it may return a path with fewer steps but a longer total distance.
+</p>
+
+<p>
+For weighted graphs, algorithms such as Dijkstra’s Algorithm or A* Search are more appropriate, as they take edge weights into account when determining the most efficient path.
+</p>
+
+
+<hr class="section-divider">
+<p class="sub-title">Breadth First Search Animation</p>
+<video controls>
+<source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/4a3182fa-26a5-4340-9ee7-6b9bb7c93653
+" type="video/mp4">
+</video>
+</p></section>
+
+
+<hr class="section-divider">
+<section id="dfs">
+
+<h3>Depth First Search (DFS)</h3>
+
+<p>
+Depth First Search (DFS) is a graph traversal algorithm that explores a path as deeply as possible before backtracking. It uses a stack, which follows a last in first out approach, meaning the most recently added state is explored first.
+</p>
+
+<p>
+The algorithm begins at a starting state and pushes it onto the stack. It then repeatedly selects the state at the top, explores it, and pushes its unvisited neighbors onto the stack. This causes the search to follow one path deeply before returning to earlier states to explore alternative paths.
+</p>
+
+<p>
+This approach allows DFS to efficiently explore large graphs, but it does not guarantee the shortest path. Because it focuses on depth rather than distance, it may travel far away from the goal state before eventually finding a solution.
+</p>
+
+<p>
+DFS requires tracking visited states to avoid revisiting nodes and entering cycles. While it can be memory efficient compared to breadth based methods, it may still explore long and unnecessary paths depending on the structure of the graph.
+</p>
+
+<hr class="section-divider">
+
+<p class="sub-title">Depth First Search Animation</p>
+
+<video controls>
+    <source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/b1510b16-5a86-4591-929a-db2ca7fa0c8a" type="video/mp4">
+</video>
+
+</section>
+
+
+<hr class="section-divider">
+<section id="best-first">
+
+<h3>Best First Search</h3>
+
+<p>
+Best First Search is a heuristic based search algorithm that uses a priority queue to explore the most promising states first. Each state is prioritized using a heuristic function h(n), which estimates how close the state is to the goal state. In this project, the heuristic can represent the distance in miles from the current state to the goal.
+</p>
+
+<p>
+The algorithm begins at a starting state and adds it to the priority queue. At each step, it selects the state with the lowest heuristic value, meaning the state that appears closest to the goal, and explores it. It then evaluates its unvisited neighbors and adds them to the queue based on their heuristic values.
+</p>
+
+<p>
+Because the algorithm always chooses the state that looks closest to the goal, it can move quickly in the right direction. However, it only considers the estimated distance to the goal and ignores the cost already traveled. This means it may follow paths that seem promising but are not actually efficient.
+</p>
+
+<p>
+As a result, Best First Search does not guarantee the shortest path. Its performance depends heavily on the quality of the heuristic, and it may overlook better routes if they do not appear immediately promising. While it can be fast and effective in some cases, it trades accuracy for speed compared to algorithms such as Dijkstra’s Algorithm or A* Search.
+</p>
+
+<hr class="section-divider">
+
+<p class="sub-title">Best First Search Animation</p>
+
+<video id="bestFirstVideo" controls>
+    <source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/3d991a52-a2f3-4790-a748-cc41400a591e" type="video/mp4">
+</video>
+
+<script>
+const bestFirstVideo = document.getElementById("bestFirstVideo");
+
+// Set default speed immediately
+bestFirstVideo.playbackRate = 2.0;
+
+// Reinforce when user hits play (most reliable)
+bestFirstVideo.addEventListener("play", function () {
+    bestFirstVideo.playbackRate = 2.0;
+});
+</script>
+
+</section>
+
+
+<hr class="section-divider">
+<section id="dijkstra">
+
+<h3>Dijkstra’s Algorithm</h3>
+
+<p>
+Dijkstra’s Algorithm is a graph traversal algorithm used to find the shortest path in a weighted graph. It uses a priority queue to always explore the state with the lowest known path cost, denoted as g(n), which represents the total distance from the starting state.
+</p>
+
+<p>
+The algorithm begins by assigning the starting state a cost of 0 and all other states a cost of infinity. At each step, it selects the state with the lowest g(n), visits it, and evaluates its neighbors. For each neighbor, the algorithm calculates the cost of reaching it through the current state and updates its cost if a shorter path is found.
+</p>
+
+<p>
+As new states are discovered, the algorithm tracks their parent state, forming multiple potential paths that grow over time. If a state is reached through a more efficient path, its parent is updated to reflect the improved route. In the animation, different colored paths represent these competing routes, and the moving connection highlights when a more efficient parent is selected.
+</p>
+
+<p>
+This process continues until the target state (goal state) is reached or all reachable states have been explored. Because the algorithm always expands the lowest cost path first, it guarantees the shortest path when all edge weights are positive.
+</p>
+
+<p>
+While Dijkstra’s Algorithm is reliable and accurate, it can be computationally expensive for large graphs since it explores many possible paths. It also does not use a heuristic to guide the search toward the goal, which can make it less efficient compared to algorithms such as A* in certain scenarios.
+</p>
+
+<hr class="section-divider">
+
+<p class="sub-title">Dijkstra’s Algorithm Animation</p>
+
+<video controls>
+    <source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/72528777-662d-4262-9183-efaf2510f48b" type="video/mp4">
+</video>
+
+</section>
+
+<hr class="section-divider">
+<section id="astar">
+<h3>A* Search</h3>
+<p>Combines cost and heuristic to guide search efficiently.</p>
+
+<p>
+A* Search is a pathfinding algorithm that combines the strengths of Dijkstra’s Algorithm and heuristic based search. It uses a priority queue to explore nodes based on a total cost function defined as f(n) = g(n) + h(n), where g(n) represents the cost to reach the current state from the starting state and h(n) estimates the remaining cost from the current state to the goal state.
+</p>
+
+<p>
+At each step, A* selects the state with the lowest total cost and explores its neighbors. If a more efficient path to a state is found, the algorithm updates its cost and parent, ensuring that the best known path is always maintained. This process continues until the target is reached.
+</p>
+
+<p>
+A* is widely used because it can guarantee the shortest path when the heuristic is well chosen and does not overestimate the true cost. It is generally more efficient than uninformed search methods, but its performance depends on the quality of the heuristic and it can require significant memory to store explored states.
+</p>
+</section>
+
+<hr class="section-divider">
+<p class="sub-title">A* Search Animation</p>
+
+<video id="astarVideo" controls>
+    <source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/79830fe7-f14c-448f-a1c9-c83cf4a01eda" type="video/mp4">
+</video>
+
+<script>
+const astarVideo = document.getElementById("astarVideo");
+
+astarVideo.playbackRate = 2.0;
+
+astarVideo.addEventListener("play", function () {
+    astarVideo.playbackRate = 2.0;
+});
+</script>
+
+<hr class="section-divider">
+<section id="beam-search">
+<h3>Beam Search</h3>
+<p>
+Beam Search is a heuristic based search algorithm that explores a graph by focusing only on the most promising nodes at each step. Instead of exploring every possible path, it maintains a limited set of candidates called the beam, which is controlled by a parameter denoted as β (beta). The value of β determines how many nodes are kept at each level of the search.
+</p>
+
+<p>
+At each step, the algorithm evaluates neighboring states using a heuristic function h(n), where n represents a state. This heuristic is chosen based on the problem and can represent values such as the distance from a neighboring state to the goal state, or the cost from the current state to its neighbors. Based on this evaluation, only the β most promising states are retained.
+</p>
+
+<p>
+All other states are pruned, meaning they are removed from consideration and will not be explored further. In this project, pruning occurs by keeping only the neighboring states with the lowest distance in miles, allowing the algorithm to focus on paths that appear more efficient.
+</p>
+
+<p>
+This process continues iteratively, expanding only the selected states and repeatedly applying pruning at each level. By limiting the number of paths explored, Beam Search improves performance and reduces memory usage compared to more exhaustive algorithms. However, because it discards alternative paths early, it may miss the optimal solution or fail to find a valid path depending on the chosen β value and heuristic.
+</p>
+
+<hr class="section-divider">
+<p class="sub-title">Beam Search Animation</p>
+<p>
+<p>
+In this demonstration, β = 1, meaning only one state is kept at each step. The algorithm first evaluates all neighboring states, then sorts them by the heuristic value, which in this case is the distance in miles relative to the current state. After sorting, only the most promising state is retained while all others are pruned from the path.
+</p>
+
+<p>
+This is why the animation displays placement numbers such as 1, 2, 3 and so forth, above the states. Those numbers show the sorted order of the neighboring states before pruning occurs. The state marked 1 is at the front of the most promising set, so it is selected to continue the search while the remaining states are removed from consideration.
+</p>
+
+<p>
+In this scenario, no solution is found. Because the beam width is limited to a single state, the algorithm prunes alternative paths that could have led to the goal state. This demonstrates a key limitation of Beam Search, where aggressive pruning can prevent the algorithm from reaching a valid solution.
+</p></p>
+
+
+
+
+
+<video controls>
+<source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/632cd056-b1d6-49ef-a418-635675be8975
+" type="video/mp4">
+</video>
+
+
+<p>
+In this demonstration, β = 3, meaning only three states are kept at each step.
+</p>
+<video controls>
+<source src="https://github.com/g-tapia/PathfindingApp-US-Version--Demonstration/assets/78235399/fabf6f66-fffb-4c92-8122-855a5d23b322
+" type="video/mp4">
+</video>
+</section>
+
+
+</section>
+
+<section id="run-locally">
+
+<h2>Run Locally</h2>
+
+<p>
+If you would like to explore the project in more detail, you can download and run the application locally. This allows you to interact with the algorithms directly and experiment with different inputs.
+</p>
+
+<h3>Setup Instructions</h3>
+<ol>
+    <li>Clone the repository and navigate into the project directory</li>
+    <li>Create and activate a virtual environment</li>
+    <li>Install the required dependencies</li>
+    <li>Run the application</li>
+</ol>
+
+<pre>
+git clone https://github.com/g-tapia/path-finding-app
+cd path-finding-app
+
+python -m venv .venv
+source .venv/bin/activate
+
+pip install -r requirements.txt
+
+python path-finding-app.py
+</pre>
+
+<p>
+Depending on your system, you may need to use <code>python3</code> and <code>pip3</code> instead.
+</p>
+
+<h3>Code Quality</h3>
+<p>
+The project follows standard Python practices. Tools such as <code>black</code> and <code>pyflakes</code> can be used to format and analyze the code.
+</p>
+
+<pre>
+pip install black
+black -l 120 .
+
+pip install pyflakes
+pyflakes path-finding-app.py
+</pre>
+
+</section>
+
+<section id="features">
+<h2>Key Features</h2>
+<ul>
+    <li>Interactive visualization of graph traversal and pathfinding algorithms</li>
+    <li>Real time node and edge exploration with clear execution flow</li>
+    <li>Support for multiple algorithms including DFS, BFS, Dijkstra, A*, Best First Search, and Beam Search</li>
+    <li>Adjustable execution speed to match different learning styles</li>
+    <li>Pause and resume functionality to predict and analyze algorithm behavior</li>
+    <li>Dynamic input handling to test different graph scenarios</li>
+    <li>Resizable and redrawable graph for improved clarity and user preference</li>
+    <li>Clear visual states for visited, active, and unvisited nodes</li>
+</ul>
+</section>
+
+<section id="technical-details">
+<h2>Technical Details</h2>
+<p>
+The application is built using object oriented programming principles, combining graph data structures with traversal and pathfinding algorithms. Core components include adjacency representations of states, queues and stacks for traversal control, and priority queues for cost based and heuristic driven searches.
+</p>
+
+<p>
+The system tracks multiple paths simultaneously, maintaining parent relationships to reconstruct routes and dynamically updating paths when more efficient options are found. Algorithms such as Dijkstra and A* compare path costs in real time, while others like Beam Search apply pruning techniques to limit the number of states explored.
+</p>
+
+<p>
+The animation layer is tightly integrated with the algorithm logic, requiring synchronization between state updates and visual rendering. This includes managing node states, color transitions, path highlighting, and visual indicators such as rankings and parent changes to accurately reflect algorithm behavior during execution.
+</p>
+</section>
+
+
+<section id="challenges">
+<h2>Challenges</h2>
+<p>
+One of the primary challenges was synchronizing traversal logic with animation rendering in real time. Ensuring that each step of the algorithm was accurately reflected visually required careful control of state transitions and timing.
+</p>
+
+<p>
+Another challenge involved managing the complexity of multiple paths being evaluated simultaneously. Since many algorithms track and update paths dynamically, it was necessary to design a system that could efficiently handle parent updates, path comparisons, and pruning without breaking visual consistency.
+</p>
+
+<p>
+This project was developed without reference implementations, which required independently researching libraries, understanding their behavior, and experimenting with different approaches to achieve the desired animation and interaction. Debugging complex interactions between algorithm logic and visualization required iterative testing and problem solving.
+</p>
+</section>
+
+
+<section id="results">
+<h2>Results</h2>
+<p>
+This project demonstrates a strong understanding of graph traversal and pathfinding algorithms, including their behavior, tradeoffs, and real world applications. It highlights the ability to translate abstract algorithm concepts into an interactive and visual system.
+</p>
+
+<p>
+The final implementation provides a clear representation of how different algorithms explore and evaluate paths, showing how decisions are made based on cost, heuristics, or traversal strategy. It also demonstrates the ability to design and build a complete system from initial concept to execution.
+</p>
+
+<p>
+Overall, the project reflects skills in problem solving, system design, and software development, with a focus on building tools that make complex concepts easier to understand.
+</p>
+</section>
+
+</main>
+
+</body>
+</html>

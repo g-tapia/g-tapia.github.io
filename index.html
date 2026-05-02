@@ -78,10 +78,59 @@
                 </a>
             </div>
         </div>
-        <img src="./madeup-character-removebg-preview.png" alt="Description of Image" class="bottom-right-image"  bottom: 100px;">
+        <img src="./madeup-character-removebg-preview.png" alt="Character" class="bottom-right-image">
     </div>
 </div>
 
-    <script type="module" src="./JS/index.js"></script>
+<script>
+  (function () {
+    const isTouch = matchMedia('(hover: none) and (pointer: coarse)').matches;
+    if (!isTouch) return;
+    window.removeEventListener?.('mousemove', window.onMouseMoveParticles);
+    window.startAutonomousParticles?.();
+  })();
+</script>
+
+<script>
+(() => {
+  const pedal = document.querySelector('.pedal');
+  const btn = document.querySelector('.pedal-skip');
+
+  if (!pedal) return;
+
+  const finish = () => {
+    pedal.style.animation = 'none';
+    pedal.style.opacity = '0';
+    pedal.style.visibility = 'hidden';
+    pedal.remove();
+  };
+
+  if (btn) btn.addEventListener('click', finish);
+
+  // Auto-end after 4.5 s
+  setTimeout(finish, 4500);
+
+  // End instantly if user switches away from the tab
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') finish();
+  }, { once: true });
+})();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.querySelector('.pedal');
+    if (!overlay) return;
+    const finish = () => { try { overlay.remove(); } catch (_) {} };
+    overlay.addEventListener('animationend', (e) => {
+      if (e.animationName === 'fadeOutAnimation') finish();
+    });
+    setTimeout(finish, 10000);
+  });
+</script>
+
+
+
+<script type="module" src="./JS/index.js"></script>
 </body>
 </html>
